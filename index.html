@@ -1,0 +1,2921 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Tallinding Islamic Institute · Excellence in Islamic Education</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary-dark: #1e3d3a;
+            --primary-teal: #2b6f6b;
+            /* LIGHTER ORANGE - softer but still vibrant */
+            --primary-accent: #FFB347; /* Lighter orange */
+            --accent-secondary: #FFC87A; /* Soft peach */
+            --accent-bright: #FFA07A; /* Light salmon */
+            --accent-glow: rgba(255, 179, 71, 0.5); /* Light orange glow */
+            
+            --text-dark: #1e2b2f;
+            --text-soft: #2b4743;
+            --text-light: #44615e;
+            --bg-soft: #faf9f6;
+            --bg-teal-soft: #dde9e6;
+            --islamic-green: #1e5a3a;
+            --search-border: #e0e0e0;
+            --tab-bg: #1e5a3a;
+            --tab-hover: #2b7a4f;
+            --tab-active: #ffffff;
+            --tab-border: #d0d0d0;
+            --nusrat-blue: #1e3a5f;
+            --nusrat-accent: #FFB347; /* Lighter orange */
+            --footer-bg: #2b5a4a;
+            --footer-text: #f0f0f0;
+            --footer-text-light: #e0e0e0;
+            --footer-heading: #FFB347; /* Lighter orange */
+            
+            /* Social media brand colors */
+            --facebook-color: #1877f2;
+            --instagram-color: #e4405f;
+            --youtube-color: #ff0000;
+            
+            /* Login section colors */
+            --login-student: #1e5a3a;
+            --login-teacher: #2b5a4a;
+            --login-hover: #FFB347; /* Lighter orange */
+            
+            /* News section colors */
+            --news-overlay: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+            --category-bg: #FFB347; /* Lighter orange */
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            background-color: var(--bg-soft);
+            color: var(--text-dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        /* Better touch targets */
+        button, a {
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+
+        /* ===== NAVBAR - WITH LANGUAGE ON LEFT, LOGO ON RIGHT ===== */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            width: 100%;
+            border-bottom: 1px solid rgba(43, 111, 107, 0.1);
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Language switcher - smaller size on LEFT */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: var(--bg-teal-soft);
+            padding: 0.15rem;
+            border-radius: 30px;
+            transform: scale(0.85);
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: none;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: all 0.2s;
+        }
+
+        .lang-switch button.active {
+            background: var(--islamic-green);
+            color: white;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* School Logo Container - Ready for your transparent PNG */
+        .school-logo {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .school-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .institute-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--islamic-green);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .nav-left, .nav-right {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .institute-name {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: center;
+            }
+            
+            .school-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-right {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* ===== SEARCH BAR ===== */
+        .search-section {
+            margin: 1.5rem 0 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .search-container.expanded {
+            max-width: 450px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 40px;
+            border: 1px solid var(--search-border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 48px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        /* Glowing effect when focused - light orange */
+        .search-wrapper:focus-within {
+            border-color: var(--primary-accent);
+            box-shadow: 
+                0 0 0 4px rgba(255, 179, 71, 0.2),
+                0 0 15px 2px var(--accent-glow);
+            transform: scale(1.02);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            color: #999;
+            font-size: 0.95rem;
+            pointer-events: none;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .search-wrapper:focus-within .search-icon {
+            color: var(--primary-accent);
+        }
+
+        .search-input {
+            width: 100%;
+            height: 100%;
+            padding: 0 45px 0 45px;
+            border: none;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            background: transparent;
+            outline: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .search-wrapper:focus-within .search-input::placeholder {
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .search-container {
+                max-width: 280px;
+            }
+            
+            .search-container.expanded {
+                max-width: 380px;
+            }
+            
+            .search-wrapper {
+                height: 44px;
+            }
+            
+            .search-input {
+                font-size: 0.85rem;
+                padding: 0 40px 0 40px;
+            }
+            
+            .search-icon {
+                left: 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== TABS SECTION ===== */
+        .tabs-section {
+            margin: 0rem 0 1.5rem;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .tabs-header {
+            background: var(--tab-bg);
+            border-bottom: 1px solid var(--tab-border);
+            padding: 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tabs-header::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-item {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: white;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .tab-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .tab-item i {
+            color: white;
+            font-size: 1rem;
+        }
+
+        .tab-item:hover {
+            background: var(--tab-hover);
+            color: white;
+        }
+
+        .tab-item:hover i {
+            color: white;
+        }
+
+        .tab-item.active {
+            color: var(--islamic-green);
+            border-bottom-color: var(--primary-accent);
+            background: var(--tab-active);
+            font-weight: 600;
+        }
+
+        .tab-item.active i {
+            color: var(--islamic-green);
+        }
+
+        .tab-item.active::after {
+            display: none;
+        }
+
+        .tab-content {
+            padding: 1.5rem 0rem 0rem 0rem;
+            background: white;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .mobile-tabs-select {
+            display: none;
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--tab-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            background: var(--tab-bg);
+            color: white;
+        }
+
+        .mobile-tabs-select option {
+            background: white;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 600px) {
+            .tabs-header {
+                display: none;
+            }
+            
+            .mobile-tabs-select {
+                display: block;
+            }
+            
+            .tab-content {
+                padding: 1rem 0rem 0rem 0rem;
+            }
+        }
+
+        /* ===== IMAGE BOX - FADE EFFECT - REDUCED HEIGHT ===== */
+        .nusrat-image-box {
+            background: #f5f5f5;
+            border-radius: 0;
+            overflow: hidden;
+            margin-bottom: 0rem;
+            border-top: 1px solid #e0e0e0;
+            width: 100%;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Reduced height - using 40% instead of 56.25% */
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 40%; /* Reduced from 56.25% to 40% for shorter height */
+            background: #e0e0e0;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e0e0e0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fill the space without gaps */
+            object-position: center;
+            display: block;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--nusrat-accent);
+            transform: scale(1.2);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-arrow.prev {
+            right: 10px;
+        }
+
+        .carousel-arrow.next {
+            left: 10px;
+        }
+
+        /* Responsive adjustments - reduced heights proportionally */
+        @media (max-width: 1200px) {
+            .carousel-slides {
+                padding-bottom: 38%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-slides {
+                padding-bottom: 42%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-slides {
+                padding-bottom: 45%;
+            }
+            
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                background: rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        @media (max-width: 360px) {
+            .carousel-slides {
+                padding-bottom: 48%;
+            }
+            
+            .carousel-dots {
+                padding: 0.6rem;
+            }
+            
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        /* ===== WELCOME SECTION - GREEN BACKGROUND ===== */
+        .welcome-section {
+            background: var(--islamic-green);
+            padding: 3rem 1rem;
+            margin: 0;
+            width: 100%;
+            position: relative;
+        }
+
+        .welcome-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px -15px rgba(30, 90, 58, 0.3);
+            border: 1px solid rgba(255, 179, 71, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card::before {
+            content: '﷽';
+            font-family: 'Arial', sans-serif;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 120px;
+            color: rgba(255, 179, 71, 0.1);
+            transform: rotate(-15deg);
+            pointer-events: none;
+            font-weight: bold;
+        }
+
+        .welcome-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 179, 71, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-size: 2.2rem;
+            color: var(--islamic-green);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .welcome-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-accent);
+            border-radius: 2px;
+        }
+
+        .welcome-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .welcome-text p {
+            color: var(--text-dark);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-align: center;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .welcome-text p:first-of-type {
+            font-weight: 500;
+            border-bottom: 2px solid rgba(255, 179, 71, 0.2);
+            padding-bottom: 1.5rem;
+        }
+
+        .welcome-text p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .welcome-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .welcome-decoration i {
+            color: var(--primary-accent);
+            font-size: 1.2rem;
+            opacity: 0.6;
+        }
+
+        .welcome-decoration i:nth-child(2) {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 700px) {
+            .welcome-section {
+                padding: 2rem 0.5rem;
+            }
+            
+            .welcome-card {
+                padding: 1.8rem 1rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-text p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-title {
+                font-size: 1.5rem;
+            }
+            
+            .welcome-text p {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== MISSION SECTION ===== */
+        .mission-section-home {
+            background: white;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            width: 100%;
+        }
+
+        .mission-card-home {
+            background: linear-gradient(145deg, #1e5a3a 0%, #2b7a4f 100%);
+            color: white;
+            padding: 3.5rem 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .mission-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .mission-card-home h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .mission-card-home h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-accent);
+            border-radius: 2px;
+        }
+
+        .mission-list-home {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mission-list-home li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mission-list-home li:last-child {
+            border-bottom: none;
+        }
+
+        .mission-list-home i {
+            color: var(--primary-accent);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .mission-list-home span {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .mission-card-home {
+                padding: 2.5rem 0.5rem;
+            }
+            
+            .mission-card-home h3 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .mission-list-home li {
+                font-size: 1.1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem 0.5rem;
+            }
+            
+            .mission-list-home i {
+                font-size: 1.3rem;
+            }
+            
+            .mission-list-home span {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===== VISION SECTION - COMPLETE ===== */
+        .vision-section-home {
+            background: white;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #e0e0e0;
+            width: 100%;
+        }
+
+        .vision-card-home {
+            background: linear-gradient(145deg, #1e5a3a 0%, #2b7a4f 100%);
+            color: white;
+            padding: 3.5rem 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .vision-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .vision-card-home h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .vision-card-home h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-accent);
+            border-radius: 2px;
+        }
+
+        .vision-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .vision-main {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .vision-middle {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            font-weight: 400;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            opacity: 0.95;
+            border-top: 1px solid rgba(255, 179, 71, 0.3);
+            border-bottom: 1px solid rgba(255, 179, 71, 0.3);
+            padding: 1.5rem 1rem;
+        }
+
+        .vision-last {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            font-weight: 400;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        @media (max-width: 700px) {
+            .vision-card-home {
+                padding: 2.5rem 0.5rem;
+            }
+            
+            .vision-card-home h3 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .vision-main {
+                font-size: 1.2rem;
+                line-height: 1.6;
+            }
+            
+            .vision-middle {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                padding: 1.2rem 0.8rem;
+            }
+            
+            .vision-last {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e6f0ef 100%);
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 15px 35px -10px rgba(30, 90, 58, 0.15);
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--islamic-green), var(--primary-accent));
+            opacity: 0.6;
+        }
+
+        .about-section::after {
+            content: '';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 150px;
+            color: rgba(30, 90, 58, 0.03);
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--islamic-green);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-content h2 i {
+            color: var(--primary-accent);
+            margin-left: 0.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .about-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-accent);
+            border-radius: 2px;
+        }
+
+        .about-content p {
+            color: var(--text-dark);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .about-highlight {
+            background: linear-gradient(145deg, #1e5a3a 0%, #2b7a4f 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 2.5rem;
+            color: white;
+            box-shadow: 0 10px 25px -8px rgba(30, 90, 58, 0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .about-highlight p {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 700px) {
+            .about-section {
+                padding: 2rem 1rem;
+            }
+            
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-content p {
+                font-size: 1.1rem;
+            }
+            
+            .about-highlight p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===== GAMBIA ISLAMIC UNION CARD ===== */
+        .gambia-union-card {
+            background: linear-gradient(135deg, #fff5e6, #fff);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 2rem auto;
+            border: 3px solid var(--primary-accent);
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(255, 179, 71, 0.3);
+        }
+
+        .gambia-union-card::before {
+            content: '';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            font-size: 150px;
+            color: rgba(255, 179, 71, 0.1);
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .gambia-union-card::after {
+            content: '';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            font-size: 150px;
+            color: rgba(255, 179, 71, 0.1);
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        .union-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--islamic-green), #2d6a4f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-accent);
+            font-size: 3rem;
+            border: 4px solid var(--primary-accent);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 20px rgba(255, 179, 71, 0.3);
+        }
+
+        .gambia-union-card h3 {
+            color: var(--islamic-green);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gambia-union-card h4 {
+            color: var(--primary-accent);
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(255, 179, 71, 0.3);
+            padding-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .union-flags {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flag-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flag-item i {
+            font-size: 2.8rem;
+            color: var(--primary-accent);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .flag-item span {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            background: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            border: 2px solid var(--primary-accent);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .union-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.2rem 2rem;
+            border-radius: 60px;
+            box-shadow: 0 5px 15px rgba(255, 179, 71, 0.15);
+            border: 1px solid rgba(255, 179, 71, 0.3);
+        }
+
+        .union-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--primary-accent);
+            color: var(--text-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(255, 179, 71, 0.4);
+        }
+
+        .union-badge i {
+            font-size: 1.3rem;
+        }
+
+        /* ===== ADMISSION SECTION ===== */
+        .admission-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px -10px rgba(33, 55, 52, 0.1);
+            width: 100%;
+        }
+
+        .admission-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .admission-header h2 {
+            font-size: 2.2rem;
+            color: var(--islamic-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .admission-header h2 i {
+            color: var(--primary-accent);
+        }
+
+        .admission-header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .programs-card {
+            background: linear-gradient(145deg, #f8fafc 0%, #e6f0ef 100%);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(30, 90, 58, 0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .programs-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(30, 90, 58, 0.2);
+            border-color: var(--primary-accent);
+        }
+
+        .programs-card .requirement-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--islamic-green), var(--footer-bg));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-accent);
+            font-size: 2rem;
+            border: 3px solid var(--primary-accent);
+        }
+
+        .programs-card h3 {
+            color: var(--islamic-green);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .programs-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .program-tag {
+            background: white;
+            padding: 0.8rem 1rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            border: 1px solid rgba(30, 90, 58, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .program-tag i {
+            color: var(--primary-accent);
+            font-size: 0.8rem;
+        }
+
+        .program-tag:hover {
+            background: var(--islamic-green);
+            color: white;
+            border-color: var(--islamic-green);
+        }
+
+        .program-tag:hover i {
+            color: white;
+        }
+
+        .documents-card {
+            background: linear-gradient(145deg, #f8fafc 0%, #e6f0ef 100%);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(30, 90, 58, 0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .documents-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(30, 90, 58, 0.2);
+            border-color: var(--primary-accent);
+        }
+
+        .documents-card .requirement-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--islamic-green), var(--footer-bg));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-accent);
+            font-size: 2rem;
+            border: 3px solid var(--primary-accent);
+        }
+
+        .documents-card h3 {
+            color: var(--islamic-green);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .documents-list {
+            list-style: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .documents-list li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            padding: 0.5rem;
+            border-bottom: 1px solid rgba(30, 90, 58, 0.1);
+        }
+
+        .documents-list li:last-child {
+            border-bottom: none;
+        }
+
+        .documents-list li i {
+            color: var(--primary-accent);
+            font-size: 1.2rem;
+        }
+
+        /* ===== DEADLINE BOX ===== */
+        .deadline-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e6f0ef 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem auto;
+            border: 2px dashed var(--primary-accent);
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .deadline-box h4 {
+            color: var(--islamic-green);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .deadline-box .date {
+            color: var(--primary-accent);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .deadline-box p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .apply-button {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .apply-button .btn {
+            background: linear-gradient(145deg, #1e5a3a 0%, #2b7a4f 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-accent);
+        }
+
+        .apply-button .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(30, 90, 58, 0.4);
+        }
+
+        @media (max-width: 900px) {
+            .programs-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .admission-section {
+                padding: 1.5rem;
+            }
+            
+            .admission-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .deadline-box {
+                padding: 1.5rem;
+            }
+            
+            .deadline-box .date {
+                font-size: 1.5rem;
+            }
+            
+            .programs-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .programs-card, .documents-card {
+                padding: 1.5rem;
+            }
+            
+            .programs-card h3, .documents-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .documents-list li {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== NEWS SECTION ===== */
+        .news-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px -10px rgba(33, 55, 52, 0.1);
+            width: 100%;
+        }
+
+        .news-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .news-header h2 {
+            font-size: 2.2rem;
+            color: var(--islamic-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .news-header h2 i {
+            color: var(--primary-accent);
+        }
+
+        .news-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-accent);
+            border-radius: 2px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: linear-gradient(145deg, #f8fafc 0%, #e6f0ef 100%);
+            border-radius: 1.2rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(30, 90, 58, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(30, 90, 58, 0.25);
+            border-color: var(--primary-accent);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .news-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .news-card:hover .news-image::after {
+            opacity: 1;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.08);
+        }
+
+        .news-content {
+            padding: 1.8rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-category {
+            display: inline-block;
+            background: var(--primary-accent);
+            color: #1e2b2f;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            align-self: flex-start;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 10px rgba(255, 179, 71, 0.3);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .news-title {
+            color: var(--islamic-green);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+            flex: 1;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(30, 90, 58, 0.15);
+        }
+
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .news-author i {
+            color: var(--primary-accent);
+            font-size: 1.1rem;
+        }
+
+        .read-more {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            background: rgba(255, 179, 71, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+        }
+
+        .read-more:hover {
+            gap: 0.8rem;
+            background: var(--primary-accent);
+            color: #1e2b2f;
+        }
+
+        .read-more:hover i {
+            transform: translateX(-3px);
+        }
+
+        .news-card.featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 0;
+            background: white;
+        }
+
+        .news-card.featured .news-image {
+            height: 100%;
+            min-height: 380px;
+        }
+
+        .news-card.featured .news-content {
+            padding: 2.5rem;
+        }
+
+        .news-card.featured .news-title {
+            font-size: 1.9rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .news-card.featured .news-excerpt {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .newsletter-banner {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--islamic-green), #2d6a4f);
+            border-radius: 1.2rem;
+            padding: 2.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 15px 25px -10px rgba(30, 90, 58, 0.4);
+        }
+
+        .newsletter-banner h3 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 700;
+        }
+
+        .newsletter-banner h3 i {
+            color: var(--primary-accent);
+            font-size: 2rem;
+        }
+
+        .newsletter-banner p {
+            opacity: 0.95;
+            max-width: 450px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-input {
+            display: flex;
+            gap: 0.5rem;
+            background: white;
+            border-radius: 60px;
+            padding: 0.3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .newsletter-input input {
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            min-width: 280px;
+            outline: none;
+            background: transparent;
+        }
+
+        .newsletter-input button {
+            background: var(--primary-accent);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #1e2b2f;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .newsletter-input button:hover {
+            background: white;
+            color: var(--islamic-green);
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 900px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-card.featured {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+            
+            .news-card.featured .news-image {
+                min-height: 300px;
+            }
+            
+            .newsletter-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+            
+            .newsletter-input {
+                width: 100%;
+            }
+            
+            .newsletter-input input {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .news-image {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .news-section {
+                padding: 1.5rem;
+            }
+            
+            .news-card.featured .news-content {
+                padding: 1.8rem;
+            }
+            
+            .news-card.featured .news-title {
+                font-size: 1.6rem;
+            }
+            
+            .newsletter-input {
+                flex-direction: column;
+                background: transparent;
+                gap: 1rem;
+            }
+            
+            .newsletter-input input,
+            .newsletter-input button {
+                width: 100%;
+                border-radius: 40px;
+            }
+            
+            .newsletter-input input {
+                background: white;
+            }
+            
+            .news-image {
+                height: 220px;
+            }
+        }
+
+        /* ===== MORE SECTION ===== */
+        .more-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px -10px rgba(33, 55, 52, 0.1);
+            width: 100%;
+        }
+
+        .more-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .more-header h2 {
+            font-size: 2.2rem;
+            color: var(--islamic-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .more-header h2 i {
+            color: var(--primary-accent);
+        }
+
+        .more-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-accent);
+            border-radius: 2px;
+        }
+
+        .login-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .login-card {
+            background: linear-gradient(145deg, #f8fafc 0%, #e6f0ef 100%);
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(30, 90, 58, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(30, 90, 58, 0.2);
+            border-color: var(--primary-accent);
+        }
+
+        .login-card.student {
+            border-top: 4px solid var(--login-student);
+        }
+
+        .login-card.teacher {
+            border-top: 4px solid var(--login-teacher);
+        }
+
+        .login-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--islamic-green), var(--footer-bg));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-accent);
+            font-size: 2.2rem;
+            border: 3px solid var(--primary-accent);
+        }
+
+        .login-card h3 {
+            color: var(--islamic-green);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .login-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .login-form input {
+            padding: 0.8rem 1.2rem;
+            border: 1px solid rgba(30, 90, 58, 0.2);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .login-form input:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(255, 179, 71, 0.15);
+        }
+
+        .login-form button {
+            background: linear-gradient(145deg, #1e5a3a 0%, #2b7a4f 100%);
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .login-form button:hover {
+            background: var(--primary-accent);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        .login-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .login-footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .login-footer a:hover {
+            color: var(--primary-accent);
+        }
+
+        @media (max-width: 900px) {
+            .login-section {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .more-section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 2.5rem 0 2rem;
+            margin-top: 3rem;
+            width: 100%;
+            border-top: 4px solid var(--primary-accent);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-accent), transparent);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--footer-text-light);
+            font-size: 1rem;
+            opacity: 0.9;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .contact-item i {
+            color: var(--primary-accent);
+            font-size: 1.1rem;
+            order: -1;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: white;
+        }
+
+        .footer-social a[aria-label="Facebook"] {
+            background: var(--facebook-color);
+        }
+        
+        .footer-social a[aria-label="Instagram"] {
+            background: var(--instagram-color);
+        }
+        
+        .footer-social a[aria-label="YouTube"] {
+            background: var(--youtube-color);
+        }
+
+        .footer-social a:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .footer-legal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            text-align: center;
+        }
+
+        .copyright {
+            color: var(--footer-text-light);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--footer-text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-accent);
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .footer-links {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: max(15px, env(safe-area-inset-bottom));
+            right: max(15px, env(safe-area-inset-right));
+            background-color: #25d366;
+            color: white;
+            width: clamp(50px, 12vw, 60px);
+            height: clamp(50px, 12vw, 60px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:active {
+            background-color: #20b859;
+            transform: scale(0.95);
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            button {
+                -webkit-appearance: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/2209905171" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="container">
+        <!-- Navbar with Language on Left, Logo on Right -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <div class="lang-switch">
+                    <button class="lang-btn active" id="lang-ar" data-lang="ar">عربي</button>
+                    <button class="lang-btn" id="lang-en" data-lang="en">EN</button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="institute-name">
+                    <span data-en="TALLINDING ISLAMIC INSTITUTE" data-ar="معهد تلندينج الإسلامي">معهد تلندينج الإسلامي</span>
+                </div>
+                <div class="school-logo">
+                    <!-- YOUR SCHOOL LOGO HERE - Replace the src with your transparent PNG -->
+                    <img src="path/to/your-school-logo.png" alt="Tallinding Islamic Institute Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color: var(--primary-accent); font-size: 2rem;\'><i class=\'fas fa-school\'></i></span>';">
+                    <!-- Fallback icon in case image doesn't load -->
+                </div>
+            </div>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="search-section">
+            <div class="search-container" id="searchContainer">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="البحث في المعهد الإسلامي تلندينج..." autocomplete="off">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="tabs-section">
+            <!-- Mobile dropdown -->
+            <select class="mobile-tabs-select" id="mobileTabSelect">
+                <option value="tab5">🔽 المزيد</option>
+                <option value="tab4">📰 الأخبار</option>
+                <option value="tab3">📝 القبول</option>
+                <option value="tab2">ℹ️ عن المعهد</option>
+                <option value="tab1" selected>🏠 الرئيسية</option>
+            </select>
+
+            <!-- Desktop tabs -->
+            <div class="tabs-header">
+                <div class="tab-item" data-tab="tab5">
+                    <i class="fas fa-ellipsis-h"></i>
+                    <span class="tab-text" data-en="More" data-ar="المزيد">المزيد</span>
+                </div>
+                <div class="tab-item" data-tab="tab4">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="tab-text" data-en="News" data-ar="الأخبار">الأخبار</span>
+                </div>
+                <div class="tab-item" data-tab="tab3">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="tab-text" data-en="Admission" data-ar="القبول">القبول</span>
+                </div>
+                <div class="tab-item" data-tab="tab2">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tab-text" data-en="About" data-ar="عن المعهد">عن المعهد</span>
+                </div>
+                <div class="tab-item active" data-tab="tab1">
+                    <i class="fas fa-home"></i>
+                    <span class="tab-text" data-en="Home" data-ar="الرئيسية">الرئيسية</span>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Tab 1: Home - WITH REDUCED HEIGHT CAROUSEL -->
+                <div class="tab-pane active" id="tab1">
+                    <!-- Image Box with 8 Slides - FADE EFFECT - REDUCED HEIGHT -->
+                    <div class="nusrat-image-box">
+                        <div class="carousel-container" id="meccaCarousel">
+                            <div class="carousel-slides">
+                                <!-- Slide 1 -->
+                                <div class="carousel-slide active">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1542816417-098367827cdc?w=1200&auto=format" alt="The Holy Kaaba - Mecca" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+1'">
+                                    </div>
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="carousel-slide">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1200&auto=format" alt="Mecca at Night" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+2'">
+                                    </div>
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="carousel-slide">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?w=1200&auto=format" alt="Close up of Kaaba" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+3'">
+                                    </div>
+                                </div>
+                                <!-- Slide 4 -->
+                                <div class="carousel-slide">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1597170349392-54a1a7a70433?w=1200&auto=format" alt="Masjid an-Nabawi" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+4'">
+                                    </div>
+                                </div>
+                                <!-- Slide 5 -->
+                                <div class="carousel-slide">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=1200&auto=format" alt="Islamic Architecture" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+5'">
+                                    </div>
+                                </div>
+                                <!-- Slide 6 -->
+                                <div class="carousel-slide">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1542816417-098367827cdc?w=1200&auto=format" alt="Quran Reading" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+6'">
+                                    </div>
+                                </div>
+                                <!-- Slide 7 -->
+                                <div class="carousel-slide">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=1200&auto=format" alt="Islamic School" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+7'">
+                                    </div>
+                                </div>
+                                <!-- Slide 8 -->
+                                <div class="carousel-slide">
+                                    <div class="image-container">
+                                        <img src="https://images.unsplash.com/photo-1635322964717-1f69d0b84f7b?w=1200&auto=format" alt="Students Learning" onerror="this.src='https://via.placeholder.com/1200x540/1e3a5f/ffffff?text=Image+8'">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="carousel-arrow prev" onclick="changeSlide(-1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="carousel-arrow next" onclick="changeSlide(1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            
+                            <!-- Navigation Dots - 8 dots -->
+                            <div class="carousel-dots" id="carouselDots">
+                                <span class="dot active" onclick="currentSlide(1)"></span>
+                                <span class="dot" onclick="currentSlide(2)"></span>
+                                <span class="dot" onclick="currentSlide(3)"></span>
+                                <span class="dot" onclick="currentSlide(4)"></span>
+                                <span class="dot" onclick="currentSlide(5)"></span>
+                                <span class="dot" onclick="currentSlide(6)"></span>
+                                <span class="dot" onclick="currentSlide(7)"></span>
+                                <span class="dot" onclick="currentSlide(8)"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- IMAGE CAPTION AND CAMERA ICON COMPLETELY REMOVED -->
+                    </div>
+
+                    <!-- Welcome Section - GREEN BACKGROUND -->
+                    <div class="welcome-section">
+                        <div class="welcome-card">
+                            <div class="welcome-content">
+                                <h2 class="welcome-title" data-en="Welcome to Tallinding Islamic Institute" data-ar="مرحباً بكم في معهد تلندينج الإسلامي">
+                                    <span>مرحباً بكم في معهد تلندينج الإسلامي</span>
+                                </h2>
+                                <div class="welcome-text">
+                                    <p data-en="Tallinding Islamic Institution has been serving the community for years, providing quality Islamic education combined with academic excellence. Our institution is built on the foundation of Islamic values, promoting discipline, respect, and moral integrity among our students." data-ar="يخدم معهد تلندينج الإسلامي المجتمع لسنوات، حيث يوفر تعليمًا إسلاميًا عالي الجودة مقترنًا بالتميز الأكاديمي. تأسست مؤسستنا على أساس القيم الإسلامية، وتعزز الانضباط والاحترام والنزاهة الأخلاقية بين طلابنا.">
+                                        يخدم معهد تلندينج الإسلامي المجتمع لسنوات، حيث يوفر تعليمًا إسلاميًا عالي الجودة مقترنًا بالتميز الأكاديمي. تأسست مؤسستنا على أساس القيم الإسلامية، وتعزز الانضباط والاحترام والنزاهة الأخلاقية بين طلابنا.
+                                    </p>
+                                    <p data-en="We are committed to nurturing young minds with both religious knowledge and modern education, ensuring our students grow into responsible, knowledgeable, and faithful members of society." data-ar="نحن ملتزمون برعاية العقول الشابة بالمعرفة الدينية والتعليم الحديث على حد سواء، مما يضمن نمو طلابنا ليصبحوا أعضاء مسؤولين ومتعلمين ومؤمنين في المجتمع.">
+                                        نحن ملتزمون برعاية العقول الشابة بالمعرفة الدينية والتعليم الحديث على حد سواء، مما يضمن نمو طلابنا ليصبحوا أعضاء مسؤولين ومتعلمين ومؤمنين في المجتمع.
+                                    </p>
+                                </div>
+                                <div class="welcome-decoration">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mission Section -->
+                    <div class="mission-section-home">
+                        <div class="mission-card-home">
+                            <div class="mission-content">
+                                <h3 class="section-title" data-en="OUR MISSION" data-ar="مَهَمَّتُنَا">OUR MISSION</h3>
+                                <ul class="mission-list-home">
+                                    <li><i class="fas fa-check-circle"></i> <span class="mission-text" data-en="Promoting Islamic morals and values in all aspects of education" data-ar="تعزيز الأخلاق والقيم الإسلامية في جميع جوانب التعليم">Promoting Islamic morals and values in all aspects of education</span></li>
+                                    <li><i class="fas fa-check-circle"></i> <span class="mission-text" data-en="Fostering academic growth and intellectual development" data-ar="تعزيز النمو الأكاديمي والتطور الفكري">Fostering academic growth and intellectual development</span></li>
+                                    <li><i class="fas fa-check-circle"></i> <span class="mission-text" data-en="Nurturing responsible citizenship and community engagement" data-ar="تنمية المواطنة المسؤولة والمشاركة المجتمعية">Nurturing responsible citizenship and community engagement</span></li>
+                                    <li><i class="fas fa-check-circle"></i> <span class="mission-text" data-en="Providing a safe and supportive learning environment" data-ar="توفير بيئة تعليمية آمنة وداعمة">Providing a safe and supportive learning environment</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Vision Section - COMPLETE with three paragraphs -->
+                    <div class="vision-section-home">
+                        <div class="vision-card-home">
+                            <div class="vision-content">
+                                <h3 class="section-title" data-en="OUR VISION" data-ar="رُؤْيَتُنَا">OUR VISION</h3>
+                                <div class="vision-text">
+                                    <p class="vision-main" data-en="To be a leading Islamic educational institution that produces well-rounded individuals who excel academically, embody Islamic values, and contribute positively to society." data-ar="أن نكون مؤسسة تعليمية إسلامية رائدة تُخرج أفرادًا متكاملين يتفوقون أكاديميًا ويجسدون القيم الإسلامية ويساهمون بشكل إيجابي في المجتمع.">
+                                        To be a leading Islamic educational institution that produces well-rounded individuals who excel academically, embody Islamic values, and contribute positively to society.
+                                    </p>
+                                    <p class="vision-middle" data-en="We envision a future where our graduates are recognized for their knowledge, character, and commitment to serving their communities with wisdom and compassion." data-ar="نتصور مستقبلًا حيث يتم التعرف على خريجينا لمعرفتهم وشخصيتهم والتزامهم بخدمة مجتمعاتهم بالحكمة والرحمة.">
+                                        We envision a future where our graduates are recognized for their knowledge, character, and commitment to serving their communities with wisdom and compassion.
+                                    </p>
+                                    <p class="vision-last" data-en="Through continuous improvement and dedication to excellence, we strive to maintain our position as a trusted institution for Islamic education in The Gambia." data-ar="من خلال التحسين المستمر والتفاني في التميز، نسعى جاهدين للحفاظ على مكانتنا كمؤسسة موثوقة للتعليم الإسلامي في غامبيا.">
+                                        Through continuous improvement and dedication to excellence, we strive to maintain our position as a trusted institution for Islamic education in The Gambia.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: About - WITH GAMBIA ISLAMIC UNION -->
+                <div class="tab-pane" id="tab2">
+                    <!-- Original About Section -->
+                    <div class="about-section">
+                        <div class="about-content">
+                            <h2>
+                                <i class="fas fa-info-circle"></i> 
+                                <span data-en="About Our Institute" data-ar="عن المعهد">About Our Institute</span>
+                            </h2>
+                            <p data-en="Tallinding Islamic Institution has been serving the community for years, providing quality Islamic education combined with academic excellence. Our institution is built on the foundation of Islamic values, promoting discipline, respect, and moral integrity among our students" data-ar="يخدم معهد تلندينج الإسلامي المجتمع لسنوات، حيث يوفر تعليمًا إسلاميًا عالي الجودة مقترنًا بالتميز الأكاديمي. تأسست مؤسستنا على أساس القيم الإسلامية، وتعزز الانضباط والاحترام والنزاهة الأخلاقية بين طلابنا">
+                                Tallinding Islamic Institution has been serving the community for years, providing quality Islamic education combined with academic excellence. Our institution is built on the foundation of Islamic values, promoting discipline, respect, and moral integrity among our students
+                            </p>
+                            
+                            <div class="about-highlight">
+                                <p data-en="Founded in 1963, we continue to uphold our commitment to excellence in Islamic education" data-ar="تأسسنا عام ١٩٦٣، ونواصل التمسك بالتزامنا بالتميز في التعليم الإسلامي">
+                                    Founded in 1963, we continue to uphold our commitment to excellence in Islamic education
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GAMBIA ISLAMIC UNION CARD - UNDER ABOUT SECTION -->
+                    <div class="gambia-union-card" style="margin-top: 2rem;">
+                        <div class="union-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <h3 data-en="The Gambia Islamic Union" data-ar="اتحاد غامبيا الإسلامي">THE GAMBIA ISLAMIC UNION</h3>
+                        <h4 data-en="Partner in Excellence" data-ar="شريك في التميز">PARTNER IN EXCELLENCE</h4>
+                        
+                        <div class="union-flags">
+                            <div class="flag-item">
+                                <i class="fas fa-flag"></i>
+                                <span data-en="The Gambia" data-ar="غامبيا">THE GAMBIA</span>
+                            </div>
+                            <div class="flag-item">
+                                <i class="fas fa-handshake"></i>
+                                <span data-en="Unity" data-ar="الاتحاد">UNITY</span>
+                            </div>
+                            <div class="flag-item">
+                                <i class="fas fa-star-and-crescent"></i>
+                                <span data-en="Islam" data-ar="الإسلام">ISLAM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="union-description" data-en="In partnership with the Gambia Islamic Union, we are committed to providing authentic Islamic education and fostering unity within the Muslim community." data-ar="بشراكة مع اتحاد غامبيا الإسلامي، نحن ملتزمون بتقديم تعليم إسلامي أصيل وتعزيز الوحدة داخل المجتمع المسلم.">
+                            In partnership with the Gambia Islamic Union, we are committed to providing authentic Islamic education and fostering unity within the Muslim community.
+                        </div>
+                        
+                        <div class="union-badge">
+                            <i class="fas fa-certificate"></i>
+                            <span data-en="Recognized by the Supreme Islamic Council" data-ar="معترف به من قبل المجلس الإسلامي الأعلى">RECOGNIZED BY THE SUPREME ISLAMIC COUNCIL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Admission - WITH DEADLINE BOX -->
+                <div class="tab-pane" id="tab3">
+                    <div class="admission-section">
+                        <div class="admission-header">
+                            <h2>
+                                <i class="fas fa-graduation-cap"></i>
+                                <span data-en="Admissions 2026" data-ar="القبول ٢٠٢٦">Admissions 2026</span>
+                            </h2>
+                            <p data-en="Join our community of learners. Applications are now open for the 2026 academic year" data-ar="انضم إلى مجتمعنا من المتعلمين. الطلبات الآن مفتوحة للعام الأكاديمي ٢٠٢٦">
+                                Join our community of learners. Applications are now open for the 2026 academic year
+                            </p>
+                        </div>
+
+                        <!-- Programs Card -->
+                        <div class="programs-card">
+                            <div class="requirement-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3 data-en="Programs" data-ar="البرامج">Programs</h3>
+                            <div class="programs-list">
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Quranic Studies" data-ar="القرآن الكريم">القرآن الكريم</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Complex Reading" data-ar="القراءة المعقدة">القراءة المعقدة</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Tafsir" data-ar="التفسير">التفسير</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Hadith" data-ar="الحديث">الحديث</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Principles of Hadith" data-ar="أصول الحديث">أصول الحديث</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Tawheed" data-ar="التوحيد">التوحيد</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Arabic Language" data-ar="اللغة">اللغة</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="History" data-ar="التاريخ">التاريخ</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Humanities" data-ar="الإنسانية">الإنسانية</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Science" data-ar="العلوم">العلوم</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Rhetoric" data-ar="البلاغة">البلاغة</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Literature" data-ar="الأدب">الأدب</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Reading" data-ar="المطالعة">المطالعة</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Composition" data-ar="الانشاء">الانشاء</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Psychology" data-ar="علم النفس">علم النفس</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Geography" data-ar="الجغرافيا">الجغرافيا</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="Education" data-ar="التربية">التربية</span></div>
+                                <div class="program-tag"><i class="fas fa-circle"></i> <span data-en="English Language" data-ar="اللغة الإنجليزية">اللغة الإنجليزية</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Required Documents Card -->
+                        <div class="documents-card">
+                            <div class="requirement-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3 data-en="Required Documents" data-ar="الوثائق المطلوبة">Required Documents</h3>
+                            <ul class="documents-list">
+                                <li><i class="fas fa-check-circle"></i> <span data-en="Birth certificate" data-ar="شهادة ميلاد">Birth certificate</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-en="Passport photos (4)" data-ar="صور شخصية (٤)">Passport photos (4)</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-en="Medical certificate" data-ar="شهادة طبية">Medical certificate</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-en="Previous school reports" data-ar="تقارير مدرسية سابقة">Previous school reports</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-en="Identification document" data-ar="وثيقة هوية">Identification document</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- DEADLINE BOX -->
+                        <div class="deadline-box">
+                            <h4 data-en="Application Deadline" data-ar="الموعد النهائي للتقديم">Application Deadline</h4>
+                            <div class="date" data-en="August 15, 2026" data-ar="١٥ أغسطس ٢٠٢٦">August 15, 2026</div>
+                            <p data-en="Late applications may be considered on a case-by-case basis" data-ar="يمكن النظر في الطلبات المتأخرة على أساس كل حالة على حدة">
+                                Late applications may be considered on a case-by-case basis
+                            </p>
+                        </div>
+
+                        <div class="apply-button">
+                            <a href="#" class="btn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span data-en="Apply Now" data-ar="قدم الآن">Apply Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: News -->
+                <div class="tab-pane" id="tab4">
+                    <div class="news-section">
+                        <div class="news-header">
+                            <h2>
+                                <i class="fas fa-newspaper"></i>
+                                <span data-en="Latest News" data-ar="آخر الأخبار">Latest News</span>
+                            </h2>
+                        </div>
+
+                        <div class="news-grid">
+                            <!-- Featured News -->
+                            <div class="news-card featured">
+                                <div class="news-image">
+                                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200&auto=format" alt="Graduation ceremony">
+                                </div>
+                                <div class="news-content">
+                                    <span class="news-category" data-en="Event" data-ar="حدث">Event</span>
+                                    <h3 class="news-title" data-en="Graduation Ceremony 2026" data-ar="حفل التخرج ٢٠٢٦">Graduation Ceremony 2026</h3>
+                                    <p class="news-excerpt" data-en="Join us in celebrating the achievements of our graduating class. The ceremony will be held in the main hall with families and community leaders." data-ar="انضموا إلينا للاحتفال بإنجازات الدفعة المتخرجة. سيقام الحفل في القاعة الرئيسية بحضور العائلات وقادة المجتمع.">
+                                        Join us in celebrating the achievements of our graduating class. The ceremony will be held in the main hall with families and community leaders.
+                                    </p>
+                                    <div class="news-meta">
+                                        <div class="news-author">
+                                            <i class="fas fa-user-circle"></i>
+                                            <span data-en="Admin" data-ar="الإدارة">Admin</span>
+                                        </div>
+                                        <a href="#" class="read-more">
+                                            <span data-en="Read More" data-ar="اقرأ المزيد">Read More</span>
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- News Card 1 -->
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format" alt="New academic year">
+                                </div>
+                                <div class="news-content">
+                                    <span class="news-category" data-en="Announcement" data-ar="إعلان">Announcement</span>
+                                    <h3 class="news-title" data-en="New Academic Year Begins" data-ar="بداية العام الأكاديمي الجديد">New Academic Year Begins</h3>
+                                    <p class="news-excerpt" data-en="Registration for the upcoming academic year is now open. Secure your place today." data-ar="التسجيل للعام الأكاديمي القادم مفتوح الآن. احجز مقعدك اليوم.">
+                                        Registration for the upcoming academic year is now open. Secure your place today.
+                                    </p>
+                                    <div class="news-meta">
+                                        <div class="news-author">
+                                            <i class="fas fa-user-circle"></i>
+                                            <span data-en="Admissions" data-ar="القبول">Admissions</span>
+                                        </div>
+                                        <a href="#" class="read-more">
+                                            <span data-en="Read More" data-ar="اقرأ المزيد">Read More</span>
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- News Card 2 -->
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&auto=format" alt="Quran competition">
+                                </div>
+                                <div class="news-content">
+                                    <span class="news-category" data-en="Competition" data-ar="مسابقة">Competition</span>
+                                    <h3 class="news-title" data-en="Annual Quran Competition" data-ar="مسابقة القرآن السنوية">Annual Quran Competition</h3>
+                                    <p class="news-excerpt" data-en="Students from all levels are invited to participate in the annual Quran memorization and recitation competition." data-ar="الطلاب من جميع المستويات مدعوون للمشاركة في مسابقة حفظ وتلاوة القرآن السنوية.">
+                                        Students from all levels are invited to participate in the annual Quran memorization and recitation competition.
+                                    </p>
+                                    <div class="news-meta">
+                                        <div class="news-author">
+                                            <i class="fas fa-user-circle"></i>
+                                            <span data-en="Quran Dept" data-ar="قسم القرآن">Quran Dept</span>
+                                        </div>
+                                        <a href="#" class="read-more">
+                                            <span data-en="Read More" data-ar="اقرأ المزيد">Read More</span>
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- News Card 3 -->
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&auto=format" alt="Open day">
+                                </div>
+                                <div class="news-content">
+                                    <span class="news-category" data-en="Event" data-ar="حدث">Event</span>
+                                    <h3 class="news-title" data-en="Open Day for Prospective Students" data-ar="اليوم المفتوح للطلاب المحتملين">Open Day for Prospective Students</h3>
+                                    <p class="news-excerpt" data-en="Visit our campus, meet our teachers, and learn about our programs at our annual Open Day." data-ar="قم بزيارة حرمنا الجامعي، والتق بمعلمينا، وتعرف على برامجنا في يومنا المفتوح السنوي.">
+                                        Visit our campus, meet our teachers, and learn about our programs at our annual Open Day.
+                                    </p>
+                                    <div class="news-meta">
+                                        <div class="news-author">
+                                            <i class="fas fa-user-circle"></i>
+                                            <span data-en="PR Team" data-ar="فريق العلاقات">PR Team</span>
+                                        </div>
+                                        <a href="#" class="read-more">
+                                            <span data-en="Read More" data-ar="اقرأ المزيد">Read More</span>
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Newsletter Banner -->
+                            <div class="newsletter-banner">
+                                <div>
+                                    <h3><i class="fas fa-envelope-open-text"></i> <span data-en="Stay Updated" data-ar="ابق على اطلاع">Stay Updated</span></h3>
+                                    <p data-en="Subscribe to our newsletter for the latest news and events" data-ar="اشترك في نشرتنا الإخبارية لآخر الأخبار والفعاليات">
+                                        Subscribe to our newsletter for the latest news and events
+                                    </p>
+                                </div>
+                                <div class="newsletter-input">
+                                    <input type="email" placeholder="your.email@example.com" data-en="your.email@example.com" data-ar="بريدك@example.com">
+                                    <button data-en="Subscribe" data-ar="اشترك">Subscribe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: More -->
+                <div class="tab-pane" id="tab5">
+                    <div class="more-section">
+                        <div class="more-header">
+                            <h2>
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span data-en="More Resources" data-ar="المزيد من الموارد">More Resources</span>
+                            </h2>
+                        </div>
+
+                        <div class="login-section">
+                            <!-- Student Login Card -->
+                            <div class="login-card student">
+                                <div class="login-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <h3 data-en="Student Portal" data-ar="بوابة الطالب">Student Portal</h3>
+                                <p data-en="Login to access your student account and view your information" data-ar="سجل الدخول للوصول إلى حسابك الطلابي وعرض معلوماتك">
+                                    Login to access your student account and view your information
+                                </p>
+                                <div class="login-form">
+                                    <input type="text" placeholder="Student ID / رقم الطالب" data-en="Student ID" data-ar="رقم الطالب">
+                                    <input type="password" placeholder="Password / كلمة المرور" data-en="Password" data-ar="كلمة المرور">
+                                    <button><i class="fas fa-sign-in-alt"></i> <span data-en="Login" data-ar="تسجيل الدخول">Login</span></button>
+                                </div>
+                                <div class="login-footer">
+                                    <a href="#"><span data-en="Forgot Password?" data-ar="نسيت كلمة المرور؟">Forgot Password?</span></a>
+                                    <a href="#"><span data-en="Help" data-ar="مساعدة">Help</span></a>
+                                </div>
+                            </div>
+
+                            <!-- Teacher Login Card -->
+                            <div class="login-card teacher">
+                                <div class="login-icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <h3 data-en="Teacher Portal" data-ar="بوابة المعلم">Teacher Portal</h3>
+                                <p data-en="Login to access your teacher account and manage your classes" data-ar="سجل الدخول للوصول إلى حسابك المعلم وإدارة فصولك">
+                                    Login to access your teacher account and manage your classes
+                                </p>
+                                <div class="login-form">
+                                    <input type="text" placeholder="Teacher ID / رقم المعلم" data-en="Teacher ID" data-ar="رقم المعلم">
+                                    <input type="password" placeholder="Password / كلمة المرور" data-en="Password" data-ar="كلمة المرور">
+                                    <button><i class="fas fa-sign-in-alt"></i> <span data-en="Login" data-ar="تسجيل الدخول">Login</span></button>
+                                </div>
+                                <div class="login-footer">
+                                    <a href="#"><span data-en="Forgot Password?" data-ar="نسيت كلمة المرور؟">Forgot Password?</span></a>
+                                    <a href="#"><span data-en="Help" data-ar="مساعدة">Help</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-stack">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="phone-number">+220 9905171</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>tallindingislamicinstitutemaha@gmail.com</span>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <div class="footer-legal">
+                    <div class="copyright">
+                        <i class="far fa-copyright"></i> 2026 معهد تلندينج الإسلامي. جميع الحقوق محفوظة.
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">سياسة الخصوصية</a>
+                        <a href="#">شروط الخدمة</a>
+                        <a href="#">سياسة ملفات تعريف الارتباط</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Language switching
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function switchLanguage(lang) {
+                langButtons.forEach(btn => {
+                    const btnLang = btn.getAttribute('data-lang');
+                    btn.classList.toggle('active', btnLang === lang);
+                });
+                
+                document.querySelectorAll('[data-en][data-ar]').forEach(element => {
+                    element.textContent = element.getAttribute(lang === 'en' ? 'data-en' : 'data-ar');
+                });
+                
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) {
+                    searchInput.placeholder = lang === 'en' ? 'Search Tallinding Islamic...' : 'البحث في المعهد الإسلامي تلندينج...';
+                }
+                
+                const mobileSelect = document.getElementById('mobileTabSelect');
+                if (mobileSelect) {
+                    const options = mobileSelect.options;
+                    if (lang === 'en') {
+                        options[0].text = '🔽 More';
+                        options[1].text = '📰 News';
+                        options[2].text = '📝 Admission';
+                        options[3].text = 'ℹ️ About';
+                        options[4].text = '🏠 Home';
+                    } else {
+                        options[0].text = '🔽 المزيد';
+                        options[1].text = '📰 الأخبار';
+                        options[2].text = '📝 القبول';
+                        options[3].text = 'ℹ️ عن المعهد';
+                        options[4].text = '🏠 الرئيسية';
+                    }
+                }
+            }
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    switchLanguage(this.getAttribute('data-lang'));
+                });
+            });
+            
+            // Search bar
+            const searchInput = document.getElementById('searchInput');
+            const searchContainer = document.getElementById('searchContainer');
+            
+            if (searchInput) {
+                searchInput.addEventListener('focus', () => searchContainer.classList.add('expanded'));
+                searchInput.addEventListener('blur', () => searchContainer.classList.remove('expanded'));
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && e.target.value.trim()) {
+                        const lang = document.querySelector('.lang-btn.active')?.getAttribute('data-lang') || 'ar';
+                        alert((lang === 'en' ? 'Searching for: ' : 'جاري البحث عن: ') + e.target.value);
+                    }
+                });
+            }
+
+            // Tabs
+            const tabItems = document.querySelectorAll('.tab-item');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            const mobileSelect = document.getElementById('mobileTabSelect');
+
+            function switchTab(tabId) {
+                tabItems.forEach(item => item.classList.toggle('active', item.dataset.tab === tabId));
+                tabPanes.forEach(pane => pane.classList.toggle('active', pane.id === tabId));
+                if (mobileSelect) mobileSelect.value = tabId;
+            }
+
+            tabItems.forEach(item => {
+                item.addEventListener('click', () => switchTab(item.dataset.tab));
+            });
+
+            if (mobileSelect) {
+                mobileSelect.addEventListener('change', (e) => switchTab(e.target.value));
+            }
+
+            // Carousel functionality - FADE EFFECT with 1.5 second interval
+            let currentSlideIndex = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+
+            function showSlide(index) {
+                if (!slides.length) return;
+                
+                // Handle wrap-around
+                if (index >= slides.length) index = 0;
+                if (index < 0) index = slides.length - 1;
+                
+                // Remove active class from all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Add active class to current slide
+                slides[index].classList.add('active');
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                currentSlideIndex = index;
+            }
+
+            // Make functions globally available for onclick handlers
+            window.changeSlide = function(direction) {
+                showSlide(currentSlideIndex + direction);
+            };
+
+            window.currentSlide = function(index) {
+                showSlide(index - 1);
+            };
+
+            // Auto advance slides every 1.5 seconds (1500ms)
+            let slideInterval = setInterval(() => {
+                showSlide(currentSlideIndex + 1);
+            }, 1500);
+
+            // Pause auto-advance on hover for better user experience
+            const carousel = document.querySelector('.carousel-container');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    // Clear any existing interval first
+                    if (slideInterval) clearInterval(slideInterval);
+                    slideInterval = setInterval(() => {
+                        showSlide(currentSlideIndex + 1);
+                    }, 1500);
+                });
+                
+                // Also pause on touch for mobile devices
+                carousel.addEventListener('touchstart', () => {
+                    clearInterval(slideInterval);
+                });
+                
+                carousel.addEventListener('touchend', () => {
+                    // Restart after a short delay to prevent accidental triggers
+                    setTimeout(() => {
+                        if (slideInterval) clearInterval(slideInterval);
+                        slideInterval = setInterval(() => {
+                            showSlide(currentSlideIndex + 1);
+                        }, 1500);
+                    }, 3000);
+                });
+            }
+
+            // Initialize carousel
+            showSlide(0);
+        })();
+    </script>
+</body>
+</html>
