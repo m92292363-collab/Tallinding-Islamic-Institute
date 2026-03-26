@@ -1214,8 +1214,10 @@ function showTermReport(term, year) {
     // Right side Arabic: student name line
     document.getElementById('rptStudentNameLine').innerHTML =
         '<span style="font-weight:bold;">اسم الطالب/ة:</span> ' + student.fullName;
+    // Grade ordinal name exactly like real papers: الأول/الثاني/الثالث الثانوي
+    const gradeOrdinal = gradeNum == 10 ? 'الأول' : gradeNum == 11 ? 'الثاني' : 'الثالث';
     document.getElementById('rptClassLine').innerHTML =
-        '<span style="font-weight:bold;">الفصل:</span> الثاني الثانوي (' + (student.className || '') + ') &nbsp;|&nbsp; ' + termName;
+        '<span style="font-weight:bold;">الفصل:</span> ' + gradeOrdinal + ' الثانوي (' + (student.className || '') + ')';
 
     // Left side English: date
     document.getElementById('rptDateLine').innerHTML =
@@ -1228,8 +1230,9 @@ function showTermReport(term, year) {
     const passCount = results.filter(r => (r.score||0) >= 50).length;
     const failCount = results.length - passCount;
 
-    // Attestation text exactly like real paper
-    const attestText = `تشهد إدارة المعهد الإسلامي بتلند كنجا بأن الطالب/ة: <strong>${student.fullName}</strong> قد نجح في امتحان الدور الأول للعام الدراسي ${year}. وبناء عليه استحق نيل هذه الوثيقة.`;
+    // Attestation text exactly like real paper — mentions student name, year, grade label
+    const gender = ''; // neutral — real paper uses الطالب/ة
+    const attestText = `تشهد إدارة المعهد الإسلامي بتلند كنجا بأن الطالب/ة: <strong>${student.fullName}</strong> قد نجح في امتحان الدور الأول للعام الدراسي ${year}م بتقدير: <strong>${gradeLabel2}</strong> وبناء عليه استحق نيل هذه الوثيقة.`;
     document.getElementById('rptAttestText').innerHTML = attestText;
 
     // Stats row under attestation (like real paper: الترتيب / عدد طلاب الفصل / عدد الناجحين / التقدير)
@@ -1241,8 +1244,10 @@ function showTermReport(term, year) {
     `;
 
     // === TABLE ROWS ===
-    // THE EXACT 18-SUBJECT ORDER from the real paper
-    const SUBJECT_ORDER = [
+    // Subject order is GRADE-DEPENDENT based on the real school papers
+
+    // GRADE 11 & 12 — the 18 Islamic subjects (exactly as seen on real papers)
+    const SUBJECTS_11_12 = [
         'القرآن الكريم',
         'القراءة المجودة',
         'التفسير',
@@ -1263,37 +1268,78 @@ function showTermReport(term, year) {
         'English Language',
     ];
 
+    // GRADE 10 — includes Islamic core + extra subjects (Maths, Science, Civic etc.)
+    // that are only taught at grade 10 level
+    const SUBJECTS_10 = [
+        'القرآن الكريم',
+        'القراءة المجودة',
+        'التفسير',
+        'أصول التفسير',
+        'الحديث',
+        'التوحيد',
+        'الفقه',
+        'الفرانض',
+        'النحو',
+        'البلاغة',
+        'الأدب',
+        'المطالعة',
+        'الإنشاء',
+        'التاريخ',
+        'علم النفس',
+        'الجغرافيا',
+        'التربية',
+        'English Language',
+        'Maths',
+        'Science',
+        'Civic',
+    ];
+
+    // Pick subject list based on student grade
+    const SUBJECT_ORDER = (gradeNum == 10) ? SUBJECTS_10 : SUBJECTS_11_12;
+
     // Build a map from subject name to result
     const resultMap = {};
     results.forEach(r => { resultMap[r.subject] = r; });
 
-    // Also handle subjects that might have slightly different names in DB
-    // by matching case-insensitively or by common aliases
+    // Smart subject matcher — handles DB name variants and aliases
     function findResult(subjectName) {
+        // Exact match first
         if (resultMap[subjectName]) return resultMap[subjectName];
-        // Try case-insensitive match
+        // Case-insensitive match
         const lower = subjectName.toLowerCase();
         for (const key of Object.keys(resultMap)) {
             if (key.toLowerCase() === lower) return resultMap[key];
         }
-        // Try partial match for English Language variants
+        // English language variants
         if (subjectName === 'English Language') {
             for (const key of Object.keys(resultMap)) {
-                if (key.toLowerCase().includes('english') || key.includes('الإنجليزية') || key.includes('اللغة الإنجليزية')) return resultMap[key];
+                if (key.toLowerCase().includes('english') ||
+                    key.includes('الإنجليزية') ||
+                    key.includes('اللغة الإنجليزية')) return resultMap[key];
             }
         }
-        // Try DB subject names that differ (e.g. القرآن الكريم vs القرآن)
+        // Arabic subject DB name aliases
+        // (DB may store slightly different names from real paper labels)
         const aliases = {
-            'القراءة المجودة': ['القراءة المعقدة', 'القراءة'],
-            'أصول التفسير': ['أصول الحديث', 'التفسير'],
-            'الفرانض': ['الفرائض'],
-            'النحو': ['اللغة'],
-            'الإنشاء': ['الانشاء', 'الإنشاء'],
+            'القراءة المجودة': ['القراءة المعقدة', 'القراءة المجودة', 'القراءة'],
+            'أصول التفسير':   ['أصول الحديث', 'أصول التفسير'],
+            'الفرانض':         ['الفرائض', 'الفرانض'],
+            'النحو':            ['اللغة', 'النحو'],
+            'الإنشاء':         ['الانشاء', 'الإنشاء'],
+            'الفقه':            ['الفقه'],
+            'Maths':            ['الرياضيات', 'Maths', 'Math', 'Mathematics'],
+            'Science':          ['العلوم', 'Science', 'Sciences'],
+            'Civic':            ['التربية الوطنية', 'Civic', 'Civics', 'المدنية'],
         };
         if (aliases[subjectName]) {
             for (const alias of aliases[subjectName]) {
                 if (resultMap[alias]) return resultMap[alias];
             }
+        }
+        // Last resort: if subject exists in results but not in our order list,
+        // try to find by partial match
+        for (const key of Object.keys(resultMap)) {
+            if (key.includes(subjectName) || subjectName.includes(key)) return resultMap[key];
         }
         return null;
     }
