@@ -76,10 +76,55 @@
         .subtitle { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
         .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
         .form-group label { font-size: 0.85rem; font-weight: 600; color: #444; }
-        .input-wrap { position: relative; }
-        .input-wrap i { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 0.9rem; }
-        .input-wrap input { width: 100%; padding: 0.85rem 2.8rem 0.85rem 1rem; border: 1.5px solid #e0e0e0; border-radius: 12px; font-size: 1rem; outline: none; transition: all 0.2s; background: #fafafa; text-align: right; font-family: 'Tajawal', sans-serif; }
-        .input-wrap input:focus { border-color: var(--accent); background: white; box-shadow: 0 0 0 3px rgba(255,179,71,0.15); }
+
+        /* ====== ENHANCED INPUT WRAP — RTL ====== */
+        .input-wrap { position: relative; display: flex; align-items: center; direction: rtl; }
+
+        /* Icon sits on the RIGHT (leading side in RTL) */
+        .input-wrap .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%; transform: translateY(-50%);
+            color: #bbb; font-size: 0.95rem;
+            pointer-events: none; transition: color 0.2s; z-index: 2;
+        }
+        .input-wrap:focus-within .input-icon { color: var(--green); }
+
+        /* Action buttons sit on the LEFT (trailing side in RTL) */
+        .input-wrap .input-actions {
+            position: absolute;
+            left: 0.5rem;
+            top: 50%; transform: translateY(-50%);
+            display: flex; align-items: center; gap: 2px; z-index: 2;
+        }
+        .input-wrap .input-actions button {
+            background: none; border: none; cursor: pointer;
+            width: 30px; height: 30px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: #ccc; font-size: 0.85rem; transition: all 0.2s;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .input-wrap .input-actions button:hover { background: #f0f0f0; color: #555; }
+        .input-wrap .input-actions button.clear-btn:hover { background: #fff0f0; color: var(--red); }
+        .input-wrap .input-actions button.toggle-btn:hover { background: var(--green-pale); color: var(--green); }
+
+        /* Input: right padding for icon, left padding for action buttons */
+        .input-wrap input {
+            width: 100%;
+            padding: 0.85rem 2.8rem 0.85rem 4.8rem;
+            border: 1.5px solid #e0e0e0; border-radius: 12px;
+            font-size: 1rem; outline: none; transition: all 0.2s;
+            background: #fafafa; text-align: right;
+            font-family: 'Tajawal', sans-serif; direction: rtl;
+        }
+        /* Single action button (just clear, no toggle) */
+        .input-wrap.single-action input { padding-left: 3rem; }
+        .input-wrap input:focus {
+            border-color: var(--green); background: white;
+            box-shadow: 0 0 0 3px rgba(30,90,58,0.1);
+        }
+        .input-wrap input:not(:placeholder-shown) { background: white; }
+        .input-wrap input::placeholder { color: #bbb; font-size: 0.9rem; }
         .btn-login { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--green), var(--green-light)); color: white; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 0.5rem; font-family: 'Tajawal', sans-serif; }
         .btn-login:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(30,90,58,0.3); }
         .btn-login:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
@@ -131,12 +176,47 @@
         .fg { display: flex; flex-direction: column; gap: 0.4rem; }
         .fg label { font-size: 0.82rem; font-weight: 700; color: #444; }
         .fg input, .fg select, .fg textarea {
-            padding: 0.7rem 1rem; border: 1.5px solid #e8e8e8; border-radius: 10px; font-size: 0.95rem;
-            outline: none; transition: all 0.2s; background: #fafafa; font-family: 'Tajawal', sans-serif;
+            padding: 0.7rem 1rem; border: 1.5px solid #e8e8e8;
+            border-radius: 10px; font-size: 0.95rem;
+            outline: none; transition: all 0.2s;
+            background: #fafafa; font-family: 'Tajawal', sans-serif;
+            direction: rtl; text-align: right;
         }
-        .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,179,71,0.12); background: white; }
+        .fg input:focus, .fg select:focus, .fg textarea:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(30,90,58,0.1);
+            background: white;
+        }
+        .fg input:not(:placeholder-shown), .fg textarea:not(:placeholder-shown) {
+            background: white;
+        }
+        .fg input::placeholder, .fg textarea::placeholder { color: #bbb; }
         .fg.full { grid-column: span 2; }
         .fg textarea { resize: vertical; min-height: 80px; }
+
+        /* fg with inline clear button */
+        .fg .fg-wrap { position: relative; display: flex; align-items: center; }
+        .fg .fg-wrap input { padding-left: 2.6rem; width: 100%; }
+        .fg .fg-clear {
+            position: absolute; left: 0.5rem;
+            background: none; border: none; cursor: pointer;
+            width: 26px; height: 26px; border-radius: 6px;
+            display: none; align-items: center; justify-content: center;
+            color: #ccc; font-size: 0.8rem; transition: all 0.2s;
+        }
+        .fg .fg-clear:hover { background: #fff0f0; color: var(--red); }
+        .fg .fg-clear.visible { display: flex; }
+        .fg .fg-toggle {
+            position: absolute; left: 0.5rem;
+            background: none; border: none; cursor: pointer;
+            width: 26px; height: 26px; border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            color: #ccc; font-size: 0.8rem; transition: all 0.2s;
+        }
+        .fg .fg-toggle:hover { background: var(--green-pale); color: var(--green); }
+        /* when both clear + toggle shown */
+        .fg .fg-wrap.has-toggle input { padding-left: 5rem; }
+        .fg .fg-wrap.has-toggle .fg-clear { left: 2.8rem; }
 
         /* ====== BUTTONS ====== */
         .btn-submit { background: linear-gradient(145deg, var(--green), var(--green-light)); color: white; padding: 0.75rem 1.8rem; border: none; border-radius: 30px; font-weight: 700; cursor: pointer; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; margin-top: 0.8rem; font-family: 'Tajawal', sans-serif; }
@@ -279,20 +359,47 @@
     <div class="logo"><i class="fas fa-shield-alt"></i></div>
     <h1>بوابة الإدارة</h1>
     <p class="subtitle">معهد بتلند كنجا الإسلامي · للمشرفين فقط</p>
+
     <div class="form-group">
-        <label>اسم المستخدم</label>
+        <label for="admin-username">اسم المستخدم</label>
         <div class="input-wrap">
-            <i class="fas fa-user"></i>
-            <input type="text" id="admin-username" placeholder="أدخل اسم المستخدم" autocomplete="off">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" id="admin-username"
+                   placeholder="أدخل اسم المستخدم"
+                   autocomplete="off"
+                   oninput="toggleClearBtn('admin-username','clear-username')">
+            <div class="input-actions">
+                <button type="button" id="clear-username" class="clear-btn"
+                        title="مسح" style="display:none;"
+                        onclick="clearInput('admin-username','clear-username')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
     </div>
+
     <div class="form-group">
-        <label>كلمة المرور</label>
+        <label for="admin-password">كلمة المرور</label>
         <div class="input-wrap">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="admin-password" placeholder="أدخل كلمة المرور">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="admin-password"
+                   placeholder="أدخل كلمة المرور"
+                   oninput="toggleClearBtn('admin-password','clear-password')">
+            <div class="input-actions">
+                <button type="button" id="clear-password" class="clear-btn"
+                        title="مسح" style="display:none;"
+                        onclick="clearInput('admin-password','clear-password')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button type="button" class="toggle-btn"
+                        title="إظهار/إخفاء كلمة المرور"
+                        onclick="togglePassword('admin-password', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
         </div>
     </div>
+
     <button class="btn-login" id="loginBtn" onclick="doAdminLogin()">
         <i class="fas fa-sign-in-alt"></i> دخول لوحة الإدارة
     </button>
@@ -475,7 +582,20 @@
                 <div class="form-grid">
                     <div class="fg"><label>رقم الطالب *</label><input type="text" id="new-studentId" placeholder="مثال: MA001"></div>
                     <div class="fg"><label>الاسم الكامل *</label><input type="text" id="new-fullName" placeholder="اسم الطالب بالكامل"></div>
-                    <div class="fg"><label>كلمة المرور *</label><input type="text" id="new-password" placeholder="كلمة مرور الطالب"></div>
+                    <div class="fg"><label>كلمة المرور *</label>
+                        <div class="fg-wrap has-toggle">
+                            <input type="password" id="new-password" placeholder="كلمة مرور الطالب"
+                                   oninput="toggleFgClear('new-password','clr-new-pass')">
+                            <button type="button" class="fg-clear" id="clr-new-pass"
+                                    onclick="clearFgInput('new-password','clr-new-pass')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button type="button" class="fg-toggle"
+                                    onclick="togglePassword('new-password', this)" title="إظهار/إخفاء">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="fg"><label>الصف الدراسي *</label>
                         <select id="new-gradeLevel">
                             <option value="10">الصف العاشر</option>
@@ -714,8 +834,30 @@
             <div class="admin-form-card">
                 <h3><i class="fas fa-key"></i> إعادة تعيين كلمة مرور الطالب</h3>
                 <div class="form-grid">
-                    <div class="fg"><label>رقم الطالب *</label><input type="text" id="reset-studentId" placeholder="مثال: MA001"></div>
-                    <div class="fg"><label>كلمة المرور الجديدة *</label><input type="text" id="reset-newPassword" placeholder="كلمة المرور الجديدة"></div>
+                    <div class="fg"><label>رقم الطالب *</label>
+                        <div class="fg-wrap">
+                            <input type="text" id="reset-studentId" placeholder="مثال: MA001"
+                                   oninput="toggleFgClear('reset-studentId','clr-reset-id')">
+                            <button type="button" class="fg-clear" id="clr-reset-id"
+                                    onclick="clearFgInput('reset-studentId','clr-reset-id')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="fg"><label>كلمة المرور الجديدة *</label>
+                        <div class="fg-wrap has-toggle">
+                            <input type="password" id="reset-newPassword" placeholder="كلمة المرور الجديدة"
+                                   oninput="toggleFgClear('reset-newPassword','clr-reset-pass')">
+                            <button type="button" class="fg-clear" id="clr-reset-pass"
+                                    onclick="clearFgInput('reset-newPassword','clr-reset-pass')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button type="button" class="fg-toggle"
+                                    onclick="togglePassword('reset-newPassword', this)" title="إظهار/إخفاء">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <button class="btn-submit" id="resetPasswordBtn" onclick="resetPassword()"><i class="fas fa-key"></i> تعيين كلمة المرور</button>
                 <div class="success-msg" id="reset-success"></div>
@@ -1037,6 +1179,60 @@
 
 <script>
 // ======================================
+// INPUT HELPER FUNCTIONS
+// ======================================
+
+// Show/hide clear button for fg-wrap inputs
+function toggleFgClear(inputId, btnId) {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    if (btn) btn.classList.toggle('visible', input.value.length > 0);
+}
+
+// Clear fg-wrap input
+function clearFgInput(inputId, btnId) {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    input.value = '';
+    if (btn) btn.classList.remove('visible');
+    input.focus();
+    input.dispatchEvent(new Event('input'));
+}
+
+// Show/hide the clear (×) button based on whether input has value
+function toggleClearBtn(inputId, btnId) {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    if (btn) btn.style.display = input.value.length > 0 ? 'flex' : 'none';
+}
+
+// Clear an input and hide its clear button, then focus back
+function clearInput(inputId, btnId) {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    input.value = '';
+    if (btn) btn.style.display = 'none';
+    input.focus();
+    // Trigger any oninput listeners (e.g. grade filter)
+    input.dispatchEvent(new Event('input'));
+}
+
+// Toggle password visibility
+function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const icon = btn.querySelector('i');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+        btn.title = 'إخفاء كلمة المرور';
+    } else {
+        input.type = 'password';
+        icon.className = 'fas fa-eye';
+        btn.title = 'إظهار كلمة المرور';
+    }
+}
+
+// ======================================
 // SUBJECTS - FIXED to match real paper exactly
 // ======================================
 const DEFAULT_SUBJECTS = [
@@ -1304,6 +1500,8 @@ async function saveStudent() {
             successEl.textContent = `✅ تم إضافة الطالب ${fullName} بنجاح!`;
             successEl.classList.add('show');
             ['new-studentId','new-fullName','new-password','new-dateOfBirth','new-guardianName','new-guardianPhone','new-studentPhone','new-address'].forEach(id => document.getElementById(id).value = '');
+            const pw = document.getElementById('new-password'); if(pw) pw.type = 'password';
+            const clrPw = document.getElementById('clr-new-pass'); if(clrPw) clrPw.classList.remove('visible');
             loadDashboardStats();
         } else { errorEl.textContent = data.error || 'حدث خطأ'; errorEl.classList.add('show'); }
     } catch { errorEl.textContent = 'خطأ في الاتصال'; errorEl.classList.add('show'); }
@@ -1510,7 +1708,12 @@ async function resetPassword() {
     try {
         const res = await fetch('/api/reset-password', {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({studentId, newPassword})});
         const data = await res.json();
-        if (data.success) { successEl.textContent = `✅ تم تعيين كلمة مرور جديدة للطالب ${studentId}!`; successEl.classList.add('show'); document.getElementById('reset-studentId').value = ''; document.getElementById('reset-newPassword').value = ''; }
+        if (data.success) { successEl.textContent = `✅ تم تعيين كلمة مرور جديدة للطالب ${studentId}!`; successEl.classList.add('show');
+            document.getElementById('reset-studentId').value = '';
+            document.getElementById('reset-newPassword').value = '';
+            document.getElementById('reset-newPassword').type = 'password';
+            ['clr-reset-id','clr-reset-pass'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.remove('visible'); });
+        }
         else { errorEl.textContent = data.error || 'حدث خطأ'; errorEl.classList.add('show'); }
     } catch { errorEl.textContent = 'خطأ في الاتصال'; errorEl.classList.add('show'); }
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-key"></i> تعيين كلمة المرور';
