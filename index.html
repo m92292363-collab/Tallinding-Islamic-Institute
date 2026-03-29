@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>معهد بتلند كنجا الإسلامي · التميز في التعليم الإسلامي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1e5a3a">
     <meta name="mobile-web-app-capable" content="yes">
@@ -271,21 +270,9 @@
         .results-section { background: white; border-radius: 1.5rem; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .results-section h3 { color: var(--islamic-green); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.8rem; border-bottom: 2px solid rgba(30,90,58,0.1); }
         .results-section h3 i { color: var(--primary-accent); }
-        .results-table { width: 100%; border-collapse: collapse; }
-        .results-table th { background: var(--islamic-green); color: white; padding: 0.8rem 1rem; text-align: right; font-size: 0.9rem; }
-        .results-table td { padding: 0.8rem 1rem; border-bottom: 1px solid rgba(30,90,58,0.1); font-size: 0.95rem; text-align: right; }
-        .results-table tr:hover td { background: rgba(30,90,58,0.03); }
-        .grade-badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; }
-        .grade-A { background: #d4edda; color: #155724; }
-        .grade-B { background: #cce5ff; color: #004085; }
-        .grade-C { background: #fff3cd; color: #856404; }
-        .grade-D { background: #f8d7da; color: #721c24; }
-        .grade-F { background: #f8d7da; color: #721c24; }
         .loading-spinner { text-align: center; padding: 3rem; color: var(--text-light); }
         .loading-spinner i { font-size: 2rem; color: var(--primary-accent); animation: spin 1s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .no-results-msg { text-align: center; padding: 3rem; color: var(--text-light); }
-        .no-results-msg i { font-size: 3rem; color: var(--primary-accent); margin-bottom: 1rem; display: block; }
 
         /* ADMIN DASHBOARD */
         .admin-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
@@ -353,10 +340,9 @@
 
         /* PRINT STYLES for A4 report */
         @media print {
-            .report-print-page { page-break-after: always; }
             body * { visibility: hidden; }
             #a4Report, #a4Report * { visibility: visible; }
-            #a4Report { position: fixed; top: 0; left: 0; width: 100%; box-shadow: none; border: none; }
+            #a4Report { position: fixed; top: 0; left: 0; width: 100%; box-shadow: none !important; border: none !important; }
         }
 
         /* MOBILE */
@@ -382,8 +368,6 @@
             .newsletter-input { flex-direction: column; background: transparent; }
             .newsletter-input input { min-width: unset; width: 100%; }
             .student-welcome-card { flex-direction: column; text-align: center; }
-            .results-table { font-size: 0.8rem; }
-            .results-table th, .results-table td { padding: 0.5rem; }
             .admin-tabs { gap: 0.3rem; }
             .admin-tab { padding: 0.5rem 0.8rem; font-size: 0.8rem; }
             #a4Report { padding: 0.8rem; font-size: 11px; }
@@ -448,6 +432,7 @@
                 </div>
             </div>
         </div>
+
         <!-- REPORT VIEW -->
         <div id="reportView" style="display:none;">
             <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
@@ -460,26 +445,27 @@
             </div>
 
             <!-- ===== A4 REPORT - EXACT COPY OF REAL PAPER ===== -->
-            <div id="a4Report" style="background:white;max-width:800px;margin:0 auto;padding:1.5rem 2rem 2rem;border:1px solid #ccc;box-shadow:0 5px 20px rgba(0,0,0,0.1);font-family:'Arial',sans-serif;direction:rtl;font-size:13px;color:#000;">
+            <div id="a4Report" style="background:white;max-width:794px;margin:0 auto;padding:1.2cm 1.4cm 1.8cm;border:1px solid #ccc;box-shadow:0 5px 20px rgba(0,0,0,0.1);font-family:'Arial',sans-serif;direction:rtl;font-size:12.5px;color:#000;box-sizing:border-box;">
 
-                <!-- TOP HEADER: 3 columns -->
+                <!-- TOP HEADER: 3 columns — matches real paper exactly -->
                 <table style="width:100%;border-collapse:collapse;margin-bottom:4px;">
                     <tr>
-                        <!-- LEFT: English info -->
-                        <td style="vertical-align:top;text-align:left;direction:ltr;font-size:11.5px;line-height:1.8;width:35%;">
+                        <!-- LEFT: English + Date (date appears bottom-left in real paper) -->
+                        <td style="vertical-align:top;text-align:left;direction:ltr;font-size:11px;line-height:1.75;width:33%;">
                             Republic of The Gambia<br>
                             The Gambia Islamic Union<br>
                             Tallinding Islamic Institute<br>
+                            <strong>التاريخ: <span id="reportDateLeft"></span></strong>
                         </td>
                         <!-- CENTER: Bismillah + Logo -->
-                        <td style="text-align:center;vertical-align:middle;width:30%;">
-                            <div style="font-size:15px;font-weight:700;font-family:'Arial',sans-serif;margin-bottom:4px;">بسم الله الرحمن الرحيم</div>
-                            <div style="width:68px;height:68px;border:2px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;background:#f8f8f8;">
-                                <i class="fas fa-handshake" style="font-size:1.6rem;color:#1e5a3a;"></i>
+                        <td style="text-align:center;vertical-align:middle;width:34%;">
+                            <div style="font-size:14px;font-weight:700;font-family:'Arial',sans-serif;margin-bottom:5px;">بسم الله الرحمن الرحيم</div>
+                            <div style="width:72px;height:72px;border:2px solid #222;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;background:#f5f5f5;">
+                                <i class="fas fa-handshake" style="font-size:1.8rem;color:#1e5a3a;"></i>
                             </div>
                         </td>
                         <!-- RIGHT: Arabic info -->
-                        <td style="vertical-align:top;text-align:right;font-size:11.5px;line-height:1.8;width:35%;">
+                        <td style="vertical-align:top;text-align:right;font-size:11px;line-height:1.85;width:33%;">
                             جمهورية غامبيا<br>
                             الاتحاد الإسلامي الغامبي<br>
                             المعهد الإسلامي ببتلند كنجا<br>
@@ -489,72 +475,66 @@
                     </tr>
                 </table>
 
-                <!-- DATE row -->
-                <div style="text-align:right;font-size:11.5px;margin-bottom:5px;">
-                    التاريخ: <strong id="reportDateRight"></strong>
-                </div>
-
                 <!-- MAIN TITLE -->
-                <div style="text-align:center;margin:6px 0 8px;">
-                    <span style="font-size:14.5px;font-weight:700;border:2px solid #000;padding:3px 32px;display:inline-block;letter-spacing:0.5px;">كشف الدرجات للمرحلة الثانوية</span>
+                <div style="text-align:center;margin:8px 0 10px;">
+                    <span style="font-size:15px;font-weight:700;border:2px solid #000;padding:4px 36px;display:inline-block;letter-spacing:0.5px;">كشف الدرجات للمرحلة الثانوية</span>
                 </div>
 
-                <!-- ATTESTATION BOX -->
-                <div id="attestationText" style="border:1px solid #999;padding:7px 10px;margin-bottom:7px;font-size:12px;line-height:1.85;text-align:right;background:#fafafa;"></div>
+                <!-- ATTESTATION BOX — exactly like real paper -->
+                <div id="attestationText" style="border:1px solid #666;padding:9px 13px;margin-bottom:9px;font-size:12.5px;line-height:2.1;text-align:right;background:#fff;"></div>
 
-                <!-- STATS ROW -->
-                <div style="display:flex;justify-content:flex-start;gap:2.5rem;margin-bottom:7px;font-size:12px;font-weight:700;direction:rtl;flex-wrap:wrap;">
-                    <span>الترتيب: <span id="reportRank">---</span></span>
+                <!-- STATS: الترتيب & عدد طلاب الفصل on line 1 (right-aligned, matches paper) -->
+                <div style="display:flex;justify-content:flex-end;gap:3rem;margin-bottom:4px;font-size:12.5px;font-weight:700;direction:rtl;">
                     <span>عدد طلاب الفصل: <span id="reportClassCount">---</span></span>
+                    <span>الترتيب: <span id="reportRank">---</span></span>
                 </div>
-                <div style="display:flex;justify-content:flex-start;gap:2.5rem;margin-bottom:8px;font-size:12px;font-weight:700;direction:rtl;flex-wrap:wrap;">
-                    <span>التقدير: <span id="reportGradeLabel">---</span></span>
+                <!-- STATS: التقدير & عدد الناجحين on line 2 -->
+                <div style="display:flex;justify-content:flex-end;gap:3rem;margin-bottom:10px;font-size:12.5px;font-weight:700;direction:rtl;">
                     <span>عدد الناجحين: <span id="reportPassCount">---</span></span>
+                    <span>التقدير: <span id="reportGradeLabel">---</span></span>
                 </div>
 
-                <!-- MARKS TABLE -->
-                <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:1.2rem;">
+                <!-- MARKS TABLE — exact structure as real paper -->
+                <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:0.8rem;">
                     <thead>
-                        <tr style="background:#1a1a1a;color:white;">
-                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;width:5%;">م</th>
-                            <th style="border:1px solid #555;padding:4px 6px;text-align:center;min-width:100px;">المـــادة</th>
-                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;" colspan="2">الدرجة العـامـة</th>
-                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;" colspan="2">الدرجة المكتـسبـة</th>
-                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;width:10%;">ملاحظة</th>
+                        <tr style="background:#111;color:white;text-align:center;">
+                            <th style="border:1px solid #444;padding:5px 3px;width:5%;">م</th>
+                            <th style="border:1px solid #444;padding:5px 8px;text-align:right;min-width:110px;">الـمـــادة</th>
+                            <th style="border:1px solid #444;padding:5px 2px;text-align:center;" colspan="2">الدرجة العـامـة</th>
+                            <th style="border:1px solid #444;padding:5px 2px;text-align:center;" colspan="2">الدرجة المكتسبة</th>
+                            <th style="border:1px solid #444;padding:5px 2px;text-align:center;width:9%;">ملاحظة</th>
                         </tr>
-                        <tr style="background:#e0e0e0;font-size:11px;font-weight:700;">
-                            <th style="border:1px solid #999;padding:3px 2px;"></th>
-                            <th style="border:1px solid #999;padding:3px 2px;"></th>
-                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">الكبرى</th>
-                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">الصغرى</th>
-                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">رقماً</th>
-                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">كتـابـةً</th>
-                            <th style="border:1px solid #999;padding:3px 2px;"></th>
+                        <tr style="background:#d0d0d0;font-size:11.5px;font-weight:700;text-align:center;">
+                            <th style="border:1px solid #888;padding:3px 2px;"></th>
+                            <th style="border:1px solid #888;padding:3px 2px;"></th>
+                            <th style="border:1px solid #888;padding:3px 5px;">الكبرى</th>
+                            <th style="border:1px solid #888;padding:3px 5px;">الصغرى</th>
+                            <th style="border:1px solid #888;padding:3px 5px;">رقماً</th>
+                            <th style="border:1px solid #888;padding:3px 5px;">كتابةً</th>
+                            <th style="border:1px solid #888;padding:3px 2px;"></th>
                         </tr>
                     </thead>
                     <tbody id="reportTableBody"></tbody>
                     <tfoot id="reportTableFoot"></tfoot>
                 </table>
 
-                <!-- SIGNATURES FOOTER -->
-                <table style="width:100%;border-collapse:collapse;margin-top:1.8rem;text-align:center;font-size:12px;">
+                <!-- SIGNATURES FOOTER — matches real paper: مدير المعهد | ختم | مدير الامتحانات -->
+                <table style="width:100%;border-collapse:collapse;margin-top:2.2rem;text-align:center;font-size:12.5px;">
                     <tr>
                         <td style="width:33%;padding:0 8px;vertical-align:top;">
-                            <div style="font-weight:700;margin-bottom:2rem;">توقيع مدير المعهد</div>
-                            <div style="height:30px;"></div>
-                            <div style="border-top:1.5px solid #333;padding-top:4px;font-size:10.5px;color:#555;"></div>
+                            <div style="font-weight:700;margin-bottom:3rem;">توقيع مدير المعهد</div>
+                            <div style="border-top:1.5px solid #333;width:75%;margin:0 auto;padding-top:4px;"></div>
                         </td>
                         <td style="width:34%;padding:0 8px;vertical-align:top;">
-                            <div style="font-weight:700;margin-bottom:6px;">ختم المعهد الرسمي</div>
-                            <div style="width:78px;height:78px;border:1.5px dashed #888;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;">
-                                <i class="fas fa-stamp" style="font-size:1.4rem;color:#1e5a3a;opacity:0.35;"></i>
-                                <div style="font-size:9px;color:#aaa;margin-top:2px;">الختم</div>
+                            <div style="font-weight:700;margin-bottom:8px;">ختم المعهد الرسمي</div>
+                            <div style="width:84px;height:84px;border:1.5px dashed #999;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                                <i class="fas fa-stamp" style="font-size:1.4rem;color:#1e5a3a;opacity:0.22;"></i>
+                                <div style="font-size:9px;color:#bbb;margin-top:3px;">الختم</div>
                             </div>
                         </td>
                         <td style="width:33%;padding:0 8px;vertical-align:top;">
-                            <div style="font-weight:700;margin-bottom:2rem;">توقيع مدير الامتحانات</div>
-                            <div style="height:30px;"></div>
-                            <div style="border-top:1.5px solid #333;padding-top:4px;font-size:10.5px;color:#555;"></div>
+                            <div style="font-weight:700;margin-bottom:3rem;">توقيع مدير الامتحانات</div>
+                            <div style="border-top:1.5px solid #333;width:75%;margin:0 auto;padding-top:4px;"></div>
                         </td>
                     </tr>
                 </table>
@@ -1250,29 +1230,11 @@ function toArabicWords(n) {
 
 // ===== SUBJECT ORDER (matches the real paper report) =====
 var SUBJECT_ORDER = [
-    'القرآن الكريم',
-    'القراءة المجودة',
-    'التفسير',
-    'أصول التفسير',
-    'الحديث',
-    'أصول الحديث',
-    'التوحيد',
-    'الفقه',
-    'الفرائض',
-    'النحو',
-    'البلاغة',
-    'الأدب',
-    'المطالعة',
-    'الإنشاء',
-    'التاريخ',
-    'علم النفس',
-    'الجغرافيا',
-    'التربية',
-    'English Language',
-    'اللغة الإنجليزية',
-    'الإنسانية',
-    'العلوم',
-    'اللغة'
+    'القرآن الكريم','القراءة المجودة','التفسير','أصول التفسير',
+    'الحديث','أصول الحديث','التوحيد','الفقه','الفرائض',
+    'النحو','البلاغة','الأدب','المطالعة','الإنشاء',
+    'التاريخ','علم النفس','الجغرافيا','التربية','English Language',
+    'اللغة الإنجليزية','الإنسانية','العلوم','اللغة'
 ];
 
 // ===== STUDENT DASHBOARD =====
@@ -1347,7 +1309,7 @@ function showTermReport(term, year) {
     var results = allStudentResults.filter(function(r) { return r.term === term && r.academic_year === year; });
     var student = currentStudentData;
 
-    // Sort by canonical subject order
+    // Sort subjects by canonical order (matching the real paper)
     results.sort(function(a, b) {
         var ai = SUBJECT_ORDER.indexOf(a.subject);
         var bi = SUBJECT_ORDER.indexOf(b.subject);
@@ -1356,16 +1318,16 @@ function showTermReport(term, year) {
         return ai - bi;
     });
 
-    var termName = term === 'Term 1' ? 'الفصل الأول' : term === 'Term 2' ? 'الفصل الثاني' : 'الفصل الثالث';
+    // Date formatted as in real paper: DD/MM/YYYY
     var today = new Date();
     var dd = today.getDate(), mm = today.getMonth() + 1, yyyy = today.getFullYear();
     var dateStr = dd + '/' + mm + '/' + yyyy;
 
-    // Compute totals and grade
+    // Compute total and grade
     var total = results.reduce(function(s, r) { return s + (r.score || 0); }, 0);
     var numSubjects = results.length;
     var maxTotal = numSubjects * 100;
-    var passCount = results.filter(function(r) { return (r.score || 0) >= 50; }).length;
+    var minTotal = numSubjects * 50;
     var pct = maxTotal > 0 ? (total / maxTotal) * 100 : 0;
     var gradeLabel = pct >= 90 ? 'ممتاز' : pct >= 75 ? 'جيد جداً' : pct >= 60 ? 'جيد' : pct >= 50 ? 'مقبول' : 'ضعيف';
 
@@ -1377,54 +1339,53 @@ function showTermReport(term, year) {
     // Fill header
     document.getElementById('reportStudentName').textContent = student.fullName;
     document.getElementById('reportClassName').textContent = gradeStr + classStr;
-    document.getElementById('reportDateRight').textContent = dateStr;
+    document.getElementById('reportDateLeft').textContent = dateStr;
 
-    // Attestation — matching the paper exactly
+    // Attestation — exact wording from real paper
     var attestation = 'تشهد إدارة المعهد الإسلامي ببتلند كنجا بأن الطالب: <strong>' + student.fullName + '</strong> قد نجح في امتحان الدور الأول للعام الدراسي <strong>' + year + '</strong> م. بتقدير: <strong>' + gradeLabel + '</strong> وبناء عليه استحق نيل هذه الوثيقة.';
     document.getElementById('attestationText').innerHTML = attestation;
 
-    // Stats
+    // Stats — matching real paper layout
     document.getElementById('reportRank').textContent = student.rank || '---';
     document.getElementById('reportClassCount').textContent = student.classTotal || '---';
     document.getElementById('reportGradeLabel').textContent = gradeLabel;
     document.getElementById('reportPassCount').textContent = student.passTotal || '---';
 
-    // Build table rows — exactly like the paper
+    // Table rows — ملاحظة column is LEFT BLANK (exactly as in real paper)
     var rows = '';
     results.forEach(function(r, i) {
         var bg = i % 2 === 0 ? '#fafafa' : '#ffffff';
-        var scoreNum = (r.score !== undefined && r.score !== null) ? r.score : '---';
-        var scoreWord = (typeof scoreNum === 'number') ? toArabicWords(scoreNum) : '---';
-        var note = (typeof scoreNum === 'number') ? (scoreNum >= 50 ? 'ناجح' : 'راسب') : '---';
-        var noteColor = note === 'ناجح' ? '#1a6b3c' : '#b92d2d';
+        var scoreNum = (r.score !== undefined && r.score !== null) ? r.score : '';
+        var scoreWord = (typeof scoreNum === 'number') ? toArabicWords(scoreNum) : '';
         rows += '<tr style="background:' + bg + ';">';
-        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;">' + (i + 1) + '</td>';
-        rows += '<td style="border:1px solid #bbb;padding:3px 8px;text-align:right;font-weight:600;">' + r.subject + '</td>';
-        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;">١٠٠</td>';
-        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;">٥٠</td>';
-        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;font-weight:700;">' + scoreNum + '</td>';
-        rows += '<td style="border:1px solid #bbb;padding:3px 6px;text-align:center;font-size:11.5px;">' + scoreWord + '</td>';
-        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;color:' + noteColor + ';font-weight:600;font-size:11.5px;">' + note + '</td>';
+        rows += '<td style="border:1px solid #aaa;padding:4px 3px;text-align:center;">' + (i + 1) + '</td>';
+        rows += '<td style="border:1px solid #aaa;padding:4px 9px;text-align:right;font-weight:600;">' + r.subject + '</td>';
+        rows += '<td style="border:1px solid #aaa;padding:4px 4px;text-align:center;">١٠٠</td>';
+        rows += '<td style="border:1px solid #aaa;padding:4px 4px;text-align:center;">٥٠</td>';
+        rows += '<td style="border:1px solid #aaa;padding:4px 4px;text-align:center;font-weight:700;">' + scoreNum + '</td>';
+        rows += '<td style="border:1px solid #aaa;padding:4px 7px;text-align:center;font-size:11.5px;">' + scoreWord + '</td>';
+        rows += '<td style="border:1px solid #aaa;padding:4px 3px;text-align:center;"></td>';
         rows += '</tr>';
     });
     document.getElementById('reportTableBody').innerHTML = rows;
 
-    // Totals row
+    // Totals row — matching real paper (١٨٠٠ / ٩٠٠ for 18 subjects)
     var totalWord = toArabicWords(total);
+    var maxStr = maxTotal.toLocaleString('ar-EG');
+    var minStr = minTotal.toLocaleString('ar-EG');
     var foot = '<tr style="background:#111;color:white;font-weight:700;">';
-    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;" colspan="2">المجموع الكلي</td>';
-    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;">١٨٠٠</td>';
-    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;">٩٠٠</td>';
-    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;">' + total + '</td>';
-    foot += '<td style="border:1px solid #555;padding:4px 6px;text-align:center;font-size:11px;">' + totalWord + '</td>';
-    foot += '<td style="border:1px solid #555;padding:4px 4px;"></td>';
+    foot += '<td style="border:1px solid #555;padding:5px 3px;text-align:center;" colspan="2">المجموع الكلي</td>';
+    foot += '<td style="border:1px solid #555;padding:5px 4px;text-align:center;">' + maxStr + '</td>';
+    foot += '<td style="border:1px solid #555;padding:5px 4px;text-align:center;">' + minStr + '</td>';
+    foot += '<td style="border:1px solid #555;padding:5px 4px;text-align:center;">' + total.toLocaleString() + '</td>';
+    foot += '<td style="border:1px solid #555;padding:5px 7px;text-align:center;font-size:11px;">' + totalWord + '</td>';
+    foot += '<td style="border:1px solid #555;padding:5px 3px;"></td>';
     foot += '</tr>';
     document.getElementById('reportTableFoot').innerHTML = foot;
 
-    // Switch view
+    // Show report view
     document.getElementById('termCardsSection').style.display = 'none';
     document.getElementById('reportView').style.display = 'block';
-    // Scroll to top of dashboard
     document.getElementById('studentDashboard').scrollTop = 0;
 }
 
@@ -1441,12 +1402,11 @@ function printReport() {
     html += '<style>';
     html += 'body{font-family:Arial,sans-serif;margin:0;padding:20px;direction:rtl;background:white;}';
     html += '@media print{body{padding:0;margin:0;}@page{size:A4;margin:1.2cm;}}';
-    html += '#a4Report{max-width:100%;box-shadow:none!important;border:none!important;}';
+    html += '#a4Report{max-width:100%;box-shadow:none!important;border:none!important;padding:0!important;}';
     html += 'table{width:100%;border-collapse:collapse;}';
-    html += 'th,td{border:1px solid #999;padding:4px 6px;}';
     html += '</style>';
     html += '</head><body>' + content;
-    html += '<script>window.onload=function(){setTimeout(function(){window.print();},400);}<\/script>';
+    html += '<script>window.onload=function(){setTimeout(function(){window.print();},500);}<\/script>';
     html += '</body></html>';
     win.document.write(html);
     win.document.close();
