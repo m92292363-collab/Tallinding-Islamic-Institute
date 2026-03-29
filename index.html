@@ -9,8 +9,6 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1e5a3a">
     <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- iOS / iPhone PWA Support -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Mahad">
@@ -18,12 +16,8 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png">
     <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-180.png">
-
-    <!-- iOS Splash Screens -->
     <meta name="apple-touch-fullscreen" content="yes">
     <link rel="apple-touch-startup-image" href="/icons/icon-512.png">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
     <link rel="shortcut icon" href="/icons/icon-192.png">
@@ -357,6 +351,14 @@
         .whatsapp-float { position: fixed; bottom: max(15px, env(safe-area-inset-bottom)); right: max(15px, env(safe-area-inset-right)); background-color: #25d366; color: white; width: clamp(50px, 12vw, 60px); height: clamp(50px, 12vw, 60px); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(2rem, 6vw, 2.5rem); box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100; transition: all 0.3s; text-decoration: none; }
         .whatsapp-float:active { background-color: #20b859; transform: scale(0.95); }
 
+        /* PRINT STYLES for A4 report */
+        @media print {
+            .report-print-page { page-break-after: always; }
+            body * { visibility: hidden; }
+            #a4Report, #a4Report * { visibility: visible; }
+            #a4Report { position: fixed; top: 0; left: 0; width: 100%; box-shadow: none; border: none; }
+        }
+
         /* MOBILE */
         @media (max-width: 600px) {
             .container { padding: 0 0.8rem; }
@@ -384,6 +386,7 @@
             .results-table th, .results-table td { padding: 0.5rem; }
             .admin-tabs { gap: 0.3rem; }
             .admin-tab { padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+            #a4Report { padding: 0.8rem; font-size: 11px; }
         }
         @media (max-width: 480px) {
             .institute-name { font-size: 1.2rem; }
@@ -413,49 +416,24 @@
         </div>
         <div id="studentProfileCard" style="background:white;border-radius:1.2rem;padding:1.2rem 1.5rem;margin:1rem 0 1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.08);border:1px solid #e8f5ee;">
             <div style="display:flex;align-items:center;gap:1rem;padding:0.8rem 0;border-bottom:1px solid #f0f0f0;">
-                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-calendar-alt" style="color:#1e5a3a;font-size:0.9rem;"></i>
-                </div>
-                <div>
-                    <div style="font-size:0.75rem;color:#999;font-weight:600;">تاريخ الميلاد</div>
-                    <div id="dashStudentDob" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div>
-                </div>
+                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-calendar-alt" style="color:#1e5a3a;font-size:0.9rem;"></i></div>
+                <div><div style="font-size:0.75rem;color:#999;font-weight:600;">تاريخ الميلاد</div><div id="dashStudentDob" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;padding:0.8rem 0;border-bottom:1px solid #f0f0f0;">
-                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-phone" style="color:#1e5a3a;font-size:0.9rem;"></i>
-                </div>
-                <div>
-                    <div style="font-size:0.75rem;color:#999;font-weight:600;">هاتف الطالب</div>
-                    <div id="dashStudentPhone" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div>
-                </div>
+                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-phone" style="color:#1e5a3a;font-size:0.9rem;"></i></div>
+                <div><div style="font-size:0.75rem;color:#999;font-weight:600;">هاتف الطالب</div><div id="dashStudentPhone" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;padding:0.8rem 0;border-bottom:1px solid #f0f0f0;">
-                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-user-shield" style="color:#1e5a3a;font-size:0.9rem;"></i>
-                </div>
-                <div>
-                    <div style="font-size:0.75rem;color:#999;font-weight:600;">ولي الأمر</div>
-                    <div id="dashGuardianName" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div>
-                </div>
+                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-user-shield" style="color:#1e5a3a;font-size:0.9rem;"></i></div>
+                <div><div style="font-size:0.75rem;color:#999;font-weight:600;">ولي الأمر</div><div id="dashGuardianName" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;padding:0.8rem 0;border-bottom:1px solid #f0f0f0;">
-                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-phone-alt" style="color:#1e5a3a;font-size:0.9rem;"></i>
-                </div>
-                <div>
-                    <div style="font-size:0.75rem;color:#999;font-weight:600;">هاتف ولي الأمر</div>
-                    <div id="dashGuardianPhone" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div>
-                </div>
+                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-phone-alt" style="color:#1e5a3a;font-size:0.9rem;"></i></div>
+                <div><div style="font-size:0.75rem;color:#999;font-weight:600;">هاتف ولي الأمر</div><div id="dashGuardianPhone" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;padding:0.8rem 0;">
-                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-map-marker-alt" style="color:#1e5a3a;font-size:0.9rem;"></i>
-                </div>
-                <div>
-                    <div style="font-size:0.75rem;color:#999;font-weight:600;">العنوان</div>
-                    <div id="dashStudentAddress" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div>
-                </div>
+                <div style="width:36px;height:36px;background:#e8f5ee;border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-map-marker-alt" style="color:#1e5a3a;font-size:0.9rem;"></i></div>
+                <div><div style="font-size:0.75rem;color:#999;font-weight:600;">العنوان</div><div id="dashStudentAddress" style="font-size:0.95rem;font-weight:700;color:#1a1a1a;">---</div></div>
             </div>
         </div>
         <div id="termCardsSection">
@@ -470,6 +448,7 @@
                 </div>
             </div>
         </div>
+        <!-- REPORT VIEW -->
         <div id="reportView" style="display:none;">
             <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
                 <button onclick="backToTerms()" style="background:var(--islamic-green);color:white;border:none;padding:0.6rem 1.5rem;border-radius:30px;cursor:pointer;font-size:0.95rem;display:flex;align-items:center;gap:0.5rem;">
@@ -479,63 +458,109 @@
                     <i class="fas fa-print"></i> طباعة / تنزيل PDF
                 </button>
             </div>
-            <div id="a4Report" style="background:white;max-width:800px;margin:0 auto;padding:2rem;border:1px solid #ddd;box-shadow:0 5px 20px rgba(0,0,0,0.1);font-family:'Arial',sans-serif;direction:rtl;">
-                <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:1rem;border-bottom:3px double #1e5a3a;padding-bottom:1rem;">
-                    <div style="text-align:right;font-size:0.85rem;line-height:1.8;">
-                        <div style="font-weight:700;">جمهورية غامبيا</div>
-                        <div>الاتحاد الإسلامي الغامبي</div>
-                        <div>المعهد الإسلامي ببتلند كنجا</div>
-                        <div id="reportDate" style="margin-top:0.3rem;"></div>
-                    </div>
-                    <div style="text-align:center;padding:0 1rem;">
-                        <div style="width:80px;height:80px;border:3px solid #1e5a3a;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;background:#f0f7f4;">
-                            <i class="fas fa-mosque" style="font-size:2rem;color:#1e5a3a;"></i>
-                        </div>
-                    </div>
-                    <div style="text-align:left;font-size:0.85rem;line-height:1.8;direction:ltr;">
-                        <div style="font-weight:700;">Republic of The Gambia</div>
-                        <div>The Gambia Islamic Union</div>
-                        <div>Tallinding Islamic Institute</div>
-                    </div>
+
+            <!-- ===== A4 REPORT - EXACT COPY OF REAL PAPER ===== -->
+            <div id="a4Report" style="background:white;max-width:800px;margin:0 auto;padding:1.5rem 2rem 2rem;border:1px solid #ccc;box-shadow:0 5px 20px rgba(0,0,0,0.1);font-family:'Arial',sans-serif;direction:rtl;font-size:13px;color:#000;">
+
+                <!-- TOP HEADER: 3 columns -->
+                <table style="width:100%;border-collapse:collapse;margin-bottom:4px;">
+                    <tr>
+                        <!-- LEFT: English info -->
+                        <td style="vertical-align:top;text-align:left;direction:ltr;font-size:11.5px;line-height:1.8;width:35%;">
+                            Republic of The Gambia<br>
+                            The Gambia Islamic Union<br>
+                            Tallinding Islamic Institute<br>
+                        </td>
+                        <!-- CENTER: Bismillah + Logo -->
+                        <td style="text-align:center;vertical-align:middle;width:30%;">
+                            <div style="font-size:15px;font-weight:700;font-family:'Arial',sans-serif;margin-bottom:4px;">بسم الله الرحمن الرحيم</div>
+                            <div style="width:68px;height:68px;border:2px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;background:#f8f8f8;">
+                                <i class="fas fa-handshake" style="font-size:1.6rem;color:#1e5a3a;"></i>
+                            </div>
+                        </td>
+                        <!-- RIGHT: Arabic info -->
+                        <td style="vertical-align:top;text-align:right;font-size:11.5px;line-height:1.8;width:35%;">
+                            جمهورية غامبيا<br>
+                            الاتحاد الإسلامي الغامبي<br>
+                            المعهد الإسلامي ببتلند كنجا<br>
+                            اسم الطالب/ <strong id="reportStudentName"></strong><br>
+                            الفصل: <strong id="reportClassName"></strong>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- DATE row -->
+                <div style="text-align:right;font-size:11.5px;margin-bottom:5px;">
+                    التاريخ: <strong id="reportDateRight"></strong>
                 </div>
-                <div style="text-align:center;margin-bottom:1rem;">
-                    <div style="font-size:1.2rem;font-weight:700;color:#1e5a3a;border:2px solid #1e5a3a;display:inline-block;padding:0.3rem 2rem;border-radius:4px;">كشف الدرجات للمرحلة الثانوية</div>
+
+                <!-- MAIN TITLE -->
+                <div style="text-align:center;margin:6px 0 8px;">
+                    <span style="font-size:14.5px;font-weight:700;border:2px solid #000;padding:3px 32px;display:inline-block;letter-spacing:0.5px;">كشف الدرجات للمرحلة الثانوية</span>
                 </div>
-                <div id="attestationText" style="background:#f9f9f9;border:1px solid #ddd;padding:0.8rem 1rem;border-radius:4px;margin-bottom:1rem;font-size:0.9rem;line-height:1.8;text-align:right;"></div>
-                <div style="display:flex;justify-content:space-between;margin-bottom:1rem;font-size:0.9rem;font-weight:600;">
-                    <span id="reportRank"></span>
-                    <span id="reportGrade"></span>
-                    <span id="reportPassCount"></span>
+
+                <!-- ATTESTATION BOX -->
+                <div id="attestationText" style="border:1px solid #999;padding:7px 10px;margin-bottom:7px;font-size:12px;line-height:1.85;text-align:right;background:#fafafa;"></div>
+
+                <!-- STATS ROW -->
+                <div style="display:flex;justify-content:flex-start;gap:2.5rem;margin-bottom:7px;font-size:12px;font-weight:700;direction:rtl;flex-wrap:wrap;">
+                    <span>الترتيب: <span id="reportRank">---</span></span>
+                    <span>عدد طلاب الفصل: <span id="reportClassCount">---</span></span>
                 </div>
-                <table style="width:100%;border-collapse:collapse;font-size:0.9rem;margin-bottom:1.5rem;">
+                <div style="display:flex;justify-content:flex-start;gap:2.5rem;margin-bottom:8px;font-size:12px;font-weight:700;direction:rtl;flex-wrap:wrap;">
+                    <span>التقدير: <span id="reportGradeLabel">---</span></span>
+                    <span>عدد الناجحين: <span id="reportPassCount">---</span></span>
+                </div>
+
+                <!-- MARKS TABLE -->
+                <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:1.2rem;">
                     <thead>
-                        <tr style="background:#1e5a3a;color:white;">
-                            <th style="border:1px solid #999;padding:0.5rem;text-align:center;width:5%;">م</th>
-                            <th style="border:1px solid #999;padding:0.5rem;text-align:center;">المـــادة</th>
-                            <th style="border:1px solid #999;padding:0.5rem;text-align:center;" colspan="2">الدرجة العامة</th>
-                            <th style="border:1px solid #999;padding:0.5rem;text-align:center;" colspan="2">الدرجة المكتسبة</th>
-                            <th style="border:1px solid #999;padding:0.5rem;text-align:center;">ملاحظة</th>
+                        <tr style="background:#1a1a1a;color:white;">
+                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;width:5%;">م</th>
+                            <th style="border:1px solid #555;padding:4px 6px;text-align:center;min-width:100px;">المـــادة</th>
+                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;" colspan="2">الدرجة العـامـة</th>
+                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;" colspan="2">الدرجة المكتـسبـة</th>
+                            <th style="border:1px solid #555;padding:4px 3px;text-align:center;width:10%;">ملاحظة</th>
                         </tr>
-                        <tr style="background:#e8f5ee;font-size:0.8rem;">
-                            <th style="border:1px solid #999;padding:0.3rem;"></th>
-                            <th style="border:1px solid #999;padding:0.3rem;"></th>
-                            <th style="border:1px solid #999;padding:0.3rem;text-align:center;">الكبرى</th>
-                            <th style="border:1px solid #999;padding:0.3rem;text-align:center;">الصغرى</th>
-                            <th style="border:1px solid #999;padding:0.3rem;text-align:center;">رقماً</th>
-                            <th style="border:1px solid #999;padding:0.3rem;text-align:center;">كتابةً</th>
-                            <th style="border:1px solid #999;padding:0.3rem;"></th>
+                        <tr style="background:#e0e0e0;font-size:11px;font-weight:700;">
+                            <th style="border:1px solid #999;padding:3px 2px;"></th>
+                            <th style="border:1px solid #999;padding:3px 2px;"></th>
+                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">الكبرى</th>
+                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">الصغرى</th>
+                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">رقماً</th>
+                            <th style="border:1px solid #999;padding:3px 4px;text-align:center;">كتـابـةً</th>
+                            <th style="border:1px solid #999;padding:3px 2px;"></th>
                         </tr>
                     </thead>
                     <tbody id="reportTableBody"></tbody>
                     <tfoot id="reportTableFoot"></tfoot>
                 </table>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2rem;text-align:center;font-size:0.85rem;">
-                    <div style="border-top:2px solid #333;padding-top:0.5rem;"><div style="font-weight:700;margin-bottom:2rem;">توقيع مدير المعهد</div><div style="height:40px;"></div></div>
-                    <div style="border-top:2px solid #333;padding-top:0.5rem;"><div style="font-weight:700;margin-bottom:0.5rem;">ختم المعهد الرسمي</div><div style="width:80px;height:80px;border:2px dashed #999;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.7rem;">الختم</div></div>
-                    <div style="border-top:2px solid #333;padding-top:0.5rem;"><div style="font-weight:700;margin-bottom:2rem;">توقيع مدير الامتحانات</div><div style="height:40px;"></div></div>
-                </div>
-            </div>
-        </div>
+
+                <!-- SIGNATURES FOOTER -->
+                <table style="width:100%;border-collapse:collapse;margin-top:1.8rem;text-align:center;font-size:12px;">
+                    <tr>
+                        <td style="width:33%;padding:0 8px;vertical-align:top;">
+                            <div style="font-weight:700;margin-bottom:2rem;">توقيع مدير المعهد</div>
+                            <div style="height:30px;"></div>
+                            <div style="border-top:1.5px solid #333;padding-top:4px;font-size:10.5px;color:#555;"></div>
+                        </td>
+                        <td style="width:34%;padding:0 8px;vertical-align:top;">
+                            <div style="font-weight:700;margin-bottom:6px;">ختم المعهد الرسمي</div>
+                            <div style="width:78px;height:78px;border:1.5px dashed #888;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                                <i class="fas fa-stamp" style="font-size:1.4rem;color:#1e5a3a;opacity:0.35;"></i>
+                                <div style="font-size:9px;color:#aaa;margin-top:2px;">الختم</div>
+                            </div>
+                        </td>
+                        <td style="width:33%;padding:0 8px;vertical-align:top;">
+                            <div style="font-weight:700;margin-bottom:2rem;">توقيع مدير الامتحانات</div>
+                            <div style="height:30px;"></div>
+                            <div style="border-top:1.5px solid #333;padding-top:4px;font-size:10.5px;color:#555;"></div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div><!-- end #a4Report -->
+        </div><!-- end #reportView -->
     </div>
 </div>
 
@@ -592,23 +617,27 @@
                         <select id="marks-subject">
                             <option value="">-- اختر المادة --</option>
                             <option value="القرآن الكريم">القرآن الكريم</option>
+                            <option value="القراءة المجودة">القراءة المجودة</option>
                             <option value="التفسير">التفسير</option>
+                            <option value="أصول التفسير">أصول التفسير</option>
                             <option value="الحديث">الحديث</option>
                             <option value="أصول الحديث">أصول الحديث</option>
                             <option value="التوحيد">التوحيد</option>
-                            <option value="اللغة">اللغة</option>
-                            <option value="التاريخ">التاريخ</option>
-                            <option value="الإنسانية">الإنسانية</option>
-                            <option value="العلوم">العلوم</option>
+                            <option value="الفقه">الفقه</option>
+                            <option value="الفرائض">الفرائض</option>
+                            <option value="النحو">النحو</option>
                             <option value="البلاغة">البلاغة</option>
                             <option value="الأدب">الأدب</option>
                             <option value="المطالعة">المطالعة</option>
-                            <option value="الانشاء">الانشاء</option>
+                            <option value="الإنشاء">الإنشاء</option>
+                            <option value="التاريخ">التاريخ</option>
                             <option value="علم النفس">علم النفس</option>
                             <option value="الجغرافيا">الجغرافيا</option>
                             <option value="التربية">التربية</option>
-                            <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
-                            <option value="القراءة المعقدة">القراءة المعقدة</option>
+                            <option value="English Language">English Language</option>
+                            <option value="الإنسانية">الإنسانية</option>
+                            <option value="العلوم">العلوم</option>
+                            <option value="اللغة">اللغة</option>
                         </select>
                     </div>
                     <div class="form-group"><label>الدرجة (من 100) *</label><input type="number" id="marks-score" placeholder="85" min="0" max="100"></div>
@@ -675,23 +704,10 @@
                 <h3><i class="fas fa-users"></i> قائمة جميع الطلاب</h3>
                 <div class="form-grid" style="margin-bottom:1rem;">
                     <div class="form-group"><label>تصفية حسب الصف</label>
-                        <select id="as-grade-filter">
-                            <option value="">-- كل الصفوف --</option>
-                            <option value="10">الصف العاشر</option>
-                            <option value="11">الصف الحادي عشر</option>
-                            <option value="12">الصف الثاني عشر</option>
-                        </select>
+                        <select id="as-grade-filter"><option value="">-- كل الصفوف --</option><option value="10">الصف العاشر</option><option value="11">الصف الحادي عشر</option><option value="12">الصف الثاني عشر</option></select>
                     </div>
                     <div class="form-group"><label>تصفية حسب الفصل</label>
-                        <select id="as-class-filter">
-                            <option value="">-- كل الفصول --</option>
-                            <option value="أ">الفصل أ</option>
-                            <option value="ب">الفصل ب</option>
-                            <option value="ج">الفصل ج</option>
-                            <option value="د">الفصل د</option>
-                            <option value="هـ">الفصل هـ</option>
-                            <option value="و">الفصل و</option>
-                        </select>
+                        <select id="as-class-filter"><option value="">-- كل الفصول --</option><option value="أ">الفصل أ</option><option value="ب">الفصل ب</option><option value="ج">الفصل ج</option><option value="د">الفصل د</option><option value="هـ">الفصل هـ</option><option value="و">الفصل و</option></select>
                     </div>
                 </div>
                 <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="students-search" placeholder="ابحث بالاسم أو الرقم..." oninput="filterStudentsTable()"></div>
@@ -716,23 +732,10 @@
                     <div class="form-group"><label>رقم الطالب *</label><input type="text" id="update-studentId" placeholder="مثال: MA001"></div>
                     <div class="form-group"><label>الاسم الكامل الجديد</label><input type="text" id="update-fullName" placeholder="اتركه فارغاً للإبقاء على الحالي"></div>
                     <div class="form-group"><label>الصف الدراسي الجديد</label>
-                        <select id="update-gradeLevel">
-                            <option value="">-- لا تغيير --</option>
-                            <option value="10">الصف العاشر</option>
-                            <option value="11">الصف الحادي عشر</option>
-                            <option value="12">الصف الثاني عشر</option>
-                        </select>
+                        <select id="update-gradeLevel"><option value="">-- لا تغيير --</option><option value="10">الصف العاشر</option><option value="11">الصف الحادي عشر</option><option value="12">الصف الثاني عشر</option></select>
                     </div>
                     <div class="form-group"><label>الفصل الجديد</label>
-                        <select id="update-className">
-                            <option value="">-- لا تغيير --</option>
-                            <option value="أ">الفصل أ</option>
-                            <option value="ب">الفصل ب</option>
-                            <option value="ج">الفصل ج</option>
-                            <option value="د">الفصل د</option>
-                            <option value="هـ">الفصل هـ</option>
-                            <option value="و">الفصل و</option>
-                        </select>
+                        <select id="update-className"><option value="">-- لا تغيير --</option><option value="أ">الفصل أ</option><option value="ب">الفصل ب</option><option value="ج">الفصل ج</option><option value="د">الفصل د</option><option value="هـ">الفصل هـ</option><option value="و">الفصل و</option></select>
                     </div>
                 </div>
                 <button class="btn-submit" id="updateStudentBtn" onclick="updateStudent()"><i class="fas fa-save"></i> حفظ التعديلات</button>
@@ -745,9 +748,7 @@
         <div class="admin-panel" id="panel-delete-student">
             <div class="admin-form-card">
                 <h3><i class="fas fa-user-times"></i> حذف طالب</h3>
-                <p style="color:#721c24;background:#fff5f5;padding:1rem;border-radius:10px;margin-bottom:1.5rem;font-size:0.95rem;">
-                    <i class="fas fa-exclamation-triangle"></i> تحذير: حذف الطالب سيحذف جميع نتائجه بشكل نهائي ولا يمكن التراجع!
-                </p>
+                <p style="color:#721c24;background:#fff5f5;padding:1rem;border-radius:10px;margin-bottom:1.5rem;font-size:0.95rem;"><i class="fas fa-exclamation-triangle"></i> تحذير: حذف الطالب سيحذف جميع نتائجه بشكل نهائي ولا يمكن التراجع!</p>
                 <div class="form-grid">
                     <div class="form-group full-width"><label>رقم الطالب المراد حذفه *</label><input type="text" id="delete-studentId" placeholder="مثال: MA001"></div>
                 </div>
@@ -762,34 +763,10 @@
             <div class="admin-form-card">
                 <h3><i class="fas fa-table"></i> كل نتائج الطلاب</h3>
                 <div class="form-grid" style="margin-bottom:1rem;">
-                    <div class="form-group"><label>الصف</label>
-                        <select id="filter-grade">
-                            <option value="">-- كل الصفوف --</option>
-                            <option value="10">الصف العاشر</option>
-                            <option value="11">الصف الحادي عشر</option>
-                            <option value="12">الصف الثاني عشر</option>
-                        </select>
-                    </div>
-                    <div class="form-group"><label>الفصل</label>
-                        <select id="filter-class">
-                            <option value="">-- كل الفصول --</option>
-                            <option value="أ">الفصل أ</option>
-                            <option value="ب">الفصل ب</option>
-                            <option value="ج">الفصل ج</option>
-                            <option value="د">الفصل د</option>
-                            <option value="هـ">الفصل هـ</option>
-                            <option value="و">الفصل و</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label>الصف</label><select id="filter-grade"><option value="">-- كل الصفوف --</option><option value="10">الصف العاشر</option><option value="11">الصف الحادي عشر</option><option value="12">الصف الثاني عشر</option></select></div>
+                    <div class="form-group"><label>الفصل</label><select id="filter-class"><option value="">-- كل الفصول --</option><option value="أ">الفصل أ</option><option value="ب">الفصل ب</option><option value="ج">الفصل ج</option><option value="د">الفصل د</option><option value="هـ">الفصل هـ</option><option value="و">الفصل و</option></select></div>
                     <div class="form-group"><label>العام الدراسي</label><input type="text" id="filter-year" placeholder="مثال: 2025-2026"></div>
-                    <div class="form-group"><label>الفصل الدراسي</label>
-                        <select id="filter-term">
-                            <option value="">-- كل الفصول --</option>
-                            <option value="Term 1">الفصل الأول</option>
-                            <option value="Term 2">الفصل الثاني</option>
-                            <option value="Term 3">الفصل الثالث</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label>الفصل الدراسي</label><select id="filter-term"><option value="">-- كل الفصول --</option><option value="Term 1">الفصل الأول</option><option value="Term 2">الفصل الثاني</option><option value="Term 3">الفصل الثالث</option></select></div>
                 </div>
                 <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1rem;">
                     <button class="btn-submit" onclick="loadAllResults()" style="margin-top:0;"><i class="fas fa-sync-alt"></i> تحميل النتائج</button>
@@ -809,42 +786,36 @@
         <div class="admin-panel" id="panel-delete-results">
             <div class="admin-form-card">
                 <h3><i class="fas fa-trash-alt"></i> حذف نتائج طالب</h3>
-                <p style="color:#856404;background:#fff8e1;padding:1rem;border-radius:10px;margin-bottom:1.5rem;font-size:0.95rem;">
-                    <i class="fas fa-info-circle"></i> يمكنك حذف نتيجة مادة معينة أو حذف جميع نتائج الطالب.
-                </p>
+                <p style="color:#856404;background:#fff8e1;padding:1rem;border-radius:10px;margin-bottom:1.5rem;font-size:0.95rem;"><i class="fas fa-info-circle"></i> يمكنك حذف نتيجة مادة معينة أو حذف جميع نتائج الطالب.</p>
                 <div class="form-grid">
                     <div class="form-group full-width"><label>رقم الطالب *</label><input type="text" id="del-res-studentId" placeholder="مثال: MA001"></div>
                     <div class="form-group"><label>المادة (اتركها فارغة لحذف الكل)</label>
                         <select id="del-res-subject">
                             <option value="">-- حذف جميع النتائج --</option>
                             <option value="القرآن الكريم">القرآن الكريم</option>
+                            <option value="القراءة المجودة">القراءة المجودة</option>
                             <option value="التفسير">التفسير</option>
+                            <option value="أصول التفسير">أصول التفسير</option>
                             <option value="الحديث">الحديث</option>
                             <option value="أصول الحديث">أصول الحديث</option>
                             <option value="التوحيد">التوحيد</option>
-                            <option value="اللغة">اللغة</option>
-                            <option value="التاريخ">التاريخ</option>
-                            <option value="الإنسانية">الإنسانية</option>
-                            <option value="العلوم">العلوم</option>
+                            <option value="الفقه">الفقه</option>
+                            <option value="الفرائض">الفرائض</option>
+                            <option value="النحو">النحو</option>
                             <option value="البلاغة">البلاغة</option>
                             <option value="الأدب">الأدب</option>
                             <option value="المطالعة">المطالعة</option>
-                            <option value="الانشاء">الانشاء</option>
+                            <option value="الإنشاء">الإنشاء</option>
+                            <option value="التاريخ">التاريخ</option>
                             <option value="علم النفس">علم النفس</option>
                             <option value="الجغرافيا">الجغرافيا</option>
                             <option value="التربية">التربية</option>
-                            <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
-                            <option value="القراءة المعقدة">القراءة المعقدة</option>
+                            <option value="English Language">English Language</option>
                         </select>
                     </div>
                     <div class="form-group"><label>العام الدراسي (مطلوب عند تحديد مادة)</label><input type="text" id="del-res-year" placeholder="مثال: 2025-2026"></div>
                     <div class="form-group"><label>الفصل الدراسي (مطلوب عند تحديد مادة)</label>
-                        <select id="del-res-term">
-                            <option value="">-- اختر الفصل --</option>
-                            <option value="Term 1">الفصل الأول</option>
-                            <option value="Term 2">الفصل الثاني</option>
-                            <option value="Term 3">الفصل الثالث</option>
-                        </select>
+                        <select id="del-res-term"><option value="">-- اختر الفصل --</option><option value="Term 1">الفصل الأول</option><option value="Term 2">الفصل الثاني</option><option value="Term 3">الفصل الثالث</option></select>
                     </div>
                 </div>
                 <button class="btn-danger" id="deleteResultsBtn" onclick="deleteResults()"><i class="fas fa-trash-alt"></i> حذف النتائج</button>
@@ -1014,85 +985,85 @@
                         <div class="requirement-icon"><i class="fas fa-book-open"></i></div>
                         <h3 data-en="Programs" data-ar="البرامج">البرامج</h3>
                         <div class="programs-list">
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Quranic Studies" data-ar="القرآن الكريم">القرآن الكريم</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Complex Reading" data-ar="القراءة المعقدة">القراءة المعقدة</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Tafsir" data-ar="التفسير">التفسير</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Hadith" data-ar="الحديث">الحديث</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Tawheed" data-ar="التوحيد">التوحيد</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Arabic Language" data-ar="اللغة">اللغة</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="History" data-ar="التاريخ">التاريخ</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Science" data-ar="العلوم">العلوم</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Rhetoric" data-ar="البلاغة">البلاغة</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Literature" data-ar="الأدب">الأدب</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="Psychology" data-ar="علم النفس">علم النفس</span></div>
-                            <div class="program-tag"><i class="fas fa-circle"></i><span data-en="English Language" data-ar="اللغة الإنجليزية">اللغة الإنجليزية</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>القرآن الكريم</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>القراءة المجودة</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>التفسير</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>الحديث</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>التوحيد</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>الفقه</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>الفرائض</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>النحو</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>البلاغة</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>الأدب</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>علم النفس</span></div>
+                            <div class="program-tag"><i class="fas fa-circle"></i><span>English Language</span></div>
                         </div>
                     </div>
                     <div class="documents-card" id="documents-section">
                         <div class="requirement-icon"><i class="fas fa-file-alt"></i></div>
                         <h3 data-en="Required Documents" data-ar="الوثائق المطلوبة">الوثائق المطلوبة</h3>
                         <ul class="documents-list">
-                            <li><i class="fas fa-check-circle"></i><span data-en="Birth certificate" data-ar="شهادة ميلاد">شهادة ميلاد</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-en="Passport photos (4)" data-ar="صور شخصية (٤)">صور شخصية (٤)</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-en="Medical certificate" data-ar="شهادة طبية">شهادة طبية</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-en="Previous school reports" data-ar="تقارير مدرسية سابقة">تقارير مدرسية سابقة</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-en="Identification document" data-ar="وثيقة هوية">وثيقة هوية</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>شهادة ميلاد</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>صور شخصية (٤)</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>شهادة طبية</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>تقارير مدرسية سابقة</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>وثيقة هوية</span></li>
                         </ul>
                     </div>
                     <div class="deadline-box" id="deadline-section">
-                        <h4 data-en="Application Deadline" data-ar="الموعد النهائي للتقديم">الموعد النهائي للتقديم</h4>
-                        <div class="date" data-en="August 15, 2026" data-ar="١٥ أغسطس ٢٠٢٦">١٥ أغسطس ٢٠٢٦</div>
-                        <p data-en="Late applications may be considered on a case-by-case basis." data-ar="يمكن النظر في الطلبات المتأخرة على أساس كل حالة على حدة.">يمكن النظر في الطلبات المتأخرة على أساس كل حالة على حدة.</p>
+                        <h4>الموعد النهائي للتقديم</h4>
+                        <div class="date">١٥ أغسطس ٢٠٢٦</div>
+                        <p>يمكن النظر في الطلبات المتأخرة على أساس كل حالة على حدة.</p>
                     </div>
-                    <div class="apply-button"><a href="#" class="btn"><i class="fas fa-paper-plane"></i><span data-en="Apply Now" data-ar="قدم الآن">قدم الآن</span></a></div>
+                    <div class="apply-button"><a href="#" class="btn"><i class="fas fa-paper-plane"></i><span>قدم الآن</span></a></div>
                 </div>
             </div>
 
             <!-- TAB 4: NEWS -->
             <div class="tab-pane" id="tab4">
                 <div class="news-section" id="news-section">
-                    <div class="news-header"><h2><i class="fas fa-newspaper"></i><span data-en="Latest News" data-ar="آخر الأخبار">آخر الأخبار</span></h2></div>
+                    <div class="news-header"><h2><i class="fas fa-newspaper"></i><span>آخر الأخبار</span></h2></div>
                     <div class="news-grid">
                         <div class="news-card featured" id="graduation-news">
                             <div class="news-image"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200&auto=format" alt="Graduation"></div>
                             <div class="news-content">
-                                <span class="news-category" data-en="Event" data-ar="حدث">حدث</span>
-                                <h3 class="news-title" data-en="Graduation Ceremony 2026" data-ar="حفل التخرج ٢٠٢٦">حفل التخرج ٢٠٢٦</h3>
-                                <p class="news-excerpt" data-en="Join us in celebrating the achievements of our graduating class." data-ar="انضموا إلينا للاحتفال بإنجازات الدفعة المتخرجة.">انضموا إلينا للاحتفال بإنجازات الدفعة المتخرجة.</p>
+                                <span class="news-category">حدث</span>
+                                <h3 class="news-title">حفل التخرج ٢٠٢٦</h3>
+                                <p class="news-excerpt">انضموا إلينا للاحتفال بإنجازات الدفعة المتخرجة.</p>
                                 <div class="news-meta">
-                                    <div class="news-author"><i class="fas fa-user-circle"></i><span data-en="Admin" data-ar="الإدارة">الإدارة</span></div>
-                                    <a href="#" class="read-more"><span data-en="Read More" data-ar="اقرأ المزيد">اقرأ المزيد</span><i class="fas fa-arrow-left"></i></a>
+                                    <div class="news-author"><i class="fas fa-user-circle"></i><span>الإدارة</span></div>
+                                    <a href="#" class="read-more"><span>اقرأ المزيد</span><i class="fas fa-arrow-left"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="news-card" id="academic-year-news">
                             <div class="news-image"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format" alt="Academic Year"></div>
                             <div class="news-content">
-                                <span class="news-category" data-en="Announcement" data-ar="إعلان">إعلان</span>
-                                <h3 class="news-title" data-en="New Academic Year" data-ar="بداية العام الأكاديمي الجديد">بداية العام الأكاديمي الجديد</h3>
-                                <p class="news-excerpt" data-en="Registration now open." data-ar="التسجيل للعام الأكاديمي القادم مفتوح الآن.">التسجيل للعام الأكاديمي القادم مفتوح الآن.</p>
+                                <span class="news-category">إعلان</span>
+                                <h3 class="news-title">بداية العام الأكاديمي الجديد</h3>
+                                <p class="news-excerpt">التسجيل للعام الأكاديمي القادم مفتوح الآن.</p>
                                 <div class="news-meta">
                                     <div class="news-author"><i class="fas fa-user-circle"></i><span>القبول</span></div>
-                                    <a href="#" class="read-more"><span data-en="Read More" data-ar="اقرأ المزيد">اقرأ المزيد</span><i class="fas fa-arrow-left"></i></a>
+                                    <a href="#" class="read-more"><span>اقرأ المزيد</span><i class="fas fa-arrow-left"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="news-card" id="quran-competition-news">
                             <div class="news-image"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&auto=format" alt="Quran"></div>
                             <div class="news-content">
-                                <span class="news-category" data-en="Competition" data-ar="مسابقة">مسابقة</span>
-                                <h3 class="news-title" data-en="Annual Quran Competition" data-ar="مسابقة القرآن السنوية">مسابقة القرآن السنوية</h3>
-                                <p class="news-excerpt" data-en="Students invited to participate." data-ar="الطلاب من جميع المستويات مدعوون للمشاركة.">الطلاب من جميع المستويات مدعوون للمشاركة.</p>
+                                <span class="news-category">مسابقة</span>
+                                <h3 class="news-title">مسابقة القرآن السنوية</h3>
+                                <p class="news-excerpt">الطلاب من جميع المستويات مدعوون للمشاركة.</p>
                                 <div class="news-meta">
                                     <div class="news-author"><i class="fas fa-user-circle"></i><span>قسم القرآن</span></div>
-                                    <a href="#" class="read-more"><span data-en="Read More" data-ar="اقرأ المزيد">اقرأ المزيد</span><i class="fas fa-arrow-left"></i></a>
+                                    <a href="#" class="read-more"><span>اقرأ المزيد</span><i class="fas fa-arrow-left"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="newsletter-banner" id="newsletter-section">
                             <div>
-                                <h3><i class="fas fa-envelope-open-text"></i><span data-en="Stay Updated" data-ar="ابق على اطلاع">ابق على اطلاع</span></h3>
-                                <p data-en="Subscribe to our newsletter." data-ar="اشترك في نشرتنا الإخبارية لآخر الأخبار والفعاليات.">اشترك في نشرتنا الإخبارية لآخر الأخبار والفعاليات.</p>
+                                <h3><i class="fas fa-envelope-open-text"></i><span>ابق على اطلاع</span></h3>
+                                <p>اشترك في نشرتنا الإخبارية لآخر الأخبار والفعاليات.</p>
                             </div>
                             <div class="newsletter-input">
                                 <input type="email" placeholder="your.email@example.com">
@@ -1106,12 +1077,12 @@
             <!-- TAB 5: MORE (LOGIN) -->
             <div class="tab-pane" id="tab5">
                 <div class="more-section" id="more-section">
-                    <div class="more-header"><h2><i class="fas fa-ellipsis-h"></i><span data-en="More Resources" data-ar="المزيد من الموارد">المزيد من الموارد</span></h2></div>
+                    <div class="more-header"><h2><i class="fas fa-ellipsis-h"></i><span>المزيد من الموارد</span></h2></div>
                     <div class="login-section" style="grid-template-columns:1fr;max-width:500px;">
                         <div class="login-card student" id="student-login">
                             <div class="login-icon"><i class="fas fa-user-graduate"></i></div>
-                            <h3 data-en="Student Portal" data-ar="بوابة الطالب">بوابة الطالب</h3>
-                            <p data-en="Login to view your results." data-ar="سجل الدخول للوصول إلى نتائجك الدراسية.">سجل الدخول للوصول إلى نتائجك الدراسية.</p>
+                            <h3>بوابة الطالب</h3>
+                            <p>سجل الدخول للوصول إلى نتائجك الدراسية.</p>
                             <div class="login-form">
                                 <input type="text" id="student-id-input" placeholder="رقم الطالب / Student ID">
                                 <input type="password" id="student-pass-input" placeholder="كلمة المرور / Password">
@@ -1263,28 +1234,58 @@ async function studentLogin() {
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> تسجيل الدخول';
 }
 
+// ===== ARABIC NUMBER WORDS =====
+function toArabicWords(n) {
+    if (n === 0) return 'صفر';
+    var ones = ['','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر'];
+    var tens = ['','','عشرون','ثلاثون','أربعون','خمسون','ستون','سبعون','ثمانون','تسعون'];
+    var hundreds = ['','مائة','مئتان','ثلاثمائة','أربعمائة','خمسمائة','ستمائة','سبعمائة','ثمانمائة','تسعمائة'];
+    if (n < 20) return ones[n];
+    if (n < 100) { var t = Math.floor(n/10), o = n%10; return o ? ones[o] + ' و' + tens[t] : tens[t]; }
+    if (n < 1000) { var h = Math.floor(n/100), r = n%100; return r ? hundreds[h] + ' و' + toArabicWords(r) : hundreds[h]; }
+    if (n < 2000) { var r2 = n%1000; return r2 ? 'ألف و' + toArabicWords(r2) : 'ألف'; }
+    if (n < 10000) { var th = Math.floor(n/1000), r3 = n%1000; return toArabicWords(th) + ' آلاف' + (r3 ? ' و' + toArabicWords(r3) : ''); }
+    return n.toString();
+}
+
+// ===== SUBJECT ORDER (matches the real paper report) =====
+var SUBJECT_ORDER = [
+    'القرآن الكريم',
+    'القراءة المجودة',
+    'التفسير',
+    'أصول التفسير',
+    'الحديث',
+    'أصول الحديث',
+    'التوحيد',
+    'الفقه',
+    'الفرائض',
+    'النحو',
+    'البلاغة',
+    'الأدب',
+    'المطالعة',
+    'الإنشاء',
+    'التاريخ',
+    'علم النفس',
+    'الجغرافيا',
+    'التربية',
+    'English Language',
+    'اللغة الإنجليزية',
+    'الإنسانية',
+    'العلوم',
+    'اللغة'
+];
+
 // ===== STUDENT DASHBOARD =====
 let currentStudentData = null;
 let allStudentResults = [];
 
-function toArabicWords(n) {
-    const ones = ['','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر'];
-    const tens = ['','','عشرون','ثلاثون','أربعون','خمسون','ستون','سبعون','ثمانون','تسعون'];
-    const hundreds = ['','مائة','مئتان','ثلاثمائة','أربعمائة','خمسمائة','ستمائة','سبعمائة','ثمانمائة','تسعمائة'];
-    if (n===0) return 'صفر';
-    if (n<20) return ones[n];
-    if (n<100) { const t=Math.floor(n/10),o=n%10; return o?ones[o]+' و'+tens[t]:tens[t]; }
-    if (n<1000) { const h=Math.floor(n/100),r=n%100; return r?hundreds[h]+' و'+toArabicWords(r):hundreds[h]; }
-    return n.toString();
-}
-
 async function showStudentDashboard(student) {
     currentStudentData = student;
     document.getElementById('dashStudentName').textContent = student.fullName;
-    document.getElementById('dashStudentNameBig').textContent =  student.fullName;
+    document.getElementById('dashStudentNameBig').textContent = student.fullName;
     document.getElementById('dashStudentId').textContent = 'رقم الطالب: ' + student.studentId;
     document.getElementById('dashStudentGrade').textContent = 'المستوى: ' + (student.gradeLevel || '---');
-   document.getElementById('dashStudentDob').textContent = student.dateOfBirth || '---';
+    document.getElementById('dashStudentDob').textContent = student.dateOfBirth || '---';
     document.getElementById('dashStudentPhone').textContent = student.studentPhone || '---';
     document.getElementById('dashGuardianName').textContent = student.guardianName || '---';
     document.getElementById('dashGuardianPhone').textContent = student.guardianPhone || '---';
@@ -1298,10 +1299,11 @@ async function showStudentDashboard(student) {
     } catch(err) { allStudentResults = []; }
     renderTermCards();
 }
+
 function renderTermCards() {
     var grid = document.getElementById('termCardsGrid');
     var years = [];
-    allStudentResults.forEach(function(r) { if (years.indexOf(r.academic_year)===-1) years.push(r.academic_year); });
+    allStudentResults.forEach(function(r) { if (years.indexOf(r.academic_year) === -1) years.push(r.academic_year); });
     if (allStudentResults.length === 0) {
         grid.innerHTML = '<div style="grid-column:span 2;text-align:center;padding:3rem;color:#888;"><i class="fas fa-inbox" style="font-size:3rem;color:#FFB347;display:block;margin-bottom:1rem;"></i><p>لا توجد نتائج متاحة حتى الآن.</p></div>';
         return;
@@ -1310,9 +1312,10 @@ function renderTermCards() {
     var termList = [['Term 1','الفصل الأول'],['Term 2','الفصل الثاني']];
     var html = '';
     termList.forEach(function(t) {
-        var term=t[0], termName=t[1];
-        var filtered = allStudentResults.filter(function(r) { return r.term===term && r.academic_year===year; });
-        var count = filtered.length, total = filtered.reduce(function(s,r) { return s+r.score; }, 0);
+        var term = t[0], termName = t[1];
+        var filtered = allStudentResults.filter(function(r) { return r.term === term && r.academic_year === year; });
+        var count = filtered.length;
+        var total = filtered.reduce(function(s, r) { return s + (r.score || 0); }, 0);
         var hasData = count > 0;
         var bannerBg = hasData ? 'linear-gradient(135deg,#1e5a3a,#2b7a4f)' : '#b0b0b0';
         var cardBorder = hasData ? '#d0e8d8' : '#e5e5e5';
@@ -1339,49 +1342,121 @@ function renderTermCards() {
     });
 }
 
+// ===== SHOW TERM REPORT - EXACT MATCH TO REAL PAPER =====
 function showTermReport(term, year) {
-    var results = allStudentResults.filter(function(r) { return r.term===term && r.academic_year===year; });
-    var termName = term==='Term 1'?'الفصل الأول':'الفصل الثاني';
+    var results = allStudentResults.filter(function(r) { return r.term === term && r.academic_year === year; });
     var student = currentStudentData;
+
+    // Sort by canonical subject order
+    results.sort(function(a, b) {
+        var ai = SUBJECT_ORDER.indexOf(a.subject);
+        var bi = SUBJECT_ORDER.indexOf(b.subject);
+        if (ai === -1) ai = 999;
+        if (bi === -1) bi = 999;
+        return ai - bi;
+    });
+
+    var termName = term === 'Term 1' ? 'الفصل الأول' : term === 'Term 2' ? 'الفصل الثاني' : 'الفصل الثالث';
     var today = new Date();
-    document.getElementById('reportDate').textContent = 'التاريخ: '+today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-    document.getElementById('attestationText').innerHTML = 'تشهد إدارة المعهد الإسلامي ببتلند كنجا بأن الطالب: <strong>'+student.fullName+'</strong> قد نجح في امتحان الدور الأول للعام الدراسي '+year+'. الفصل: '+termName;
-    var total = results.reduce(function(s,r) { return s+r.score; }, 0);
-    var maxTotal = results.length * 100;
-    var grade = total>=maxTotal*0.9?'ممتاز':total>=maxTotal*0.75?'جيد جداً':total>=maxTotal*0.6?'جيد':'مقبول';
-    document.getElementById('reportPassCount').textContent = 'عدد الناجحين: ---';
-    document.getElementById('reportRank').textContent = 'الترتيب: ---';
-    document.getElementById('reportGrade').textContent = 'التقدير: '+grade;
+    var dd = today.getDate(), mm = today.getMonth() + 1, yyyy = today.getFullYear();
+    var dateStr = dd + '/' + mm + '/' + yyyy;
+
+    // Compute totals and grade
+    var total = results.reduce(function(s, r) { return s + (r.score || 0); }, 0);
+    var numSubjects = results.length;
+    var maxTotal = numSubjects * 100;
+    var passCount = results.filter(function(r) { return (r.score || 0) >= 50; }).length;
+    var pct = maxTotal > 0 ? (total / maxTotal) * 100 : 0;
+    var gradeLabel = pct >= 90 ? 'ممتاز' : pct >= 75 ? 'جيد جداً' : pct >= 60 ? 'جيد' : pct >= 50 ? 'مقبول' : 'ضعيف';
+
+    // Grade level label
+    var gradeNames = {'10':'الصف العاشر','11':'الصف الحادي عشر','12':'الصف الثاني عشر'};
+    var gradeStr = gradeNames[String(student.gradeLevel)] || ('الصف ' + (student.gradeLevel || ''));
+    var classStr = student.className ? ' (' + student.className + ')' : '';
+
+    // Fill header
+    document.getElementById('reportStudentName').textContent = student.fullName;
+    document.getElementById('reportClassName').textContent = gradeStr + classStr;
+    document.getElementById('reportDateRight').textContent = dateStr;
+
+    // Attestation — matching the paper exactly
+    var attestation = 'تشهد إدارة المعهد الإسلامي ببتلند كنجا بأن الطالب: <strong>' + student.fullName + '</strong> قد نجح في امتحان الدور الأول للعام الدراسي <strong>' + year + '</strong> م. بتقدير: <strong>' + gradeLabel + '</strong> وبناء عليه استحق نيل هذه الوثيقة.';
+    document.getElementById('attestationText').innerHTML = attestation;
+
+    // Stats
+    document.getElementById('reportRank').textContent = student.rank || '---';
+    document.getElementById('reportClassCount').textContent = student.classTotal || '---';
+    document.getElementById('reportGradeLabel').textContent = gradeLabel;
+    document.getElementById('reportPassCount').textContent = student.passTotal || '---';
+
+    // Build table rows — exactly like the paper
     var rows = '';
-    results.forEach(function(r,i) {
-        var bg=i%2===0?'#fafafa':'white', scoreColor=r.score>=50?'#1e5a3a':'#c0392b', note=r.score>=50?'ناجح':'راسب';
-        rows += '<tr style="background:'+bg+';"><td style="border:1px solid #ccc;padding:0.4rem;text-align:center;">'+(i+1)+'</td><td style="border:1px solid #ccc;padding:0.4rem 0.8rem;text-align:right;font-weight:500;">'+r.subject+'</td><td style="border:1px solid #ccc;padding:0.4rem;text-align:center;">100</td><td style="border:1px solid #ccc;padding:0.4rem;text-align:center;">50</td><td style="border:1px solid #ccc;padding:0.4rem;text-align:center;font-weight:700;color:'+scoreColor+';">'+r.score+'</td><td style="border:1px solid #ccc;padding:0.4rem;text-align:center;font-size:0.85rem;">'+toArabicWords(r.score)+'</td><td style="border:1px solid #ccc;padding:0.4rem;text-align:center;color:'+scoreColor+';">'+note+'</td></tr>';
+    results.forEach(function(r, i) {
+        var bg = i % 2 === 0 ? '#fafafa' : '#ffffff';
+        var scoreNum = (r.score !== undefined && r.score !== null) ? r.score : '---';
+        var scoreWord = (typeof scoreNum === 'number') ? toArabicWords(scoreNum) : '---';
+        var note = (typeof scoreNum === 'number') ? (scoreNum >= 50 ? 'ناجح' : 'راسب') : '---';
+        var noteColor = note === 'ناجح' ? '#1a6b3c' : '#b92d2d';
+        rows += '<tr style="background:' + bg + ';">';
+        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;">' + (i + 1) + '</td>';
+        rows += '<td style="border:1px solid #bbb;padding:3px 8px;text-align:right;font-weight:600;">' + r.subject + '</td>';
+        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;">١٠٠</td>';
+        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;">٥٠</td>';
+        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;font-weight:700;">' + scoreNum + '</td>';
+        rows += '<td style="border:1px solid #bbb;padding:3px 6px;text-align:center;font-size:11.5px;">' + scoreWord + '</td>';
+        rows += '<td style="border:1px solid #bbb;padding:3px 4px;text-align:center;color:' + noteColor + ';font-weight:600;font-size:11.5px;">' + note + '</td>';
+        rows += '</tr>';
     });
     document.getElementById('reportTableBody').innerHTML = rows;
-    document.getElementById('reportTableFoot').innerHTML = '<tr style="background:#1e5a3a;color:white;font-weight:700;"><td style="border:1px solid #999;padding:0.5rem;" colspan="2">المجموع الكلي</td><td style="border:1px solid #999;padding:0.5rem;text-align:center;">'+maxTotal+'</td><td style="border:1px solid #999;padding:0.5rem;text-align:center;">---</td><td style="border:1px solid #999;padding:0.5rem;text-align:center;">'+total+'</td><td style="border:1px solid #999;padding:0.5rem;text-align:center;font-size:0.8rem;">'+toArabicWords(total)+'</td><td style="border:1px solid #999;padding:0.5rem;"></td></tr>';
+
+    // Totals row
+    var totalWord = toArabicWords(total);
+    var foot = '<tr style="background:#111;color:white;font-weight:700;">';
+    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;" colspan="2">المجموع الكلي</td>';
+    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;">١٨٠٠</td>';
+    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;">٩٠٠</td>';
+    foot += '<td style="border:1px solid #555;padding:4px 4px;text-align:center;">' + total + '</td>';
+    foot += '<td style="border:1px solid #555;padding:4px 6px;text-align:center;font-size:11px;">' + totalWord + '</td>';
+    foot += '<td style="border:1px solid #555;padding:4px 4px;"></td>';
+    foot += '</tr>';
+    document.getElementById('reportTableFoot').innerHTML = foot;
+
+    // Switch view
     document.getElementById('termCardsSection').style.display = 'none';
     document.getElementById('reportView').style.display = 'block';
+    // Scroll to top of dashboard
+    document.getElementById('studentDashboard').scrollTop = 0;
 }
 
-function backToTerms() { document.getElementById('reportView').style.display='none'; document.getElementById('termCardsSection').style.display='block'; }
+function backToTerms() {
+    document.getElementById('reportView').style.display = 'none';
+    document.getElementById('termCardsSection').style.display = 'block';
+}
 
 function printReport() {
-    var content = document.getElementById('a4Report').innerHTML;
-    var win = window.open('','_blank');
-    var html = '<!DOCTYPE html><html dir="rtl"><head><meta charset="UTF-8"><title>كشف الدرجات</title>';
+    var content = document.getElementById('a4Report').outerHTML;
+    var win = window.open('', '_blank');
+    var html = '<!DOCTYPE html><html dir="rtl"><head><meta charset="UTF-8"><title>كشف الدرجات - ' + (currentStudentData ? currentStudentData.fullName : '') + '</title>';
     html += '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">';
-    html += '<style>body{font-family:Arial,sans-serif;margin:0;padding:20px;direction:rtl;}@media print{body{padding:0;margin:0;}@page{size:A4;margin:1.5cm;}}table{width:100%;border-collapse:collapse;font-size:13px;}th,td{border:1px solid #999;padding:5px 8px;}</style>';
+    html += '<style>';
+    html += 'body{font-family:Arial,sans-serif;margin:0;padding:20px;direction:rtl;background:white;}';
+    html += '@media print{body{padding:0;margin:0;}@page{size:A4;margin:1.2cm;}}';
+    html += '#a4Report{max-width:100%;box-shadow:none!important;border:none!important;}';
+    html += 'table{width:100%;border-collapse:collapse;}';
+    html += 'th,td{border:1px solid #999;padding:4px 6px;}';
+    html += '</style>';
     html += '</head><body>' + content;
-    html += '<scr' + 'ipt>window.onload=function(){window.print();}</' + 'script></body></html>';
+    html += '<script>window.onload=function(){setTimeout(function(){window.print();},400);}<\/script>';
+    html += '</body></html>';
     win.document.write(html);
     win.document.close();
 }
 
 // ===== LOGOUT =====
 function logout(type) {
-    document.getElementById(type==='student'?'studentDashboard':'adminDashboard').classList.remove('active');
+    document.getElementById(type === 'student' ? 'studentDashboard' : 'adminDashboard').classList.remove('active');
     document.body.style.overflow = '';
-    if (type==='student') { document.getElementById('student-id-input').value=''; document.getElementById('student-pass-input').value=''; }
+    if (type === 'student') { document.getElementById('student-id-input').value = ''; document.getElementById('student-pass-input').value = ''; }
 }
 
 // ===== ADMIN TABS =====
@@ -1389,7 +1464,7 @@ function switchAdminTab(tab, btn) {
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
     if (btn) btn.classList.add('active');
-    document.getElementById('panel-'+tab).classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
 }
 
 // ===== SAVE MARKS =====
@@ -1604,19 +1679,15 @@ async function resetPassword() {
     btn.disabled=false; btn.innerHTML='<i class="fas fa-key"></i> تعيين كلمة المرور';
 }
 
-document.getElementById('student-pass-input').addEventListener('keypress', function(e) { if (e.key==='Enter') studentLogin(); });
+document.getElementById('student-pass-input').addEventListener('keypress', function(e) { if (e.key === 'Enter') studentLogin(); });
 </script>
 
 <script>
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    });
+    window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(()=>{}); });
 }
 let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault(); deferredPrompt = e; setTimeout(showInstallBanner, 3000);
-});
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; setTimeout(showInstallBanner, 3000); });
 function showInstallBanner() {
     if (!deferredPrompt) return;
     const b = document.createElement('div');
