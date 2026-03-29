@@ -339,242 +339,145 @@
         .whatsapp-float:active { background-color: #20b859; transform: scale(0.95); }
 
         /* ============================================================
-           A4 REPORT — PIXEL-PERFECT MATCH TO REAL SCHOOL PAPER
+           A4 REPORT — MATCHING SHARED DESIGN
            ============================================================ */
         #a4Report {
-            background: white;
-            width: 794px;
-            min-height: 1123px;
+            background: #fff;
+            width: 210mm;
+            min-height: 297mm;
             margin: 0 auto;
-            padding: 18px 22px 24px;
-            border: 1px solid #bbb;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-            font-family: 'Times New Roman', 'Arial', serif;
-            direction: rtl;
-            font-size: 12px;
-            color: #000;
-            box-sizing: border-box;
+            border: 2.5pt solid #000;
+            padding: 15mm;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            font-family: 'Arial', sans-serif;
+            color: #000;
+            font-size: 13px;
+            box-sizing: border-box;
+            direction: rtl;
         }
 
-        /* Outer decorative border — matches real paper double-line border */
-        #a4Report::before {
-            content: '';
-            position: absolute;
-            top: 6px; left: 6px; right: 6px; bottom: 6px;
-            border: 1.5px solid #444;
-            pointer-events: none;
-            z-index: 0;
-        }
-        #a4Report > * { position: relative; z-index: 1; }
-
-        /* Report header top 3-col */
-        .rpt-header-table {
+        /* HEADER */
+        .rpt-header-section {
+            height: 130px;
+            position: relative;
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 3px;
+            margin-bottom: 10px;
         }
-        .rpt-header-table td {
-            vertical-align: top;
-            padding: 2px 4px;
-        }
-        .rpt-header-left {
+        .rpt-h-left {
+            position: absolute;
+            top: 0; left: 0;
             text-align: left;
             direction: ltr;
-            font-size: 10.5px;
-            line-height: 1.8;
-            width: 30%;
-        }
-        .rpt-header-center {
-            text-align: center;
-            vertical-align: middle;
-            width: 40%;
-        }
-        .rpt-header-right {
-            text-align: right;
-            font-size: 10.5px;
-            line-height: 1.95;
-            width: 30%;
-        }
-
-        /* Bismillah */
-        .rpt-bismillah {
+            width: 45%;
+            line-height: 1.5;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: bold;
+        }
+        .rpt-h-right {
+            position: absolute;
+            top: 0; right: 0;
+            text-align: right;
+            width: 45%;
+            line-height: 1.5;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .rpt-h-center {
             text-align: center;
+            width: 100%;
+            padding-top: 5px;
+        }
+        .rpt-bismillah {
+            font-size: 11px;
+            font-weight: bold;
+            display: block;
             margin-bottom: 4px;
-            font-family: 'Arial', sans-serif;
-            letter-spacing: 0.5px;
+        }
+        .rpt-logo-box {
+            width: 70px;
+            height: 50px;
+            border: 1.8pt solid #000;
+            border-radius: 50% 50% 0 0;
+            margin: 5px auto;
         }
 
-        /* Logo circle */
-        .rpt-logo-circle {
-            width: 68px;
-            height: 68px;
-            border: 2px solid #111;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            background: #f8f8f8;
-        }
-        .rpt-logo-circle i {
-            font-size: 1.7rem;
-            color: #1e5a3a;
-        }
-
-        /* Main title box */
+        /* TITLE */
         .rpt-title-box {
             text-align: center;
-            margin: 6px 0 7px;
-        }
-        .rpt-title-box span {
-            font-size: 14.5px;
-            font-weight: 700;
-            border: 2px solid #000;
-            padding: 4px 40px;
-            display: inline-block;
-            letter-spacing: 0.5px;
-            font-family: 'Arial', sans-serif;
+            font-size: 21px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 10px 0;
         }
 
-        /* Attestation paragraph box */
-        .rpt-attest-box {
-            border: 1px solid #555;
-            padding: 8px 12px;
-            margin-bottom: 7px;
-            font-size: 12px;
-            line-height: 2.1;
-            text-align: right;
-            background: #fff;
+        /* ATTESTATION / INFO BOX */
+        .rpt-info-box {
+            border: 2.5pt solid #000;
+            border-bottom: none;
+            padding: 10px;
+            margin-bottom: 0;
+            line-height: 1.7;
+            font-size: 15px;
+            font-weight: bold;
         }
-
-        /* Stats row */
-        .rpt-stats {
+        .rpt-info-stats {
             display: flex;
             justify-content: space-between;
-            direction: rtl;
-            margin-bottom: 3px;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 0 2px;
-        }
-        .rpt-stats-row {
-            display: flex;
-            justify-content: space-between;
-            direction: rtl;
-            margin-bottom: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 0 2px;
+            margin-top: 8px;
+            font-size: 15px;
+            font-weight: bold;
         }
 
-        /* Marks table */
+        /* MARKS TABLE */
         .rpt-marks-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 11.5px;
-            margin-bottom: 0;
+            border: 2.5pt solid #000;
+            margin-top: 0;
+            background: #fff;
+            font-size: 13.5px;
         }
         .rpt-marks-table th,
         .rpt-marks-table td {
-            border: 1px solid #777;
+            border: 1.2pt solid #000;
+            padding: 5px;
             text-align: center;
-            padding: 4px 3px;
+            height: 30px;
+            font-weight: bold;
+            background: #fff;
         }
-        .rpt-marks-table thead tr:first-child {
-            background: #111;
-            color: white;
-        }
-        .rpt-marks-table thead tr:first-child th {
-            border-color: #333;
-            font-size: 11.5px;
-            padding: 5px 3px;
-        }
-        .rpt-marks-table thead tr:nth-child(2) {
-            background: #d0d0d0;
-            color: #111;
-        }
-        .rpt-marks-table thead tr:nth-child(2) th {
-            border-color: #999;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 4px;
-        }
-        .rpt-marks-table tbody tr:nth-child(odd) td {
-            background: #fafafa;
-        }
-        .rpt-marks-table tbody tr:nth-child(even) td {
-            background: #ffffff;
-        }
-        .rpt-marks-table tfoot tr {
-            background: #111;
-            color: white;
-            font-weight: 700;
-        }
-        .rpt-marks-table tfoot td {
-            border-color: #444;
-            font-size: 11.5px;
-            padding: 5px 3px;
-        }
-
-        /* Subject name cell: right aligned */
         .rpt-subject-cell {
             text-align: right;
-            padding-right: 8px !important;
-            font-weight: 600;
+            padding-right: 15px !important;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .rpt-subject-en {
+            text-align: left;
+            direction: ltr;
+            padding-left: 15px !important;
+            white-space: nowrap;
+            font-weight: bold;
         }
 
-        /* Total in words — bottom of footer row, matching real paper */
-        .rpt-total-words {
-            font-size: 11px;
-        }
-
-        /* Signatures footer table */
-        .rpt-sig-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 28px;
+        /* FOOTER / SIGNATURES */
+        .rpt-footer {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             text-align: center;
-            font-size: 12px;
+            padding-bottom: 25px;
+            font-weight: bold;
+            font-size: 13px;
         }
-        .rpt-sig-table td {
-            vertical-align: top;
-            padding: 0 8px;
-            width: 33.33%;
-        }
-        .rpt-sig-label {
-            font-weight: 700;
-            margin-bottom: 28px;
-            font-size: 12px;
-        }
-        .rpt-sig-line {
-            border-top: 1.5px solid #222;
-            width: 72%;
-            margin: 0 auto;
-            padding-top: 4px;
-        }
-        .rpt-stamp-circle {
-            width: 80px;
-            height: 80px;
-            border: 1.5px dashed #999;
-            border-radius: 50%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .rpt-stamp-circle i {
-            font-size: 1.3rem;
-            color: #1e5a3a;
-            opacity: 0.2;
-        }
-        .rpt-stamp-circle span {
-            font-size: 8.5px;
-            color: #bbb;
-            margin-top: 2px;
+        .rpt-sig-underline {
+            margin-top: 45px;
+            border-top: 2pt solid #000;
+            width: 85%;
+            margin: 45px auto 0 auto;
         }
 
         /* PRINT STYLES */
@@ -586,12 +489,10 @@
                 top: 0 !important; left: 0 !important;
                 width: 210mm !important;
                 min-height: 297mm !important;
-                padding: 12mm 14mm 18mm !important;
-                box-shadow: none !important;
-                border: none !important;
                 margin: 0 !important;
+                padding: 15mm !important;
+                box-shadow: none !important;
             }
-            #a4Report::before { display: none; }
         }
 
         /* MOBILE */
@@ -599,20 +500,17 @@
             #a4Report {
                 width: 100%;
                 min-height: auto;
-                padding: 10px 10px 16px;
-                font-size: 9px;
+                padding: 8mm;
+                font-size: 10px;
             }
-            #a4Report::before { display: none; }
-            .rpt-title-box span { font-size: 11px; padding: 3px 16px; }
-            .rpt-logo-circle { width: 48px; height: 48px; }
-            .rpt-logo-circle i { font-size: 1.1rem; }
-            .rpt-marks-table { font-size: 8.5px; }
-            .rpt-marks-table th, .rpt-marks-table td { padding: 2px 1px; }
-            .rpt-sig-table { margin-top: 14px; font-size: 9px; }
-            .rpt-header-left, .rpt-header-right { font-size: 8.5px; }
-            .rpt-bismillah { font-size: 11px; }
-            .rpt-attest-box { font-size: 9px; line-height: 1.8; }
-            .rpt-stats, .rpt-stats-row { font-size: 9px; }
+            .rpt-h-left, .rpt-h-right { width: 40%; font-size: 9px; }
+            .rpt-header-section { height: auto; position: static; margin-bottom: 6px; display: flex; justify-content: space-between; }
+            .rpt-h-left, .rpt-h-right, .rpt-h-center { position: static; }
+            .rpt-title-box { font-size: 14px; }
+            .rpt-info-box { font-size: 11px; }
+            .rpt-marks-table { font-size: 9px; }
+            .rpt-marks-table th, .rpt-marks-table td { padding: 2px 1px; height: auto; }
+            .rpt-footer { font-size: 9px; }
         }
         @media (max-width: 600px) {
             .container { padding: 0 0.8rem; }
@@ -711,106 +609,74 @@
                 </button>
             </div>
 
-            <!-- ===== A4 REPORT — EXACT MATCH TO REAL SCHOOL PAPER ===== -->
+            <!-- ===== A4 REPORT — NEW DESIGN (DYNAMIC) ===== -->
             <div id="a4Report">
 
-                <!-- TOP HEADER: 3 columns exactly like real paper -->
-                <table class="rpt-header-table">
-                    <tr>
-                        <!-- LEFT: English text + date at bottom -->
-                        <td class="rpt-header-left">
-                            Republic of The Gambia<br>
-                            The Gambia Islamic Union<br>
-                            Tallinding Islamic Institute<br>
-                            <strong>التاريخ : <span id="reportDateLeft"></span></strong>
-                        </td>
-                        <!-- CENTER: Bismillah + logo circle -->
-                        <td class="rpt-header-center">
-                            <div class="rpt-bismillah">بسم الله الرحمن الرحيم</div>
-                            <div class="rpt-logo-circle">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                        </td>
-                        <!-- RIGHT: Arabic school info + student name + class -->
-                        <td class="rpt-header-right">
-                            جمهورية غامبيا<br>
-                            الاتحاد الإسلامي الغامبي<br>
-                            المعهد الإسلامي ببتلند كنجا<br>
-                            اسم الطالب/ <strong id="reportStudentName"></strong><br>
-                            الفصل: <strong id="reportClassName"></strong>
-                        </td>
-                    </tr>
-                </table>
-
-                <!-- MAIN TITLE — thick bordered box -->
-                <div class="rpt-title-box">
-                    <span>كشف الدرجات للمرحلة الثانوية</span>
+                <!-- HEADER -->
+                <div class="rpt-header-section">
+                    <div class="rpt-h-left">
+                        Republic of The Gambia<br>
+                        The Gambia Islamic Union<br>
+                        Tallinding Islamic Institute<br><br>
+                        Date: <span id="reportDateLeft"></span>
+                    </div>
+                    <div class="rpt-h-center">
+                        <span class="rpt-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+                        <div class="rpt-logo-box"></div>
+                    </div>
+                    <div class="rpt-h-right">
+                        جمهورية غامبيا<br>
+                        الاتحاد الإسلامي الغامبي<br>
+                        المعهد الإسلامي بتلند كنجا<br>
+                        اسم الطالب/ <span id="reportStudentName"></span><br>
+                        الفصل: <span id="reportClassName"></span>
+                    </div>
                 </div>
 
-                <!-- ATTESTATION PARAGRAPH — bordered box -->
-                <div class="rpt-attest-box" id="attestationText"></div>
+                <!-- TITLE -->
+                <div class="rpt-title-box">كشف الدرجات للمرحلة الثانوية</div>
 
-                <!-- STATS ROW 1: الترتيب on right, عدد طلاب الفصل on left — matches real paper -->
-                <div class="rpt-stats">
-                    <span>عدد طلاب الفصل: <strong id="reportClassCount">---</strong></span>
-                    <span>الترتيب: <strong id="reportRank">---</strong></span>
-                </div>
-                <!-- STATS ROW 2: عدد الناجحين on right, التقدير on left -->
-                <div class="rpt-stats-row">
-                    <span>التقدير: <strong id="reportGradeLabel">---</strong></span>
-                    <span>عدد الناجحين: <strong id="reportPassCount">---</strong></span>
+                <!-- ATTESTATION + STATS — single bordered box like real paper -->
+                <div class="rpt-info-box">
+                    <div id="attestationText"></div>
+                    <div class="rpt-info-stats">
+                        <div>
+                            عدد طلاب الفصل: <span id="reportClassCount">---</span><br>
+                            عدد الناجحين: <span id="reportPassCount">---</span>
+                        </div>
+                        <div style="text-align:left;">
+                            الترتيب: <span id="reportRank">---</span><br>
+                            التقدير: <span id="reportGradeLabel">---</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- MARKS TABLE — exact 7-column structure from real paper -->
+                <!-- MARKS TABLE -->
                 <table class="rpt-marks-table">
                     <thead>
                         <tr>
-                            <th style="width:4%;">م</th>
-                            <th style="text-align:right;padding-right:8px;min-width:105px;">الـمـــادة</th>
-                            <th colspan="2">الدرجة العـامـة</th>
+                            <th rowspan="2">م</th>
+                            <th rowspan="2" style="width:32%;font-size:16px;">الـمـــــــــادة</th>
+                            <th colspan="2">الدرجة العامة</th>
                             <th colspan="2">الدرجة المكتسبة</th>
-                            <th style="width:9%;">ملاحظة</th>
+                            <th rowspan="2" style="width:10%;">مـلاحـظـة</th>
                         </tr>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th style="width:8%;">الكبرى</th>
-                            <th style="width:8%;">الصغرى</th>
-                            <th style="width:8%;">رقماً</th>
-                            <th style="min-width:80px;">كتابةً</th>
-                            <th></th>
+                            <th>الكبرى</th>
+                            <th>الصغرى</th>
+                            <th>رقماً</th>
+                            <th>كتابة</th>
                         </tr>
                     </thead>
                     <tbody id="reportTableBody"></tbody>
-                    <tfoot id="reportTableFoot"></tfoot>
                 </table>
 
-                <!-- TOTAL IN WORDS — bottom label like real paper "ألف وثلاثمائة وست عشرة" -->
-                <div id="totalWordsLabel" style="text-align:right;font-size:11px;font-weight:700;margin-top:3px;padding-right:2px;"></div>
-
-                <!-- SIGNATURES ROW — 3 columns: principal | stamp | exams director -->
-                <table class="rpt-sig-table">
-                    <tr>
-                        <!-- Right: Principal signature -->
-                        <td>
-                            <div class="rpt-sig-label">توقيع مدير المعهد</div>
-                            <div class="rpt-sig-line"></div>
-                        </td>
-                        <!-- Center: Official stamp circle -->
-                        <td>
-                            <div class="rpt-sig-label">ختم المعهد الرسمي</div>
-                            <div class="rpt-stamp-circle">
-                                <i class="fas fa-stamp"></i>
-                                <span>الختم</span>
-                            </div>
-                        </td>
-                        <!-- Left: Exams director signature -->
-                        <td>
-                            <div class="rpt-sig-label">توقيع مدير الامتحانات</div>
-                            <div class="rpt-sig-line"></div>
-                        </td>
-                    </tr>
-                </table>
+                <!-- SIGNATURES FOOTER -->
+                <div class="rpt-footer">
+                    <div>توقيع مدير المعهد<div class="rpt-sig-underline"></div></div>
+                    <div>ختم المعهد الرسمي<div style="height:110px;"></div></div>
+                    <div>توقيع مدير الامتحانات<div class="rpt-sig-underline"></div></div>
+                </div>
 
             </div><!-- end #a4Report -->
         </div><!-- end #reportView -->
@@ -1360,7 +1226,7 @@
         <div class="footer-content">
             <div class="contact-stack">
                 <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+220 9905171</span></div>
-                <div class="contact-item"><i class="fas fa-envelope"></i><span>info@tallinding.edu.gm</span></div>
+                <div class="contact-item"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b32353d341b2f3a373732353f32353c753e3f2e753c36">[email&#160;protected]</a></span></div>
             </div>
             <div class="footer-social">
                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1375,7 +1241,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function() {
     'use strict';
 
@@ -1627,44 +1493,38 @@ function showTermReport(term, year) {
     document.getElementById('reportGradeLabel').textContent = gradeLabel;
     document.getElementById('reportPassCount').textContent = student.passTotal || '---';
 
-    // Table body rows — matching the real paper column structure exactly
+    // Table body rows — matching new design
     var rows = '';
     results.forEach(function(r, i) {
-        var rowBg = i % 2 === 0 ? '#fafafa' : '#ffffff';
         var scoreNum = (r.score !== undefined && r.score !== null) ? r.score : '';
         var scoreWord = (typeof scoreNum === 'number') ? toArabicWords(scoreNum) : '';
-        rows += '<tr style="background:' + rowBg + ';">';
-        rows += '<td style="text-align:center;">' + (i + 1) + '</td>';
-        rows += '<td class="rpt-subject-cell">' + r.subject + '</td>';
-        rows += '<td style="text-align:center;">١٠٠</td>';
-        rows += '<td style="text-align:center;">٥٠</td>';
-        rows += '<td style="text-align:center;font-weight:700;">' + scoreNum + '</td>';
-        rows += '<td style="text-align:center;font-size:11px;">' + scoreWord + '</td>';
-        rows += '<td style="text-align:center;"></td>'; // ملاحظة — blank like real paper
+        var isEnglish = r.subject === 'English Language' || r.subject === 'اللغة الإنجليزية';
+        var subjectCell = isEnglish
+            ? '<td class="rpt-subject-en">' + r.subject + '</td>'
+            : '<td class="rpt-subject-cell">' + r.subject + '</td>';
+        rows += '<tr>';
+        rows += '<td>' + (i + 1) + '</td>';
+        rows += subjectCell;
+        rows += '<td>100</td>';
+        rows += '<td>50</td>';
+        rows += '<td><strong>' + scoreNum + '</strong></td>';
+        rows += '<td>' + scoreWord + '</td>';
+        rows += '<td>&nbsp;</td>';
         rows += '</tr>';
     });
-    document.getElementById('reportTableBody').innerHTML = rows;
 
-    // Footer totals row — dark background like real paper
-    // maxTotal in Eastern Arabic numerals
-    function toEasternArabic(n) {
-        return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
-    }
+    // Totals row — same style as regular rows (no dark tfoot), matching shared design
     var totalWord = toArabicWords(total);
-    var maxStr = toEasternArabic(maxTotal);
-    var minStr = toEasternArabic(minTotal);
-    var foot = '<tr>';
-    foot += '<td colspan="2" style="text-align:center;font-size:12px;">المجموع الكلي</td>';
-    foot += '<td style="text-align:center;">' + maxStr + '</td>';
-    foot += '<td style="text-align:center;">' + minStr + '</td>';
-    foot += '<td style="text-align:center;">' + total + '</td>';
-    foot += '<td style="text-align:center;font-size:11px;">' + totalWord + '</td>';
-    foot += '<td style="text-align:center;"></td>';
-    foot += '</tr>';
-    document.getElementById('reportTableFoot').innerHTML = foot;
+    rows += '<tr style="font-size:15px;">';
+    rows += '<td colspan="2">الـمـجـمـوع الـكـلـي</td>';
+    rows += '<td>' + maxTotal + '</td>';
+    rows += '<td>' + minTotal + '</td>';
+    rows += '<td>' + total.toLocaleString() + '</td>';
+    rows += '<td>' + totalWord + '</td>';
+    rows += '<td>&nbsp;</td>';
+    rows += '</tr>';
 
-    // Total in words label below table — as in real paper bottom left "ألف وثلاثمائة وست عشرة"
-    document.getElementById('totalWordsLabel').textContent = totalWord;
+    document.getElementById('reportTableBody').innerHTML = rows;
 
     // Show report view
     document.getElementById('termCardsSection').style.display = 'none';
@@ -1682,49 +1542,26 @@ function printReport() {
     var win = window.open('', '_blank');
     var html = '<!DOCTYPE html><html dir="rtl"><head><meta charset="UTF-8">';
     html += '<title>كشف الدرجات - ' + (currentStudentData ? currentStudentData.fullName : '') + '</title>';
-    html += '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">';
     html += '<style>';
-    html += 'body{font-family:"Times New Roman",Arial,serif;margin:0;padding:0;direction:rtl;background:white;}';
     html += '@page{size:A4;margin:0;}';
-    html += '#a4Report{';
-    html += '  width:210mm;min-height:297mm;margin:0;padding:14mm 16mm 20mm;';
-    html += '  font-family:"Times New Roman",Arial,serif;direction:rtl;font-size:12px;';
-    html += '  color:#000;box-sizing:border-box;position:relative;background:white;';
-    html += '}';
-    html += '#a4Report::before{content:"";position:absolute;top:6mm;left:6mm;right:6mm;bottom:6mm;border:1.5px solid #444;pointer-events:none;}';
-    html += '#a4Report > *{position:relative;z-index:1;}';
-    html += '.rpt-header-table{width:100%;border-collapse:collapse;margin-bottom:3px;}';
-    html += '.rpt-header-table td{vertical-align:top;padding:2px 4px;}';
-    html += '.rpt-header-left{text-align:left;direction:ltr;font-size:10.5px;line-height:1.8;width:30%;}';
-    html += '.rpt-header-center{text-align:center;vertical-align:middle;width:40%;}';
-    html += '.rpt-header-right{text-align:right;font-size:10.5px;line-height:1.95;width:30%;}';
-    html += '.rpt-bismillah{font-size:13px;font-weight:700;text-align:center;margin-bottom:4px;}';
-    html += '.rpt-logo-circle{width:68px;height:68px;border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;background:#f8f8f8;}';
-    html += '.rpt-logo-circle i{font-size:1.7rem;color:#1e5a3a;}';
-    html += '.rpt-title-box{text-align:center;margin:6px 0 7px;}';
-    html += '.rpt-title-box span{font-size:14.5px;font-weight:700;border:2px solid #000;padding:4px 40px;display:inline-block;}';
-    html += '.rpt-attest-box{border:1px solid #555;padding:8px 12px;margin-bottom:7px;font-size:12px;line-height:2.1;text-align:right;}';
-    html += '.rpt-stats{display:flex;justify-content:space-between;direction:rtl;margin-bottom:3px;font-size:12px;font-weight:700;padding:0 2px;}';
-    html += '.rpt-stats-row{display:flex;justify-content:space-between;direction:rtl;margin-bottom:8px;font-size:12px;font-weight:700;padding:0 2px;}';
-    html += '.rpt-marks-table{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:0;}';
-    html += '.rpt-marks-table th,.rpt-marks-table td{border:1px solid #777;text-align:center;padding:4px 3px;}';
-    html += '.rpt-marks-table thead tr:first-child{background:#111;color:white;}';
-    html += '.rpt-marks-table thead tr:first-child th{border-color:#333;font-size:11.5px;padding:5px 3px;}';
-    html += '.rpt-marks-table thead tr:nth-child(2){background:#d0d0d0;color:#111;}';
-    html += '.rpt-marks-table thead tr:nth-child(2) th{border-color:#999;font-size:11px;font-weight:700;padding:3px 4px;}';
-    html += '.rpt-marks-table tbody tr:nth-child(odd) td{background:#fafafa;}';
-    html += '.rpt-marks-table tbody tr:nth-child(even) td{background:#ffffff;}';
-    html += '.rpt-marks-table tfoot tr{background:#111;color:white;font-weight:700;}';
-    html += '.rpt-marks-table tfoot td{border-color:#444;font-size:11.5px;padding:5px 3px;}';
-    html += '.rpt-subject-cell{text-align:right;padding-right:8px!important;font-weight:600;}';
-    html += '#totalWordsLabel{text-align:right;font-size:11px;font-weight:700;margin-top:3px;padding-right:2px;}';
-    html += '.rpt-sig-table{width:100%;border-collapse:collapse;margin-top:28px;text-align:center;font-size:12px;}';
-    html += '.rpt-sig-table td{vertical-align:top;padding:0 8px;width:33.33%;}';
-    html += '.rpt-sig-label{font-weight:700;margin-bottom:28px;font-size:12px;}';
-    html += '.rpt-sig-line{border-top:1.5px solid #222;width:72%;margin:0 auto;padding-top:4px;}';
-    html += '.rpt-stamp-circle{width:80px;height:80px;border:1.5px dashed #999;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;}';
-    html += '.rpt-stamp-circle i{font-size:1.3rem;color:#1e5a3a;opacity:0.2;}';
-    html += '.rpt-stamp-circle span{font-size:8.5px;color:#bbb;margin-top:2px;}';
+    html += '*{box-sizing:border-box;-webkit-print-color-adjust:exact!important;font-weight:bold!important;}';
+    html += 'body{background:white;margin:0;padding:0;font-family:Arial,sans-serif;color:#000;}';
+    html += '#a4Report{background:#fff;width:210mm;min-height:297mm;border:2.5pt solid #000;padding:15mm;position:relative;display:flex;flex-direction:column;font-family:Arial,sans-serif;color:#000;font-size:13px;box-sizing:border-box;direction:rtl;}';
+    html += '.rpt-header-section{height:130px;position:relative;width:100%;margin-bottom:10px;}';
+    html += '.rpt-h-left{position:absolute;top:0;left:0;text-align:left;direction:ltr;width:45%;line-height:1.5;font-size:13px;font-weight:bold;}';
+    html += '.rpt-h-right{position:absolute;top:0;right:0;text-align:right;width:45%;line-height:1.5;font-size:13px;font-weight:bold;}';
+    html += '.rpt-h-center{text-align:center;width:100%;padding-top:5px;}';
+    html += '.rpt-bismillah{font-size:11px;font-weight:bold;display:block;margin-bottom:4px;}';
+    html += '.rpt-logo-box{width:70px;height:50px;border:1.8pt solid #000;border-radius:50% 50% 0 0;margin:5px auto;}';
+    html += '.rpt-title-box{text-align:center;font-size:21px;font-weight:bold;text-decoration:underline;margin:10px 0;}';
+    html += '.rpt-info-box{border:2.5pt solid #000;border-bottom:none;padding:10px;margin-bottom:0;line-height:1.7;font-size:15px;font-weight:bold;}';
+    html += '.rpt-info-stats{display:flex;justify-content:space-between;margin-top:8px;font-size:15px;font-weight:bold;}';
+    html += '.rpt-marks-table{width:100%;border-collapse:collapse;border:2.5pt solid #000;margin-top:0;background:#fff;font-size:13.5px;}';
+    html += '.rpt-marks-table th,.rpt-marks-table td{border:1.2pt solid #000;padding:5px;text-align:center;height:30px;font-weight:bold;background:#fff;}';
+    html += '.rpt-subject-cell{text-align:right;padding-right:15px!important;white-space:nowrap;font-weight:bold;}';
+    html += '.rpt-subject-en{text-align:left;direction:ltr;padding-left:15px!important;white-space:nowrap;font-weight:bold;}';
+    html += '.rpt-footer{margin-top:auto;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;padding-bottom:25px;font-weight:bold;font-size:13px;}';
+    html += '.rpt-sig-underline{border-top:2pt solid #000;width:85%;margin:45px auto 0 auto;}';
     html += '</style></head><body>' + content;
     html += '<script>window.onload=function(){setTimeout(function(){window.print();},600);};<\/script>';
     html += '</body></html>';
@@ -1976,9 +1813,4 @@ function showInstallBanner() {
     b.innerHTML = '<i class="fas fa-download" style="color:#FFB347;"></i> تثبيت التطبيق على هاتفك <button onclick="installPWA()" style="background:#FFB347;color:#1e2b2f;border:none;padding:0.4rem 1rem;border-radius:30px;font-weight:700;cursor:pointer;margin-right:0.5rem;">تثبيت</button><button onclick="dismissBanner()" style="background:transparent;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:1.2rem;">×</button>';
     document.body.appendChild(b);
 }
-function installPWA() { if (!deferredPrompt) return; deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null; dismissBanner(); }); }
-function dismissBanner() { const b=document.getElementById('pwa-banner'); if(b) b.remove(); }
-window.addEventListener('appinstalled', ()=>{ dismissBanner(); deferredPrompt=null; });
-</script>
-</body>
-</html>
+function installPWA() { if (!deferredPrompt) return; deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null
