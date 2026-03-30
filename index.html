@@ -361,53 +361,47 @@
 
         /* HEADER */
         .rpt-header-section {
-            height: 140px;
+            height: 130px;
             position: relative;
             width: 100%;
             margin-bottom: 10px;
         }
-        /* Arabic info — visually on the RIGHT side of the paper */
-        .rpt-h-arabic {
+        .rpt-h-left {
             position: absolute;
-            top: 0;
-            right: 0;
-            text-align: right;
-            direction: rtl;
-            width: 38%;
-            line-height: 1.65;
-            font-size: 12.5px;
-            font-weight: bold;
-        }
-        /* English info — visually on the LEFT side of the paper */
-        .rpt-h-english {
-            position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             text-align: left;
             direction: ltr;
-            width: 38%;
-            line-height: 1.65;
-            font-size: 12.5px;
+            width: 45%;
+            line-height: 1.5;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .rpt-h-right {
+            position: absolute;
+            top: 0; right: 0;
+            text-align: right;
+            width: 45%;
+            line-height: 1.5;
+            font-size: 13px;
             font-weight: bold;
         }
         .rpt-h-center {
             text-align: center;
             width: 100%;
-            padding-top: 2px;
+            padding-top: 5px;
         }
         .rpt-bismillah {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             display: block;
-            margin-bottom: 6px;
-            font-family: 'Arial', sans-serif;
+            margin-bottom: 4px;
         }
         .rpt-logo-box {
-            width: 72px;
-            height: 55px;
+            width: 70px;
+            height: 50px;
             border: 1.8pt solid #000;
             border-radius: 50% 50% 0 0;
-            margin: 0 auto;
+            margin: 5px auto;
         }
 
         /* TITLE */
@@ -509,8 +503,9 @@
                 padding: 8mm;
                 font-size: 10px;
             }
-            .rpt-h-arabic, .rpt-h-english { width: 38%; font-size: 9px; line-height: 1.4; }
-            .rpt-header-section { height: 100px; }
+            .rpt-h-left, .rpt-h-right { width: 40%; font-size: 9px; }
+            .rpt-header-section { height: auto; position: static; margin-bottom: 6px; display: flex; justify-content: space-between; }
+            .rpt-h-left, .rpt-h-right, .rpt-h-center { position: static; }
             .rpt-title-box { font-size: 14px; }
             .rpt-info-box { font-size: 11px; }
             .rpt-marks-table { font-size: 9px; }
@@ -695,25 +690,22 @@
 
             <!-- HEADER -->
             <div class="rpt-header-section">
-                <!-- ARABIC: right side of paper -->
-                <div class="rpt-h-arabic">
+                <div class="rpt-h-left">
+                    Republic of The Gambia<br>
+                    The Gambia Islamic Union<br>
+                    Tallinding Islamic Institute<br><br>
+                    Date: <span id="reportDateLeft"></span>
+                </div>
+                <div class="rpt-h-center">
+                    <span class="rpt-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+                    <div class="rpt-logo-box"></div>
+                </div>
+                <div class="rpt-h-right">
                     جمهورية غامبيا<br>
                     الاتحاد الإسلامي الغامبي<br>
                     المعهد الإسلامي بتلند كنجا<br>
                     اسم الطالب/ <span id="reportStudentName"></span><br>
                     الفصل: <span id="reportClassName"></span>
-                </div>
-                <!-- CENTER: Bismillah + arch logo -->
-                <div class="rpt-h-center">
-                    <span class="rpt-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
-                    <div class="rpt-logo-box"></div>
-                </div>
-                <!-- ENGLISH: left side of paper -->
-                <div class="rpt-h-english">
-                    Republic of The Gambia<br>
-                    The Gambia Islamic Union<br>
-                    Tallinding Islamic Institute<br><br>
-                    Date: <span id="reportDateLeft"></span>
                 </div>
             </div>
 
@@ -1650,12 +1642,12 @@ function printReport() {
     css += '*{box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;font-weight:bold!important;}';
     css += 'body{background:white;margin:0;padding:0;font-family:Arial,sans-serif;color:#000;}';
     css += '#a4Report{background:#fff!important;width:210mm;min-height:297mm;border:2.5pt solid #000;padding:15mm;position:relative;display:flex;flex-direction:column;font-family:Arial,sans-serif;color:#000;font-size:13px;box-sizing:border-box;direction:rtl;transform:none!important;margin:0!important;}';
-    css += '.rpt-header-section{height:140px;position:relative;width:100%;margin-bottom:10px;}';
-    css += '.rpt-h-arabic{position:absolute;top:0;right:0;text-align:right;direction:rtl;width:38%;line-height:1.65;font-size:12.5px;font-weight:bold;}';
-    css += '.rpt-h-english{position:absolute;top:0;left:0;text-align:left;direction:ltr;width:38%;line-height:1.65;font-size:12.5px;font-weight:bold;}';
-    css += '.rpt-h-center{text-align:center;width:100%;padding-top:2px;}';
-    css += '.rpt-bismillah{font-size:12px;font-weight:bold;display:block;margin-bottom:6px;}';
-    css += '.rpt-logo-box{width:72px;height:55px;border:1.8pt solid #000;border-radius:50% 50% 0 0;margin:0 auto;}';
+    css += '.rpt-header-section{height:130px;position:relative;width:100%;margin-bottom:10px;}';
+    css += '.rpt-h-left{position:absolute;top:0;left:0;text-align:left;direction:ltr;width:45%;line-height:1.5;font-size:13px;}';
+    css += '.rpt-h-right{position:absolute;top:0;right:0;text-align:right;width:45%;line-height:1.5;font-size:13px;}';
+    css += '.rpt-h-center{text-align:center;width:100%;padding-top:5px;}';
+    css += '.rpt-bismillah{font-size:11px;display:block;margin-bottom:4px;}';
+    css += '.rpt-logo-box{width:70px;height:50px;border:1.8pt solid #000;border-radius:50% 50% 0 0;margin:5px auto;}';
     css += '.rpt-title-box{text-align:center;font-size:21px;text-decoration:underline;margin:10px 0;}';
     css += '.rpt-info-box{border:2.5pt solid #000;border-bottom:none;padding:10px;margin-bottom:0;line-height:1.7;font-size:15px;}';
     css += '.rpt-info-stats{display:flex;justify-content:space-between;margin-top:8px;font-size:15px;}';
