@@ -339,7 +339,7 @@
         .whatsapp-float:active { background-color: #20b859; transform: scale(0.95); }
 
         /* ============================================================
-           A4 REPORT — MATCHING SHARED DESIGN
+           A4 REPORT — EXACT MATCH TO REAL SCHOOL PAPER
            ============================================================ */
         #a4Report {
             background: #fff;
@@ -347,7 +347,7 @@
             min-height: 297mm;
             margin: 0 auto;
             border: 2.5pt solid #000;
-            padding: 15mm;
+            padding: 12mm 15mm;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -359,75 +359,71 @@
             direction: rtl;
         }
 
-        /* HEADER */
+        /* HEADER - Arabic on LEFT, English on RIGHT */
         .rpt-header-section {
-            height: 130px;
-            position: relative;
-            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
             margin-bottom: 10px;
+            width: 100%;
         }
-        .rpt-h-left {
-            position: absolute;
-            top: 0; left: 0;
+        .rpt-left {
+            text-align: right;
+            direction: rtl;
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 1.7;
+            width: 33%;
+        }
+        .rpt-center {
+            text-align: center;
+            width: 34%;
+        }
+        .rpt-right {
             text-align: left;
             direction: ltr;
-            width: 45%;
-            line-height: 1.5;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-        }
-        .rpt-h-right {
-            position: absolute;
-            top: 0; right: 0;
-            text-align: right;
-            width: 45%;
-            line-height: 1.5;
-            font-size: 13px;
-            font-weight: bold;
-        }
-        .rpt-h-center {
-            text-align: center;
-            width: 100%;
-            padding-top: 5px;
+            line-height: 1.7;
+            width: 33%;
         }
         .rpt-bismillah {
             font-size: 11px;
             font-weight: bold;
-            display: block;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
-        .rpt-logo-box {
+        .rpt-logo-img {
             width: 70px;
-            height: 50px;
-            border: 1.8pt solid #000;
-            border-radius: 50% 50% 0 0;
+            height: 70px;
+            object-fit: contain;
             margin: 5px auto;
+            display: block;
         }
 
         /* TITLE */
         .rpt-title-box {
             text-align: center;
-            font-size: 21px;
+            font-size: 20px;
             font-weight: bold;
             text-decoration: underline;
-            margin: 10px 0;
+            text-underline-offset: 6px;
+            margin: 8px 0 12px;
         }
 
-        /* ATTESTATION / INFO BOX */
+        /* ATTESTATION BOX */
         .rpt-info-box {
-            border: 2.5pt solid #000;
-            border-bottom: none;
-            padding: 10px;
-            margin-bottom: 0;
-            line-height: 1.7;
-            font-size: 15px;
-            font-weight: bold;
+            border: 2pt solid #000;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            line-height: 1.8;
+            font-size: 13px;
+            font-weight: normal;
         }
         .rpt-info-stats {
             display: flex;
             justify-content: space-between;
             margin-top: 8px;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: bold;
         }
 
@@ -435,87 +431,51 @@
         .rpt-marks-table {
             width: 100%;
             border-collapse: collapse;
-            border: 2.5pt solid #000;
+            border: 2pt solid #000;
             margin-top: 0;
-            background: #fff;
-            font-size: 13.5px;
+            font-size: 13px;
         }
         .rpt-marks-table th,
         .rpt-marks-table td {
             border: 1.2pt solid #000;
-            padding: 5px;
+            padding: 6px 4px;
             text-align: center;
-            height: 30px;
             font-weight: bold;
-            background: #fff;
+        }
+        .rpt-marks-table th {
+            background: #e8e8e8;
         }
         .rpt-subject-cell {
             text-align: right;
-            padding-right: 15px !important;
-            white-space: nowrap;
-            font-weight: bold;
+            padding-right: 12px !important;
         }
         .rpt-subject-en {
             text-align: left;
+            padding-left: 12px !important;
             direction: ltr;
-            padding-left: 15px !important;
-            white-space: nowrap;
-            font-weight: bold;
         }
 
-        /* FOOTER / SIGNATURES */
+        /* SIGNATURES */
         .rpt-footer {
             margin-top: auto;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             text-align: center;
-            padding-bottom: 25px;
+            padding-top: 25px;
             font-weight: bold;
             font-size: 13px;
         }
         .rpt-sig-underline {
             margin-top: 45px;
             border-top: 2pt solid #000;
-            width: 85%;
+            width: 80%;
             margin: 45px auto 0 auto;
         }
-
-        /* PRINT STYLES */
-        @media print {
-            body * { visibility: hidden; }
-            #a4Report, #a4Report * { visibility: visible; }
-            #a4Report {
-                position: fixed !important;
-                top: 0 !important; left: 0 !important;
-                width: 210mm !important;
-                min-height: 297mm !important;
-                margin: 0 !important;
-                padding: 15mm !important;
-                box-shadow: none !important;
-            }
+        .rpt-stamp-placeholder {
+            height: 90px;
         }
 
-        /* MOBILE */
-        @media (max-width: 820px) {
-            #a4Report {
-                width: 100%;
-                min-height: auto;
-                padding: 8mm;
-                font-size: 10px;
-            }
-            .rpt-h-left, .rpt-h-right { width: 40%; font-size: 9px; }
-            .rpt-header-section { height: auto; position: static; margin-bottom: 6px; display: flex; justify-content: space-between; }
-            .rpt-h-left, .rpt-h-right, .rpt-h-center { position: static; }
-            .rpt-title-box { font-size: 14px; }
-            .rpt-info-box { font-size: 11px; }
-            .rpt-marks-table { font-size: 9px; }
-            .rpt-marks-table th, .rpt-marks-table td { padding: 2px 1px; height: auto; }
-            .rpt-footer { font-size: 9px; }
-        }
-
-        /* ============================================================
-           FULL-SCREEN REPORT OVERLAY
-           ============================================================ */
+        /* FULL-SCREEN OVERLAY */
         #reportOverlay {
             display: none;
             position: fixed;
@@ -526,8 +486,6 @@
             overflow: hidden;
         }
         #reportOverlay.active { display: flex; }
-
-        /* Floating toolbar pinned at top */
         #reportToolbar {
             flex-shrink: 0;
             background: #1e5a3a;
@@ -549,27 +507,12 @@
             font-size: 0.9rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
         }
-        #reportToolbar .btn-back {
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
+        #reportToolbar .btn-back { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
         #reportToolbar .btn-back:hover { background: rgba(255,255,255,0.25); }
-        #reportToolbar .btn-print {
-            background: #FFB347;
-            color: #1e2b2f;
-        }
+        #reportToolbar .btn-print { background: #FFB347; color: #1e2b2f; }
         #reportToolbar .btn-print:hover { background: #ffc46a; }
-        #reportToolbar .toolbar-title {
-            color: rgba(255,255,255,0.85);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-right: auto;
-        }
-
-        /* Scrollable canvas area that holds the scaled A4 */
+        #reportToolbar .toolbar-title { color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 600; margin-right: auto; }
         #reportCanvas {
             flex: 1;
             overflow: auto;
@@ -578,13 +521,29 @@
             justify-content: center;
             padding: 20px;
         }
-
-        /* The A4 sheet scales to fit the canvas */
         #reportCanvas #a4Report {
             transform-origin: top center;
             flex-shrink: 0;
         }
-        @media (max-width: 600px) {
+
+        /* PRINT STYLES */
+        @media print {
+            body * { visibility: hidden; }
+            #a4Report, #a4Report * { visibility: visible; }
+            #a4Report {
+                position: fixed !important;
+                top: 0 !important; left: 0 !important;
+                width: 210mm !important;
+                min-height: 297mm !important;
+                margin: 0 !important;
+                padding: 12mm 15mm !important;
+                box-shadow: none !important;
+                border: 2.5pt solid #000 !important;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 820px) {
             .container { padding: 0 0.8rem; }
             .navbar { flex-direction: column; gap: 0.4rem; padding: 0.6rem 0; }
             .nav-left, .nav-right { width: 100%; justify-content: center; }
@@ -608,6 +567,13 @@
             .student-welcome-card { flex-direction: column; text-align: center; }
             .admin-tabs { gap: 0.3rem; }
             .admin-tab { padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+            #a4Report { width: 100%; min-height: auto; padding: 8mm; font-size: 10px; }
+            .rpt-left, .rpt-right { width: 40%; font-size: 9px; }
+            .rpt-title-box { font-size: 14px; }
+            .rpt-info-box { font-size: 11px; }
+            .rpt-marks-table { font-size: 9px; }
+            .rpt-marks-table th, .rpt-marks-table td { padding: 2px 1px; }
+            .rpt-footer { font-size: 9px; }
         }
         @media (max-width: 480px) {
             .institute-name { font-size: 1.2rem; }
@@ -669,8 +635,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- REPORT VIEW — full-screen overlay rendered by showTermReport() -->
     </div>
 </div>
 
@@ -687,25 +651,28 @@
     </div>
     <div id="reportCanvas">
         <div id="a4Report">
-
-            <!-- HEADER -->
+            <!-- HEADER - Arabic LEFT, English RIGHT -->
             <div class="rpt-header-section">
-                <div class="rpt-h-left">
-                    Republic of The Gambia<br>
-                    The Gambia Islamic Union<br>
-                    Tallinding Islamic Institute<br><br>
-                    Date: <span id="reportDateLeft"></span>
-                </div>
-                <div class="rpt-h-center">
-                    <span class="rpt-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
-                    <div class="rpt-logo-box"></div>
-                </div>
-                <div class="rpt-h-right">
+                <div class="rpt-left">
                     جمهورية غامبيا<br>
                     الاتحاد الإسلامي الغامبي<br>
                     المعهد الإسلامي بتلند كنجا<br>
-                    اسم الطالب/ <span id="reportStudentName"></span><br>
-                    الفصل: <span id="reportClassName"></span>
+                    اسم الطالب/ <strong id="reportStudentName">يايا مالك جوف</strong><br>
+                    الفصل: <span id="reportClassName">الصف الأول الثانوي (د)</span>
+                </div>
+                <div class="rpt-center">
+                    <div class="rpt-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                    <img class="rpt-logo-img" src="https://raw.githubusercontent.com/m92292363-collab/Tallinding-Islamic-Institute/main/logo(1).png" 
+                         alt="Tallinding Islamic Institute Logo"
+                         onerror="this.style.display='none'; this.nextSibling.style.display='flex';">
+                    <div style="display: none; width: 70px; height: 70px; border: 2pt solid #000; border-radius: 50%; margin: 5px auto; align-items: center; justify-content: center; font-size: 10px;">الشعار</div>
+                </div>
+                <div class="rpt-right">
+                    Republic of The Gambia<br>
+                    The Gambia Islamic Union<br>
+                    Tallinding Islamic Institute<br>
+                    <br>
+                    التاريخ: <span id="reportDateLeft">١٦/٧/٢٠٢٥</span>
                 </div>
             </div>
 
@@ -714,15 +681,15 @@
 
             <!-- ATTESTATION + STATS -->
             <div class="rpt-info-box">
-                <div id="attestationText"></div>
+                <div id="attestationText">تشهد إدارة المعهد الإسلامي بتلند كنجا بأن الطالب: <strong>يايا مالك جوف</strong> قد نجح في امتحان الدور الأول للعام الدراسي ٢٠٢٤/٢٠٢٥م بتقدير: <strong>جيد</strong>. وبناء عليه استحق نيل هذه الوثيقة.</div>
                 <div class="rpt-info-stats">
                     <div>
-                        عدد طلاب الفصل: <span id="reportClassCount">---</span><br>
-                        عدد الناجحين: <span id="reportPassCount">---</span>
+                        عدد طلاب الفصل: <span id="reportClassCount">٧٩</span><br>
+                        عدد الناجحين: <span id="reportPassCount">٧٣</span>
                     </div>
                     <div style="text-align:left;">
-                        الترتيب: <span id="reportRank">---</span><br>
-                        التقدير: <span id="reportGradeLabel">---</span>
+                        الترتيب: <span id="reportRank">٤٤</span><br>
+                        التقدير: <span id="reportGradeLabel">جيد</span>
                     </div>
                 </div>
             </div>
@@ -732,7 +699,7 @@
                 <thead>
                     <tr>
                         <th rowspan="2">م</th>
-                        <th rowspan="2" style="width:32%;font-size:16px;">الـمـــــــــادة</th>
+                        <th rowspan="2" style="width:32%;">الـمـــــــــادة</th>
                         <th colspan="2">الدرجة العامة</th>
                         <th colspan="2">الدرجة المكتسبة</th>
                         <th rowspan="2" style="width:10%;">مـلاحـظـة</th>
@@ -744,19 +711,20 @@
                         <th>كتابة</th>
                     </tr>
                 </thead>
-                <tbody id="reportTableBody"></tbody>
+                <tbody id="reportTableBody">
+                    <!-- Table rows will be populated by JavaScript -->
+                </tbody>
             </table>
 
             <!-- SIGNATURES FOOTER -->
             <div class="rpt-footer">
                 <div>توقيع مدير المعهد<div class="rpt-sig-underline"></div></div>
-                <div>ختم المعهد الرسمي<div style="height:110px;"></div></div>
+                <div>ختم المعهد الرسمي<div class="rpt-stamp-placeholder"></div></div>
                 <div>توقيع مدير الامتحانات<div class="rpt-sig-underline"></div></div>
             </div>
-
-        </div><!-- end #a4Report -->
-    </div><!-- end #reportCanvas -->
-</div><!-- end #reportOverlay -->
+        </div>
+    </div>
+</div>
 
 <!-- ===== ADMIN DASHBOARD ===== -->
 <div class="dashboard-overlay" id="adminDashboard">
@@ -1031,7 +999,6 @@
                 <div class="error-msg" id="reset-error"></div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -1316,7 +1283,8 @@
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
 (function() {
     'use strict';
 
@@ -1444,13 +1412,12 @@ function toArabicWords(n) {
     return n.toString();
 }
 
-// ===== SUBJECT ORDER (matches the real paper) =====
+// ===== SUBJECT ORDER =====
 var SUBJECT_ORDER = [
     'القرآن الكريم','القراءة المجودة','التفسير','أصول التفسير',
     'الحديث','أصول الحديث','التوحيد','الفقه','الفرائض',
     'النحو','البلاغة','الأدب','المطالعة','الإنشاء',
-    'التاريخ','علم النفس','الجغرافيا','التربية','English Language',
-    'اللغة الإنجليزية','الإنسانية','العلوم','اللغة'
+    'التاريخ','علم النفس','الجغرافيا','التربية','English Language'
 ];
 
 // ===== STUDENT DASHBOARD =====
@@ -1520,23 +1487,20 @@ function renderTermCards() {
     });
 }
 
-// ===== SHOW TERM REPORT — full-screen overlay, A4 scaled to fit =====
+// ===== SHOW TERM REPORT =====
 function showTermReport(term, year) {
     var results = allStudentResults.filter(function(r) { return r.term === term && r.academic_year === year; });
     var student = currentStudentData;
 
-    // Sort by canonical subject order
     results.sort(function(a, b) {
         var ai = SUBJECT_ORDER.indexOf(a.subject); var bi = SUBJECT_ORDER.indexOf(b.subject);
         if (ai === -1) ai = 999; if (bi === -1) bi = 999;
         return ai - bi;
     });
 
-    // Date
     var today = new Date();
     var dateStr = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYear();
 
-    // Totals & grade
     var total = results.reduce(function(s, r) { return s + (r.score || 0); }, 0);
     var numSubjects = results.length;
     var maxTotal = numSubjects * 100;
@@ -1544,34 +1508,28 @@ function showTermReport(term, year) {
     var pct = maxTotal > 0 ? (total / maxTotal) * 100 : 0;
     var gradeLabel = pct >= 90 ? 'ممتاز' : pct >= 75 ? 'جيد جداً' : pct >= 60 ? 'جيد' : pct >= 50 ? 'مقبول' : 'ضعيف';
 
-    // Class label
     var gradeNames = {'10':'الصف العاشر','11':'الصف الحادي عشر','12':'الصف الثاني عشر'};
     var gradeStr = gradeNames[String(student.gradeLevel)] || ('الصف ' + (student.gradeLevel || ''));
     var classStr = student.className ? ' (' + student.className + ')' : '';
     var termLabel = term === 'Term 1' ? 'الفصل الأول' : term === 'Term 2' ? 'الفصل الثاني' : 'الفصل الثالث';
 
-    // Fill header
     document.getElementById('reportStudentName').textContent = student.fullName;
     document.getElementById('reportClassName').textContent = gradeStr + classStr;
     document.getElementById('reportDateLeft').textContent = dateStr;
 
-    // Toolbar title
     var tb = document.getElementById('toolbarTitle');
     if (tb) tb.textContent = student.fullName + ' — ' + termLabel + ' ' + year;
 
-    // Attestation
     document.getElementById('attestationText').innerHTML =
         'تشهد إدارة المعهد الإسلامي بتلند كنجا بأن الطالب: <strong>' + student.fullName +
         '</strong> قد نجح في امتحان الدور الأول للعام الدراسي <strong>' + year +
         '</strong>م. بتقدير: <strong>' + gradeLabel + '</strong> وبناء عليه استحق نيل هذه الوثيقة.';
 
-    // Stats
     document.getElementById('reportRank').textContent = student.rank || '---';
     document.getElementById('reportClassCount').textContent = student.classTotal || '---';
     document.getElementById('reportGradeLabel').textContent = gradeLabel;
     document.getElementById('reportPassCount').textContent = student.passTotal || '---';
 
-    // Table rows
     var rows = '';
     results.forEach(function(r, i) {
         var scoreNum = (r.score !== undefined && r.score !== null) ? r.score : '';
@@ -1584,20 +1542,16 @@ function showTermReport(term, year) {
                 '<td>100</td><td>50</td><td><strong>' + scoreNum + '</strong></td>' +
                 '<td>' + scoreWord + '</td><td>&nbsp;</td></tr>';
     });
-    // Totals row
     var totalWord = toArabicWords(total);
     rows += '<tr style="font-size:15px;"><td colspan="2">الـمـجـمـوع الـكـلـي</td>' +
             '<td>' + maxTotal + '</td><td>' + minTotal + '</td>' +
             '<td>' + total.toLocaleString() + '</td><td>' + totalWord + '</td><td>&nbsp;</td></tr>';
     document.getElementById('reportTableBody').innerHTML = rows;
 
-    // Show full-screen overlay (hide student dashboard)
     document.getElementById('studentDashboard').style.visibility = 'hidden';
     var overlay = document.getElementById('reportOverlay');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-
-    // Scale the A4 sheet to fit the canvas
     scaleA4ToCanvas();
 }
 
@@ -1605,26 +1559,22 @@ function scaleA4ToCanvas() {
     var canvas = document.getElementById('reportCanvas');
     var sheet = document.getElementById('a4Report');
     if (!canvas || !sheet) return;
-    // Reset scale first to measure natural size
     sheet.style.transform = 'scale(1)';
-    var canvasW = canvas.clientWidth - 40; // 20px padding each side
-    var sheetW = sheet.offsetWidth; // 210mm = ~794px
+    var canvasW = canvas.clientWidth - 40;
+    var sheetW = sheet.offsetWidth;
     var scale = Math.min(1, canvasW / sheetW);
     sheet.style.transform = 'scale(' + scale + ')';
-    // Adjust canvas height so sheet doesn't leave gap
     sheet.style.marginBottom = '-' + (sheet.offsetHeight * (1 - scale)) + 'px';
 }
 
 function backToTerms() {
     document.getElementById('reportOverlay').classList.remove('active');
     document.getElementById('studentDashboard').style.visibility = 'visible';
-    document.body.style.overflow = 'hidden'; // keep dashboard scroll locked
+    document.body.style.overflow = 'hidden';
 }
 
 function printReport() {
-    // Build a clean print-only page with the A4 content
     var sheet = document.getElementById('a4Report');
-    // Temporarily remove transform for accurate outerHTML
     var prevTransform = sheet.style.transform;
     var prevMargin = sheet.style.marginBottom;
     sheet.style.transform = 'scale(1)';
@@ -1639,24 +1589,26 @@ function printReport() {
 
     var css = '';
     css += '@page{size:A4;margin:0;}';
-    css += '*{box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;font-weight:bold!important;}';
+    css += '*{box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}';
     css += 'body{background:white;margin:0;padding:0;font-family:Arial,sans-serif;color:#000;}';
-    css += '#a4Report{background:#fff!important;width:210mm;min-height:297mm;border:2.5pt solid #000;padding:15mm;position:relative;display:flex;flex-direction:column;font-family:Arial,sans-serif;color:#000;font-size:13px;box-sizing:border-box;direction:rtl;transform:none!important;margin:0!important;}';
-    css += '.rpt-header-section{height:130px;position:relative;width:100%;margin-bottom:10px;}';
-    css += '.rpt-h-left{position:absolute;top:0;left:0;text-align:left;direction:ltr;width:45%;line-height:1.5;font-size:13px;}';
-    css += '.rpt-h-right{position:absolute;top:0;right:0;text-align:right;width:45%;line-height:1.5;font-size:13px;}';
-    css += '.rpt-h-center{text-align:center;width:100%;padding-top:5px;}';
-    css += '.rpt-bismillah{font-size:11px;display:block;margin-bottom:4px;}';
-    css += '.rpt-logo-box{width:70px;height:50px;border:1.8pt solid #000;border-radius:50% 50% 0 0;margin:5px auto;}';
-    css += '.rpt-title-box{text-align:center;font-size:21px;text-decoration:underline;margin:10px 0;}';
-    css += '.rpt-info-box{border:2.5pt solid #000;border-bottom:none;padding:10px;margin-bottom:0;line-height:1.7;font-size:15px;}';
-    css += '.rpt-info-stats{display:flex;justify-content:space-between;margin-top:8px;font-size:15px;}';
-    css += '.rpt-marks-table{width:100%;border-collapse:collapse;border:2.5pt solid #000;margin-top:0;font-size:13.5px;}';
-    css += '.rpt-marks-table th,.rpt-marks-table td{border:1.2pt solid #000;padding:5px;text-align:center;height:30px;}';
-    css += '.rpt-subject-cell{text-align:right;padding-right:15px!important;white-space:nowrap;}';
-    css += '.rpt-subject-en{text-align:left;direction:ltr;padding-left:15px!important;white-space:nowrap;}';
-    css += '.rpt-footer{margin-top:auto;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;padding-bottom:25px;font-size:13px;}';
-    css += '.rpt-sig-underline{border-top:2pt solid #000;width:85%;margin:45px auto 0 auto;}';
+    css += '#a4Report{background:#fff!important;width:210mm;min-height:297mm;border:2.5pt solid #000;padding:12mm 15mm;position:relative;display:flex;flex-direction:column;font-family:Arial,sans-serif;color:#000;font-size:13px;box-sizing:border-box;direction:rtl;transform:none!important;margin:0!important;}';
+    css += '.rpt-header-section{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;width:100%;}';
+    css += '.rpt-left{text-align:right;direction:rtl;font-size:13px;font-weight:bold;line-height:1.7;width:33%;}';
+    css += '.rpt-center{text-align:center;width:34%;}';
+    css += '.rpt-right{text-align:left;direction:ltr;font-size:12px;font-weight:bold;line-height:1.7;width:33%;}';
+    css += '.rpt-bismillah{font-size:11px;font-weight:bold;margin-bottom:5px;}';
+    css += '.rpt-logo-img{width:70px;height:70px;object-fit:contain;margin:5px auto;display:block;}';
+    css += '.rpt-title-box{text-align:center;font-size:20px;font-weight:bold;text-decoration:underline;text-underline-offset:6px;margin:8px 0 12px;}';
+    css += '.rpt-info-box{border:2pt solid #000;padding:10px 12px;margin-bottom:12px;line-height:1.8;font-size:13px;}';
+    css += '.rpt-info-stats{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;font-weight:bold;}';
+    css += '.rpt-marks-table{width:100%;border-collapse:collapse;border:2pt solid #000;margin-top:0;font-size:13px;}';
+    css += '.rpt-marks-table th,.rpt-marks-table td{border:1.2pt solid #000;padding:6px 4px;text-align:center;}';
+    css += '.rpt-marks-table th{background:#e8e8e8;}';
+    css += '.rpt-subject-cell{text-align:right;padding-right:12px!important;}';
+    css += '.rpt-subject-en{text-align:left;padding-left:12px!important;direction:ltr;}';
+    css += '.rpt-footer{margin-top:auto;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;padding-top:25px;font-size:13px;}';
+    css += '.rpt-sig-underline{margin-top:45px;border-top:2pt solid #000;width:80%;margin:45px auto 0 auto;}';
+    css += '.rpt-stamp-placeholder{height:90px;}';
 
     var html = '<!DOCTYPE html><html dir="rtl"><head><meta charset="UTF-8">';
     html += '<title>كشف الدرجات — ' + studentName + '</title>';
@@ -1669,7 +1621,6 @@ function printReport() {
     win.document.close();
 }
 
-// Re-scale when window resizes
 window.addEventListener('resize', function() {
     if (document.getElementById('reportOverlay').classList.contains('active')) {
         scaleA4ToCanvas();
@@ -1683,7 +1634,7 @@ function logout(type) {
     if (type === 'student') { document.getElementById('student-id-input').value = ''; document.getElementById('student-pass-input').value = ''; }
 }
 
-// ===== ADMIN TABS =====
+// ===== ADMIN FUNCTIONS (simplified for brevity, same as original) =====
 function switchAdminTab(tab, btn) {
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
@@ -1691,7 +1642,6 @@ function switchAdminTab(tab, btn) {
     document.getElementById('panel-' + tab).classList.add('active');
 }
 
-// ===== SAVE MARKS =====
 async function saveMarks() {
     const studentId=document.getElementById('marks-studentId').value;
     const subject=document.getElementById('marks-subject').value;
@@ -1713,7 +1663,6 @@ async function saveMarks() {
     btn.disabled=false; btn.innerHTML='<i class="fas fa-save"></i> حفظ النتيجة';
 }
 
-// ===== SAVE STUDENT =====
 async function saveStudent() {
     const studentId=document.getElementById('new-studentId').value.trim();
     const fullName=document.getElementById('new-fullName').value.trim();
@@ -1734,7 +1683,6 @@ async function saveStudent() {
     btn.disabled=false; btn.innerHTML='<i class="fas fa-user-plus"></i> إضافة الطالب';
 }
 
-// ===== LOAD ALL STUDENTS =====
 let allStudentsData = [];
 async function loadAllStudents() {
     const tbody = document.getElementById('allStudentsBody');
@@ -1920,4 +1868,9 @@ function showInstallBanner() {
     b.innerHTML = '<i class="fas fa-download" style="color:#FFB347;"></i> تثبيت التطبيق على هاتفك <button onclick="installPWA()" style="background:#FFB347;color:#1e2b2f;border:none;padding:0.4rem 1rem;border-radius:30px;font-weight:700;cursor:pointer;margin-right:0.5rem;">تثبيت</button><button onclick="dismissBanner()" style="background:transparent;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:1.2rem;">×</button>';
     document.body.appendChild(b);
 }
-function installPWA() { if (!deferredPrompt) return; deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null
+function installPWA() { if (!deferredPrompt) return; deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null; dismissBanner(); }); }
+function dismissBanner() { const b=document.getElementById('pwa-banner'); if(b) b.remove(); }
+window.addEventListener('appinstalled', ()=>{ dismissBanner(); deferredPrompt=null; });
+</script>
+</body>
+</html>
