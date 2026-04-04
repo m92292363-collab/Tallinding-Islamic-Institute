@@ -41,8 +41,6 @@
                 radial-gradient(circle at 80% 80%, rgba(255,179,71,0.1) 0%, transparent 50%);
             pointer-events: none;
         }
-
-        /* ====== LOGIN ====== */
         .login-box {
             background: white;
             border-radius: 2rem;
@@ -87,8 +85,6 @@
         .error-msg.show { display: block; }
         .back-link { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; color: #aaa; font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
         .back-link:hover { color: var(--green); }
-
-        /* ====== DASHBOARD ====== */
         .dashboard-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f5; z-index: 9999; overflow-y: auto; direction: rtl; }
         .dashboard-overlay.active { display: block; }
         .dashboard-header { background: linear-gradient(135deg, #1e5a3a, #2b7a4f); color: white; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 15px rgba(0,0,0,0.25); }
@@ -98,8 +94,6 @@
         .dashboard-logout { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; font-family: 'Tajawal', sans-serif; }
         .dashboard-logout:hover { background: rgba(255,255,255,0.25); }
         .dashboard-body { padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
-
-        /* ====== STATS GRID ====== */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
         .stat-card { background: white; border-radius: 1.2rem; padding: 1.2rem 1.5rem; box-shadow: var(--card-shadow); display: flex; align-items: center; gap: 1rem; border: 1px solid rgba(30,90,58,0.08); transition: transform 0.2s; }
         .stat-card:hover { transform: translateY(-3px); }
@@ -111,8 +105,6 @@
         .stat-info { flex: 1; }
         .stat-number { font-size: 1.8rem; font-weight: 900; color: #1a1a1a; line-height: 1; }
         .stat-label { font-size: 0.8rem; color: #888; margin-top: 0.2rem; font-weight: 500; }
-
-        /* ====== TABS ====== */
         .tabs-container { background: white; border-radius: 1.2rem; padding: 0.8rem; margin-bottom: 1.5rem; box-shadow: var(--card-shadow); display: flex; gap: 0.4rem; flex-wrap: wrap; }
         .admin-tab { padding: 0.6rem 1rem; border-radius: 10px; border: none; color: #666; background: transparent; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; font-family: 'Tajawal', sans-serif; white-space: nowrap; }
         .admin-tab:hover { background: var(--green-pale); color: var(--green); }
@@ -120,13 +112,9 @@
         .admin-tab i { font-size: 0.8rem; }
         .admin-panel { display: none; }
         .admin-panel.active { display: block; }
-
-        /* ====== CARDS ====== */
         .admin-form-card { background: white; border-radius: 1.5rem; padding: 1.5rem; box-shadow: var(--card-shadow); margin-bottom: 1.5rem; border: 1px solid rgba(30,90,58,0.06); }
         .admin-form-card h3 { color: var(--green); font-size: 1.15rem; font-weight: 800; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--green-pale); }
         .admin-form-card h3 i { color: var(--accent); background: var(--green-pale); padding: 0.4rem; border-radius: 8px; }
-
-        /* ====== FORM GRID ====== */
         .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         .fg { display: flex; flex-direction: column; gap: 0.4rem; }
         .fg label { font-size: 0.82rem; font-weight: 700; color: #444; }
@@ -136,30 +124,18 @@
         }
         .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,179,71,0.12); background: white; }
         .fg.full { grid-column: span 2; }
-        .fg textarea { resize: vertical; min-height: 80px; }
-
-        /* ====== BUTTONS ====== */
         .btn-submit { background: linear-gradient(145deg, var(--green), var(--green-light)); color: white; padding: 0.75rem 1.8rem; border: none; border-radius: 30px; font-weight: 700; cursor: pointer; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; margin-top: 0.8rem; font-family: 'Tajawal', sans-serif; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30,90,58,0.3); }
         .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .btn-danger { background: linear-gradient(145deg, var(--red), var(--red-light)); color: white; padding: 0.75rem 1.8rem; border: none; border-radius: 30px; font-weight: 700; cursor: pointer; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; margin-top: 0.8rem; font-family: 'Tajawal', sans-serif; }
         .btn-danger:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(192,57,43,0.3); }
         .btn-danger:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .btn-secondary { background: white; color: var(--green); padding: 0.75rem 1.8rem; border: 2px solid var(--green); border-radius: 30px; font-weight: 700; cursor: pointer; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; margin-top: 0.8rem; font-family: 'Tajawal', sans-serif; }
-        .btn-secondary:hover { background: var(--green-pale); }
-        .btn-accent { background: linear-gradient(145deg, var(--accent-dark), var(--accent)); color: white; padding: 0.75rem 1.8rem; border: none; border-radius: 30px; font-weight: 700; cursor: pointer; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; margin-top: 0.8rem; font-family: 'Tajawal', sans-serif; }
-        .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,179,71,0.4); }
-        .btn-row { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
-
-        /* ====== MESSAGES ====== */
         .success-msg { color: #155724; background: #d4edda; padding: 0.8rem 1rem; border-radius: 10px; margin-top: 1rem; display: none; font-size: 0.9rem; border: 1px solid #c3e6cb; }
         .success-msg.show { display: block; }
         .err-msg { color: #721c24; background: #f8d7da; padding: 0.8rem 1rem; border-radius: 10px; margin-top: 1rem; display: none; font-size: 0.9rem; border: 1px solid #f5c6cb; }
         .err-msg.show { display: block; }
         .warn-box { color: #856404; background: #fff8d6; padding: 1rem 1.2rem; border-radius: 10px; margin-bottom: 1.2rem; font-size: 0.9rem; border: 1px solid #ffd54f; display: flex; align-items: flex-start; gap: 0.5rem; }
         .info-box { color: #0c5460; background: #d1ecf1; padding: 1rem 1.2rem; border-radius: 10px; margin-bottom: 1.2rem; font-size: 0.9rem; border: 1px solid #bee5eb; display: flex; align-items: flex-start; gap: 0.5rem; }
-
-        /* ====== TABLE ====== */
         .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(30,90,58,0.1); max-height: 500px; overflow-y: auto; }
         .admin-data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
         .admin-data-table th { background: linear-gradient(135deg, var(--green), var(--green-light)); color: white; padding: 0.8rem 1rem; text-align: right; font-size: 0.82rem; font-weight: 700; position: sticky; top: 0; }
@@ -170,15 +146,12 @@
         .search-bar input { border: none; outline: none; font-size: 0.95rem; flex: 1; background: transparent; font-family: 'Tajawal', sans-serif; }
         .search-bar i { color: #aaa; }
         .count-badge { background: var(--green-pale); color: var(--green); padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem; }
-
-        /* ====== GRADE BADGE ====== */
         .grade-pill { padding: 0.2rem 0.7rem; border-radius: 20px; font-weight: 700; font-size: 0.82rem; display: inline-block; }
         .grade-A { background: #d4edda; color: #155724; }
         .grade-B { background: #cce5ff; color: #004085; }
         .grade-C { background: #fff3cd; color: #856404; }
         .grade-D { background: #ffe5b4; color: #b45309; }
         .grade-F { background: #f8d7da; color: #721c24; }
-
         @media (max-width: 768px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .form-grid { grid-template-columns: 1fr; }
@@ -191,8 +164,6 @@
     </style>
 </head>
 <body>
-
-<!-- LOGIN BOX -->
 <div class="login-box" id="loginBox">
     <div class="logo"><i class="fas fa-shield-alt"></i></div>
     <h1>بوابة الإدارة</h1>
@@ -211,654 +182,33 @@
             <input type="password" id="admin-password" placeholder="أدخل كلمة المرور">
         </div>
     </div>
-    <button class="btn-login" id="loginBtn" onclick="doAdminLogin()">
+    <button class="btn-login" onclick="doAdminLogin()">
         <i class="fas fa-sign-in-alt"></i> دخول لوحة الإدارة
     </button>
     <div class="error-msg" id="login-error"></div>
     <a href="/" class="back-link"><i class="fas fa-arrow-right"></i> العودة للموقع الرئيسي</a>
 </div>
-
-<!-- ADMIN DASHBOARD -->
-<div class="dashboard-overlay" id="adminDashboard">
-    <div class="dashboard-header">
-        <h2><i class="fas fa-shield-alt"></i> لوحة الإدارة — معهد بتلند كنجا الإسلامي</h2>
-        <div class="header-actions">
-            <span id="header-time" style="color:rgba(255,255,255,0.7);font-size:0.85rem;"></span>
-            <button class="dashboard-logout" onclick="doLogout()">
-                <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-            </button>
-        </div>
-    </div>
-    <div class="dashboard-body">
-
-        <!-- STATS GRID -->
-        <div class="stats-grid" id="statsGrid">
-            <div class="stat-card">
-                <div class="stat-icon green"><i class="fas fa-users"></i></div>
-                <div class="stat-info"><div class="stat-number" id="stat-students">—</div><div class="stat-label">إجمالي الطلاب</div></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon orange"><i class="fas fa-clipboard-list"></i></div>
-                <div class="stat-info"><div class="stat-number" id="stat-results">—</div><div class="stat-label">إجمالي النتائج</div></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon blue"><i class="fas fa-school"></i></div>
-                <div class="stat-info"><div class="stat-number" id="stat-classes">18</div><div class="stat-label">عدد الفصول</div></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon purple"><i class="fas fa-book"></i></div>
-                <div class="stat-info"><div class="stat-number" id="stat-subjects">—</div><div class="stat-label">المواد الدراسية</div></div>
-            </div>
-        </div>
-
-        <!-- TABS -->
-        <div class="tabs-container">
-            <button class="admin-tab active" onclick="switchTab('dashboard',this)"><i class="fas fa-chart-pie"></i> الإحصائيات</button>
-            <button class="admin-tab" onclick="switchTab('add-marks',this)"><i class="fas fa-edit"></i> إدخال النتائج</button>
-            <button class="admin-tab" onclick="switchTab('add-student',this)"><i class="fas fa-user-plus"></i> إضافة طالب</button>
-            <button class="admin-tab" onclick="switchTab('all-students',this)"><i class="fas fa-users"></i> كل الطلاب</button>
-            <button class="admin-tab" onclick="switchTab('update-student',this)"><i class="fas fa-user-edit"></i> تعديل طالب</button>
-            <button class="admin-tab" onclick="switchTab('delete-student',this)"><i class="fas fa-user-times"></i> حذف طالب</button>
-            <button class="admin-tab" onclick="switchTab('all-results',this)"><i class="fas fa-table"></i> كل النتائج</button>
-            <button class="admin-tab" onclick="switchTab('delete-results',this)"><i class="fas fa-trash-alt"></i> حذف نتائج</button>
-            <button class="admin-tab" onclick="switchTab('reset-password',this)"><i class="fas fa-key"></i> إعادة كلمة المرور</button>
-        </div>
-
-        <!-- PANEL: DASHBOARD / STATS -->
-        <div class="admin-panel active" id="panel-dashboard">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-chart-bar"></i> إحصائيات النظام</h3>
-                <div id="grade-breakdown" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:0.5rem;">
-                    <div style="text-align:center;padding:1.2rem;background:var(--green-pale);border-radius:12px;">
-                        <div style="font-size:2rem;font-weight:900;color:var(--green);" id="count-10">—</div>
-                        <div style="font-size:0.85rem;color:#666;font-weight:600;">الصف العاشر</div>
-                    </div>
-                    <div style="text-align:center;padding:1.2rem;background:#fff8e8;border-radius:12px;">
-                        <div style="font-size:2rem;font-weight:900;color:#e67e22;" id="count-11">—</div>
-                        <div style="font-size:0.85rem;color:#666;font-weight:600;">الصف الحادي عشر</div>
-                    </div>
-                    <div style="text-align:center;padding:1.2rem;background:#e8f4fd;border-radius:12px;">
-                        <div style="font-size:2rem;font-weight:900;color:#2471a3;" id="count-12">—</div>
-                        <div style="font-size:0.85rem;color:#666;font-weight:600;">الصف الثاني عشر</div>
-                    </div>
-                </div>
-                <button class="btn-submit" style="margin-top:1rem;font-size:0.85rem;padding:0.6rem 1.2rem;" onclick="loadDashboardStats()">
-                    <i class="fas fa-sync-alt"></i> تحديث الإحصائيات
-                </button>
-            </div>
-        </div>
-
-        <!-- PANEL: ADD MARKS -->
-        <div class="admin-panel" id="panel-add-marks">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-edit"></i> إدخال نتائج الطالب</h3>
-                <div class="form-grid">
-                    <div class="fg"><label>الصف الدراسي *</label>
-                        <select id="marks-grade-filter" onchange="filterStudentsByGradeClass()">
-                            <option value="">-- اختر الصف --</option>
-                            <option value="10">الصف العاشر</option>
-                            <option value="11">الصف الحادي عشر</option>
-                            <option value="12">الصف الثاني عشر</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>الفصل *</label>
-                        <select id="marks-class-filter" onchange="filterStudentsByGradeClass()">
-                            <option value="">-- اختر الفصل --</option>
-                            <option value="أ">الفصل أ</option><option value="ب">الفصل ب</option>
-                            <option value="ج">الفصل ج</option><option value="د">الفصل د</option>
-                            <option value="هـ">الفصل هـ</option><option value="و">الفصل و</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>الطالب *</label>
-                        <select id="marks-studentId"><option value="">-- اختر الصف والفصل أولاً --</option></select>
-                    </div>
-                    <div class="fg"><label>المادة *</label>
-                        <select id="marks-subject">
-                            <option value="">-- اختر المادة --</option>
-                            <option value="القرآن الكريم">القرآن الكريم</option>
-                            <option value="التفسير">التفسير</option>
-                            <option value="الحديث">الحديث</option>
-                            <option value="أصول الحديث">أصول الحديث</option>
-                            <option value="التوحيد">التوحيد</option>
-                            <option value="الفقه">الفقه</option>
-                            <option value="الفرائض">الفرائض</option>
-                            <option value="النحو">النحو</option>
-                            <option value="البلاغة">البلاغة</option>
-                            <option value="الأدب">الأدب</option>
-                            <option value="المطالعة">المطالعة</option>
-                            <option value="الإنشاء">الإنشاء</option>
-                            <option value="التاريخ">التاريخ</option>
-                            <option value="علم النفس">علم النفس</option>
-                            <option value="الجغرافيا">الجغرافيا</option>
-                            <option value="التربية">التربية</option>
-                            <option value="English Language">English Language</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>الدرجة (من 100) *</label>
-                        <input type="number" id="marks-score" placeholder="85" min="0" max="100" oninput="autoGrade()">
-                    </div>
-                    <div class="fg"><label>التقدير *</label>
-                        <select id="marks-grade">
-                            <option value="">-- اختر --</option>
-                            <option value="A">A - ممتاز (90-100)</option>
-                            <option value="B">B - جيد جداً (80-89)</option>
-                            <option value="C">C - جيد (70-79)</option>
-                            <option value="D">D - مقبول (60-69)</option>
-                            <option value="F">F - راسب (أقل من 60)</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>العام الدراسي *</label><input type="text" id="marks-year" value="2025-2026" placeholder="2025-2026"></div>
-                    <div class="fg"><label>الفصل الدراسي *</label>
-                        <select id="marks-term">
-                            <option value="Term 1">الفصل الأول</option>
-                            <option value="Term 2">الفصل الثاني</option>
-                            <option value="Term 3">الفصل الثالث</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn-submit" onclick="saveMarks()"><i class="fas fa-save"></i> حفظ النتيجة</button>
-                <div class="success-msg" id="marks-success"></div>
-                <div class="err-msg" id="marks-error"></div>
-            </div>
-        </div>
-
-        <!-- PANEL: ADD STUDENT -->
-        <div class="admin-panel" id="panel-add-student">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-user-plus"></i> إضافة طالب جديد</h3>
-                <div class="form-grid">
-                    <div class="fg"><label>رقم الطالب *</label><input type="text" id="new-studentId" placeholder="مثال: MA001"></div>
-                    <div class="fg"><label>الاسم الكامل *</label><input type="text" id="new-fullName" placeholder="اسم الطالب بالكامل"></div>
-                    <div class="fg"><label>كلمة المرور *</label><input type="text" id="new-password" placeholder="كلمة مرور الطالب"></div>
-                    <div class="fg"><label>الصف الدراسي *</label>
-                        <select id="new-gradeLevel">
-                            <option value="10">الصف العاشر</option>
-                            <option value="11">الصف الحادي عشر</option>
-                            <option value="12">الصف الثاني عشر</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>الفصل *</label>
-                        <select id="new-className">
-                            <option value="أ">الفصل أ</option><option value="ب">الفصل ب</option>
-                            <option value="ج">الفصل ج</option><option value="د">الفصل د</option>
-                            <option value="هـ">الفصل هـ</option><option value="و">الفصل و</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn-submit" onclick="saveStudent()"><i class="fas fa-user-plus"></i> إضافة الطالب</button>
-                <div class="success-msg" id="student-success"></div>
-                <div class="err-msg" id="student-error"></div>
-            </div>
-        </div>
-
-        <!-- PANEL: ALL STUDENTS -->
-        <div class="admin-panel" id="panel-all-students">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-users"></i> قائمة جميع الطلاب</h3>
-                <div class="form-grid" style="margin-bottom:1rem;">
-                    <div class="fg"><label>تصفية حسب الصف</label>
-                        <select id="as-grade-filter" onchange="filterStudentsTable()">
-                            <option value="">-- كل الصفوف --</option>
-                            <option value="10">الصف العاشر</option>
-                            <option value="11">الصف الحادي عشر</option>
-                            <option value="12">الصف الثاني عشر</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>تصفية حسب الفصل</label>
-                        <select id="as-class-filter" onchange="filterStudentsTable()">
-                            <option value="">-- كل الفصول --</option>
-                            <option value="أ">الفصل أ</option><option value="ب">الفصل ب</option>
-                            <option value="ج">الفصل ج</option><option value="د">الفصل د</option>
-                            <option value="هـ">الفصل هـ</option><option value="و">الفصل و</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="students-search" placeholder="ابحث بالاسم أو الرقم..." oninput="filterStudentsTable()"></div>
-                <div class="btn-row" style="margin-bottom:1rem;">
-                    <button class="btn-submit" onclick="loadAllStudents()" style="margin-top:0;"><i class="fas fa-sync-alt"></i> تحديث القائمة</button>
-                    <div class="count-badge" id="students-count"><i class="fas fa-users"></i> الطلاب: 0</div>
-                </div>
-                <div class="table-wrap">
-                    <table class="admin-data-table">
-                        <thead><tr><th>#</th><th>رقم الطالب</th><th>الاسم الكامل</th><th>الصف</th><th>الفصل</th></tr></thead>
-                        <tbody id="allStudentsBody"><tr><td colspan="5" style="text-align:center;padding:2rem;color:#999;">اضغط "تحديث القائمة" لتحميل البيانات</td></tr></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- PANEL: UPDATE STUDENT -->
-        <div class="admin-panel" id="panel-update-student">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-user-edit"></i> تعديل بيانات طالب</h3>
-                <div class="form-grid">
-                    <div class="fg"><label>رقم الطالب *</label><input type="text" id="update-studentId" placeholder="مثال: MA001"></div>
-                    <div class="fg"><label>الاسم الكامل الجديد</label><input type="text" id="update-fullName" placeholder="اتركه فارغاً للإبقاء على الحالي"></div>
-                    <div class="fg"><label>الصف الجديد</label>
-                        <select id="update-gradeLevel">
-                            <option value="">-- لا تغيير --</option>
-                            <option value="10">الصف العاشر</option>
-                            <option value="11">الصف الحادي عشر</option>
-                            <option value="12">الصف الثاني عشر</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>الفصل الجديد</label>
-                        <select id="update-className">
-                            <option value="">-- لا تغيير --</option>
-                            <option value="أ">الفصل أ</option><option value="ب">الفصل ب</option>
-                            <option value="ج">الفصل ج</option><option value="د">الفصل د</option>
-                            <option value="هـ">الفصل هـ</option><option value="و">الفصل و</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn-submit" onclick="updateStudent()"><i class="fas fa-save"></i> حفظ التعديلات</button>
-                <div class="success-msg" id="update-success"></div>
-                <div class="err-msg" id="update-error"></div>
-            </div>
-        </div>
-
-        <!-- PANEL: DELETE STUDENT -->
-        <div class="admin-panel" id="panel-delete-student">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-user-times"></i> حذف طالب</h3>
-                <div class="warn-box"><i class="fas fa-exclamation-triangle"></i> <span>تحذير: حذف الطالب سيحذف جميع نتائجه بشكل نهائي ولا يمكن التراجع!</span></div>
-                <div class="form-grid">
-                    <div class="fg full"><label>رقم الطالب المراد حذفه *</label><input type="text" id="delete-studentId" placeholder="مثال: MA001"></div>
-                </div>
-                <button class="btn-danger" onclick="deleteStudent()"><i class="fas fa-trash-alt"></i> حذف الطالب نهائياً</button>
-                <div class="success-msg" id="delete-student-success"></div>
-                <div class="err-msg" id="delete-student-error"></div>
-            </div>
-        </div>
-
-        <!-- PANEL: ALL RESULTS -->
-        <div class="admin-panel" id="panel-all-results">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-table"></i> كل نتائج الطلاب</h3>
-                <div class="form-grid" style="margin-bottom:1rem;">
-                    <div class="fg"><label>الصف</label>
-                        <select id="filter-grade"><option value="">-- كل الصفوف --</option><option value="10">الصف العاشر</option><option value="11">الصف الحادي عشر</option><option value="12">الصف الثاني عشر</option></select>
-                    </div>
-                    <div class="fg"><label>الفصل</label>
-                        <select id="filter-class"><option value="">-- كل الفصول --</option><option value="أ">الفصل أ</option><option value="ب">الفصل ب</option><option value="ج">الفصل ج</option><option value="د">الفصل د</option><option value="هـ">الفصل هـ</option><option value="و">الفصل و</option></select>
-                    </div>
-                    <div class="fg"><label>العام الدراسي</label><input type="text" id="filter-year" placeholder="مثال: 2025-2026"></div>
-                    <div class="fg"><label>الفصل الدراسي</label>
-                        <select id="filter-term"><option value="">-- كل الفصول --</option><option value="Term 1">الفصل الأول</option><option value="Term 2">الفصل الثاني</option><option value="Term 3">الفصل الثالث</option></select>
-                    </div>
-                </div>
-                <div class="btn-row" style="margin-bottom:1rem;">
-                    <button class="btn-submit" onclick="loadAllResults()" style="margin-top:0;"><i class="fas fa-sync-alt"></i> تحميل النتائج</button>
-                    <div class="count-badge" id="results-count"><i class="fas fa-list"></i> النتائج: 0</div>
-                </div>
-                <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="results-search" placeholder="ابحث بالاسم أو الرقم أو المادة..." oninput="filterResultsTable()"></div>
-                <div class="table-wrap">
-                    <table class="admin-data-table">
-                        <thead><tr><th>#</th><th>رقم الطالب</th><th>الاسم</th><th>الصف</th><th>الفصل</th><th>المادة</th><th>الدرجة</th><th>التقدير</th><th>الفصل الدراسي</th><th>العام</th></tr></thead>
-                        <tbody id="allResultsBody"><tr><td colspan="10" style="text-align:center;padding:2rem;color:#999;">اضغط "تحميل النتائج" لعرض البيانات</td></tr></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- PANEL: DELETE RESULTS -->
-        <div class="admin-panel" id="panel-delete-results">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-trash-alt"></i> حذف نتائج طالب</h3>
-                <div class="info-box"><i class="fas fa-info-circle"></i> <span>يمكنك حذف نتيجة مادة معينة أو حذف جميع نتائج الطالب.</span></div>
-                <div class="form-grid">
-                    <div class="fg full"><label>رقم الطالب *</label><input type="text" id="del-res-studentId" placeholder="مثال: MA001"></div>
-                    <div class="fg"><label>المادة (فارغ = حذف الكل)</label>
-                        <select id="del-res-subject"><option value="">-- حذف جميع النتائج --</option>
-                            <option value="القرآن الكريم">القرآن الكريم</option>
-                            <option value="التفسير">التفسير</option>
-                            <option value="الحديث">الحديث</option>
-                            <option value="التوحيد">التوحيد</option>
-                            <option value="الفقه">الفقه</option>
-                            <option value="النحو">النحو</option>
-                            <option value="English Language">English Language</option>
-                        </select>
-                    </div>
-                    <div class="fg"><label>العام (مطلوب مع المادة)</label><input type="text" id="del-res-year" placeholder="مثال: 2025-2026"></div>
-                    <div class="fg"><label>الفصل الدراسي</label>
-                        <select id="del-res-term"><option value="">-- اختر الفصل --</option><option value="Term 1">الفصل الأول</option><option value="Term 2">الفصل الثاني</option><option value="Term 3">الفصل الثالث</option></select>
-                    </div>
-                </div>
-                <button class="btn-danger" onclick="deleteResults()"><i class="fas fa-trash-alt"></i> حذف النتائج</button>
-                <div class="success-msg" id="del-res-success"></div>
-                <div class="err-msg" id="del-res-error"></div>
-            </div>
-        </div>
-
-        <!-- PANEL: RESET PASSWORD -->
-        <div class="admin-panel" id="panel-reset-password">
-            <div class="admin-form-card">
-                <h3><i class="fas fa-key"></i> إعادة تعيين كلمة مرور الطالب</h3>
-                <div class="form-grid">
-                    <div class="fg"><label>رقم الطالب *</label><input type="text" id="reset-studentId" placeholder="مثال: MA001"></div>
-                    <div class="fg"><label>كلمة المرور الجديدة *</label><input type="text" id="reset-newPassword" placeholder="كلمة المرور الجديدة"></div>
-                </div>
-                <button class="btn-submit" onclick="resetPassword()"><i class="fas fa-key"></i> تعيين كلمة المرور</button>
-                <div class="success-msg" id="reset-success"></div>
-                <div class="err-msg" id="reset-error"></div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 <script>
-// Helper functions
-function showMsg(id, text, success = true) {
-    const el = document.getElementById(id);
-    el.textContent = text;
-    el.className = (success ? 'success-msg' : 'err-msg') + ' show';
-    setTimeout(() => el.classList.remove('show'), 4000);
-}
-
-function gradeNames(g) { return {'10':'الصف العاشر','11':'الصف الحادي عشر','12':'الصف الثاني عشر'}[String(g)] || g; }
-
-// Auto-calculate grade from score
-function autoGrade() {
-    const score = parseInt(document.getElementById('marks-score').value);
-    const sel = document.getElementById('marks-grade');
-    if (isNaN(score)) return;
-    if (score >= 90) sel.value = 'A';
-    else if (score >= 80) sel.value = 'B';
-    else if (score >= 70) sel.value = 'C';
-    else if (score >= 60) sel.value = 'D';
-    else sel.value = 'F';
-}
-
-// Clock
-function updateClock() {
-    const now = new Date();
-    document.getElementById('header-time').textContent = now.toLocaleTimeString('ar-SA');
-}
-setInterval(updateClock, 1000);
-
-// ====== LOGIN / LOGOUT ======
 async function doAdminLogin() {
     const username = document.getElementById('admin-username').value.trim();
     const password = document.getElementById('admin-password').value.trim();
-    const btn = document.getElementById('loginBtn');
     const errorEl = document.getElementById('login-error');
     errorEl.classList.remove('show');
     if (!username || !password) { errorEl.textContent = 'يرجى إدخال اسم المستخدم وكلمة المرور'; errorEl.classList.add('show'); return; }
-    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحقق...';
     try {
         const res = await fetch('/api/admin-login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({username, password}) });
         const data = await res.json();
         if (data.success) {
-            document.getElementById('loginBox').style.display = 'none';
-            document.getElementById('adminDashboard').classList.add('active');
-            document.body.style.overflow = '';
-            loadDashboardStats();
-            loadAllStudents();
+            window.location.href = '/dashboard.html';
         } else {
             errorEl.textContent = data.error || 'بيانات غير صحيحة';
             errorEl.classList.add('show');
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> دخول لوحة الإدارة';
         }
     } catch(err) {
         errorEl.textContent = 'خطأ في الاتصال. حاول مرة أخرى.';
         errorEl.classList.add('show');
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> دخول لوحة الإدارة';
     }
 }
-
-function doLogout() {
-    document.getElementById('adminDashboard').classList.remove('active');
-    document.getElementById('loginBox').style.display = 'block';
-    document.getElementById('admin-username').value = '';
-    document.getElementById('admin-password').value = '';
-}
-
-// ====== TABS ======
-function switchTab(tab, btn) {
-    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('panel-' + tab).classList.add('active');
-}
-
-// ====== DASHBOARD STATS ======
-async function loadDashboardStats() {
-    try {
-        const res = await fetch('/api/get-all-students');
-        const data = await res.json();
-        if (data.success) {
-            const students = data.students;
-            document.getElementById('stat-students').textContent = students.length;
-            document.getElementById('count-10').textContent = students.filter(s => String(s.grade_level) === '10').length;
-            document.getElementById('count-11').textContent = students.filter(s => String(s.grade_level) === '11').length;
-            document.getElementById('count-12').textContent = students.filter(s => String(s.grade_level) === '12').length;
-        }
-    } catch(e) { console.error(e); }
-    try {
-        const res = await fetch('/api/get-all-results');
-        const data = await res.json();
-        if (data.success) {
-            document.getElementById('stat-results').textContent = data.results.length;
-        }
-    } catch(e) { console.error(e); }
-    document.getElementById('stat-subjects').textContent = '18';
-}
-
-// ====== STUDENT FUNCTIONS ======
-let cachedStudents = [];
-async function filterStudentsByGradeClass() {
-    const grade = document.getElementById('marks-grade-filter').value;
-    const cls = document.getElementById('marks-class-filter').value;
-    const select = document.getElementById('marks-studentId');
-    if (!grade || !cls) { select.innerHTML = '<option value="">-- اختر الصف والفصل أولاً --</option>'; return; }
-    select.innerHTML = '<option value="">جاري التحميل...</option>';
-    try {
-        if (!cachedStudents.length) {
-            const res = await fetch('/api/get-all-students');
-            const data = await res.json();
-            cachedStudents = data.success ? data.students : [];
-        }
-        const filtered = cachedStudents.filter(s => String(s.grade_level) === grade && s.class_name === cls);
-        select.innerHTML = filtered.length ? '<option value="">-- اختر الطالب --</option>' + filtered.map(s => `<option value="${s.student_id}">${s.student_id} - ${s.full_name}</option>`).join('') : '<option value="">لا يوجد طلاب في هذا الفصل</option>';
-    } catch { select.innerHTML = '<option value="">خطأ في التحميل</option>'; }
-}
-
-async function saveMarks() {
-    const studentId = document.getElementById('marks-studentId').value;
-    const subject = document.getElementById('marks-subject').value;
-    const score = parseInt(document.getElementById('marks-score').value);
-    const grade = document.getElementById('marks-grade').value;
-    const academicYear = document.getElementById('marks-year').value.trim();
-    const term = document.getElementById('marks-term').value;
-    const successEl = document.getElementById('marks-success'), errorEl = document.getElementById('marks-error');
-    successEl.classList.remove('show'); errorEl.classList.remove('show');
-    if (!studentId || !subject || isNaN(score) || !grade || !academicYear || !term) { errorEl.textContent = 'يرجى ملء جميع الحقول'; errorEl.classList.add('show'); return; }
-    try {
-        const res = await fetch('/api/add-marks', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({studentId, subject, score, grade, academicYear, term})});
-        const data = await res.json();
-        if (data.success) { showMsg('marks-success', '✅ تم حفظ النتيجة بنجاح!'); document.getElementById('marks-score').value = ''; }
-        else { showMsg('marks-error', data.error || 'حدث خطأ', false); }
-    } catch { showMsg('marks-error', 'خطأ في الاتصال', false); }
-}
-
-async function saveStudent() {
-    const studentId = document.getElementById('new-studentId').value.trim();
-    const fullName = document.getElementById('new-fullName').value.trim();
-    const password = document.getElementById('new-password').value.trim();
-    const gradeLevel = document.getElementById('new-gradeLevel').value;
-    const className = document.getElementById('new-className').value;
-    const successEl = document.getElementById('student-success'), errorEl = document.getElementById('student-error');
-    successEl.classList.remove('show'); errorEl.classList.remove('show');
-    if (!studentId || !fullName || !password) { errorEl.textContent = 'يرجى ملء جميع الحقول المطلوبة'; errorEl.classList.add('show'); return; }
-    try {
-        const res = await fetch('/api/add-student', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({studentId, fullName, password, gradeLevel: parseInt(gradeLevel), className})});
-        const data = await res.json();
-        if (data.success) {
-            showMsg('student-success', `✅ تم إضافة الطالب ${fullName} بنجاح!`);
-            document.getElementById('new-studentId').value = '';
-            document.getElementById('new-fullName').value = '';
-            document.getElementById('new-password').value = '';
-            cachedStudents = [];
-            loadAllStudents();
-            loadDashboardStats();
-        } else { showMsg('student-error', data.error || 'حدث خطأ', false); }
-    } catch { showMsg('student-error', 'خطأ في الاتصال', false); }
-}
-
-let allStudentsData = [];
-async function loadAllStudents() {
-    const tbody = document.getElementById('allStudentsBody');
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</td></tr>';
-    try {
-        const res = await fetch('/api/get-all-students');
-        const data = await res.json();
-        if (data.success) {
-            allStudentsData = data.students;
-            document.getElementById('students-count').innerHTML = '<i class="fas fa-users"></i> الطلاب: ' + data.students.length;
-            renderStudentsTable(data.students);
-        } else { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:#c0392b;">فشل تحميل البيانات</td></tr>'; }
-    } catch { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:#c0392b;">خطأ في الاتصال</td></tr>'; }
-}
-
-function renderStudentsTable(students) {
-    const tbody = document.getElementById('allStudentsBody');
-    if (!students.length) { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:#999;">لا يوجد طلاب</td></tr>'; return; }
-    tbody.innerHTML = students.map((s,i) => `<tr><td>${i+1}</td><td style="font-weight:700;color:var(--green);">${s.student_id}</td><td>${s.full_name}</td><td>${gradeNames(String(s.grade_level))}</td><td>${s.class_name||'-'}</td></tr>`).join('');
-}
-
-function filterStudentsTable() {
-    const q = document.getElementById('students-search').value.toLowerCase();
-    const grade = document.getElementById('as-grade-filter').value;
-    const cls = document.getElementById('as-class-filter').value;
-    let filtered = allStudentsData;
-    if (grade) filtered = filtered.filter(s => String(s.grade_level) === grade);
-    if (cls) filtered = filtered.filter(s => s.class_name === cls);
-    if (q) filtered = filtered.filter(s => s.student_id.toLowerCase().includes(q) || s.full_name.toLowerCase().includes(q));
-    document.getElementById('students-count').innerHTML = '<i class="fas fa-users"></i> الطلاب: ' + filtered.length;
-    renderStudentsTable(filtered);
-}
-
-async function updateStudent() {
-    const studentId = document.getElementById('update-studentId').value.trim();
-    const fullName = document.getElementById('update-fullName').value.trim() || undefined;
-    const gradeLevel = document.getElementById('update-gradeLevel').value || undefined;
-    const className = document.getElementById('update-className').value || undefined;
-    const successEl = document.getElementById('update-success'), errorEl = document.getElementById('update-error');
-    successEl.classList.remove('show'); errorEl.classList.remove('show');
-    if (!studentId) { errorEl.textContent = 'يرجى إدخال رقم الطالب'; errorEl.classList.add('show'); return; }
-    if (!fullName && !gradeLevel && !className) { errorEl.textContent = 'يرجى تعديل حقل واحد على الأقل'; errorEl.classList.add('show'); return; }
-    try {
-        const body = {studentId};
-        if (fullName) body.fullName = fullName;
-        if (gradeLevel) body.gradeLevel = parseInt(gradeLevel);
-        if (className) body.className = className;
-        const res = await fetch('/api/update-student', {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
-        const data = await res.json();
-        if (data.success) {
-            showMsg('update-success', '✅ تم تحديث بيانات الطالب بنجاح!');
-            document.getElementById('update-studentId').value = '';
-            document.getElementById('update-fullName').value = '';
-            document.getElementById('update-gradeLevel').value = '';
-            document.getElementById('update-className').value = '';
-            cachedStudents = [];
-            loadAllStudents();
-        } else { showMsg('update-error', data.error || 'حدث خطأ', false); }
-    } catch { showMsg('update-error', 'خطأ في الاتصال', false); }
-}
-
-async function deleteStudent() {
-    const studentId = document.getElementById('delete-studentId').value.trim();
-    const successEl = document.getElementById('delete-student-success'), errorEl = document.getElementById('delete-student-error');
-    successEl.classList.remove('show'); errorEl.classList.remove('show');
-    if (!studentId) { errorEl.textContent = 'يرجى إدخال رقم الطالب'; errorEl.classList.add('show'); return; }
-    if (!confirm(`هل أنت متأكد من حذف الطالب ${studentId} وجميع نتائجه؟ لا يمكن التراجع!`)) return;
-    try {
-        const res = await fetch('/api/delete-student', {method:'DELETE', headers:{'Content-Type':'application/json'}, body: JSON.stringify({studentId})});
-        const data = await res.json();
-        if (data.success) {
-            showMsg('delete-student-success', `✅ تم حذف الطالب ${studentId} بنجاح!`);
-            document.getElementById('delete-studentId').value = '';
-            cachedStudents = [];
-            loadAllStudents();
-            loadDashboardStats();
-        } else { showMsg('delete-student-error', data.error || 'حدث خطأ', false); }
-    } catch { showMsg('delete-student-error', 'خطأ في الاتصال', false); }
-}
-
-let allResultsData = [];
-async function loadAllResults() {
-    const tbody = document.getElementById('allResultsBody');
-    const grade = document.getElementById('filter-grade').value;
-    const cls = document.getElementById('filter-class').value;
-    const year = document.getElementById('filter-year').value.trim();
-    const term = document.getElementById('filter-term').value;
-    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:2rem;"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</td></tr>';
-    const params = [];
-    if (grade) params.push('gradeLevel=' + encodeURIComponent(grade));
-    if (cls) params.push('className=' + encodeURIComponent(cls));
-    if (year) params.push('academicYear=' + encodeURIComponent(year));
-    if (term) params.push('term=' + encodeURIComponent(term));
-    const url = '/api/get-all-results' + (params.length ? '?' + params.join('&') : '');
-    try {
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.success) {
-            allResultsData = data.results;
-            document.getElementById('results-count').innerHTML = '<i class="fas fa-list"></i> النتائج: ' + data.results.length;
-            renderResultsTable(data.results);
-        } else { tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:2rem;color:#c0392b;">فشل تحميل البيانات</td></tr>'; }
-    } catch { tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:2rem;color:#c0392b;">خطأ في الاتصال</td></tr>'; }
-}
-
-function renderResultsTable(results) {
-    const tbody = document.getElementById('allResultsBody');
-    if (!results.length) { tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:2rem;color:#999;">لا توجد نتائج</td></tr>'; return; }
-    const gradeShort = {'10':'العاشر','11':'الحادي عشر','12':'الثاني عشر'};
-    tbody.innerHTML = results.map((r,i) => `<tr><td>${i+1}</td><td style="font-weight:700;color:var(--green);">${r.student_id}</td><td>${r.full_name}</td><td>${gradeShort[String(r.grade_level)]||'-'}</td><td>${r.class_name||'-'}</td><td>${r.subject}</td><td style="font-weight:700;">${r.score??'-'}</td><td><span class="grade-pill grade-${r.grade||'F'}">${r.grade||'-'}</span></td><td>${r.term||'-'}</td><td>${r.academic_year||'-'}</td></tr>`).join('');
-}
-
-function filterResultsTable() {
-    const q = document.getElementById('results-search').value.toLowerCase();
-    renderResultsTable(allResultsData.filter(r => r.student_id?.toLowerCase().includes(q) || r.full_name?.toLowerCase().includes(q) || r.subject?.toLowerCase().includes(q)));
-}
-
-async function deleteResults() {
-    const studentId = document.getElementById('del-res-studentId').value.trim();
-    const subject = document.getElementById('del-res-subject').value;
-    const academicYear = document.getElementById('del-res-year').value.trim();
-    const term = document.getElementById('del-res-term').value;
-    const successEl = document.getElementById('del-res-success'), errorEl = document.getElementById('del-res-error');
-    successEl.classList.remove('show'); errorEl.classList.remove('show');
-    if (!studentId) { errorEl.textContent = 'يرجى إدخال رقم الطالب'; errorEl.classList.add('show'); return; }
-    if (subject && (!academicYear || !term)) { errorEl.textContent = 'يرجى تحديد العام والفصل عند اختيار مادة معينة'; errorEl.classList.add('show'); return; }
-    if (!confirm(subject ? `هل تريد حذف نتيجة ${subject} للطالب ${studentId}؟` : `هل تريد حذف جميع نتائج الطالب ${studentId}؟`)) return;
-    try {
-        const body = {studentId};
-        if (subject) { body.subject = subject; body.academicYear = academicYear; body.term = term; }
-        const res = await fetch('/api/delete-results', {method:'DELETE', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
-        const data = await res.json();
-        if (data.success) { showMsg('del-res-success', '✅ تم حذف النتائج بنجاح!'); document.getElementById('del-res-studentId').value = ''; }
-        else { showMsg('del-res-error', data.error || 'حدث خطأ', false); }
-    } catch { showMsg('del-res-error', 'خطأ في الاتصال', false); }
-}
-
-async function resetPassword() {
-    const studentId = document.getElementById('reset-studentId').value.trim();
-    const newPassword = document.getElementById('reset-newPassword').value.trim();
-    const successEl = document.getElementById('reset-success'), errorEl = document.getElementById('reset-error');
-    successEl.classList.remove('show'); errorEl.classList.remove('show');
-    if (!studentId || !newPassword) { errorEl.textContent = 'يرجى إدخال رقم الطالب وكلمة المرور الجديدة'; errorEl.classList.add('show'); return; }
-    try {
-        const res = await fetch('/api/reset-password', {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({studentId, newPassword})});
-        const data = await res.json();
-        if (data.success) { showMsg('reset-success', `✅ تم تعيين كلمة مرور جديدة للطالب ${studentId}!`); document.getElementById('reset-studentId').value = ''; document.getElementById('reset-newPassword').value = ''; }
-        else { showMsg('reset-error', data.error || 'حدث خطأ', false); }
-    } catch { showMsg('reset-error', 'خطأ في الاتصال', false); }
-}
-
 document.getElementById('admin-password').addEventListener('keypress', e => { if (e.key === 'Enter') doAdminLogin(); });
 </script>
 </body>
