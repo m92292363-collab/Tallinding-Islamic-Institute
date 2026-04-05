@@ -1,31 +1,60 @@
 import { neon } from '@netlify/neon';
-const sql = neon();
+
+const sql = neon(process.env.DATABASE_URL);
+
 export default async (req) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  };
+
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers });
+  }
+
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), {
       status: 405,
-      headers: { 'Content-Type': 'application/json' }
+      headers
     });
   }
+
   try {
     const { studentId, password } = await req.json();
+
     if (!studentId || !password) {
       return new Response(JSON.stringify({ error: 'Student ID and password are required' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' }
+        headers
       });
     }
+
+    // FIXED: Added class_name to the SELECT
     const [student] = await sql`
-      SELECT id, student_id, full_name, grade_level, date_of_birth, guardian_name, guardian_phone, student_phone, address
+      SELECT 
+        id, 
+        student_id, 
+        full_name, 
+        grade_level, 
+        class_name,
+        date_of_birth, 
+        guardian_name, 
+        guardian_phone, 
+        student_phone, 
+        address
       FROM students 
       WHERE student_id = ${studentId} AND password = ${password}
     `;
+
     if (!student) {
       return new Response(JSON.stringify({ error: 'Invalid Student ID or password' }), {
         status: 401,
-        headers: { 'Content-Type': 'application/json' }
+        headers
       });
     }
+
     return new Response(JSON.stringify({ 
       success: true, 
       student: {
@@ -33,6 +62,7 @@ export default async (req) => {
         studentId: student.student_id,
         fullName: student.full_name,
         gradeLevel: student.grade_level,
+        className: student.class_name,  // FIXED: Added class_name
         dateOfBirth: student.date_of_birth,
         guardianName: student.guardian_name,
         guardianPhone: student.guardian_phone,
@@ -41,14 +71,16 @@ export default async (req) => {
       }
     }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' }
+      headers
     });
+
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Student login error:', error);
     return new Response(JSON.stringify({ error: 'Server error. Please try again.' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers
     });
   }
 };
+
 export const config = { path: '/api/student-login' };
