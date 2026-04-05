@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -31,7 +31,6 @@ export default async (req) => {
       });
     }
 
-    // Check if student exists
     const [student] = await sql`
       SELECT student_id, full_name FROM students WHERE student_id = ${studentId}
     `;
@@ -43,12 +42,10 @@ export default async (req) => {
       });
     }
 
-    // First delete all results for this student (foreign key constraint)
     await sql`
       DELETE FROM results WHERE student_id = ${studentId}
     `;
 
-    // Then delete the student
     await sql`
       DELETE FROM students WHERE student_id = ${studentId}
     `;
