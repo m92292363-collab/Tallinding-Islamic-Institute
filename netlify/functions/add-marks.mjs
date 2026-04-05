@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -31,7 +31,6 @@ export default async (req) => {
       });
     }
 
-    // Validate score range
     if (score < 0 || score > 100) {
       return new Response(JSON.stringify({ error: 'Score must be between 0 and 100' }), {
         status: 400,
@@ -39,7 +38,6 @@ export default async (req) => {
       });
     }
 
-    // Check if student exists
     const [student] = await sql`
       SELECT student_id FROM students WHERE student_id = ${studentId}
     `;
@@ -51,7 +49,6 @@ export default async (req) => {
       });
     }
 
-    // Check if result exists (upsert)
     const [existing] = await sql`
       SELECT id FROM results 
       WHERE student_id = ${studentId} 
