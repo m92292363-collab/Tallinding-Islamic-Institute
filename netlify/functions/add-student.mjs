@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -42,7 +42,6 @@ export default async (req) => {
       });
     }
 
-    // Check if student already exists
     const [existing] = await sql`
       SELECT student_id FROM students WHERE student_id = ${studentId}
     `;
