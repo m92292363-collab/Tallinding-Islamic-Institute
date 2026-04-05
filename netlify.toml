@@ -14,3 +14,9 @@
   from = "/admin/*"
   to = "/admin.html"
   status = 200
+
+# Catch-all redirect for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
