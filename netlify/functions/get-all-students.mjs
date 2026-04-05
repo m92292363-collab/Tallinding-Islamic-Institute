@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -28,7 +28,6 @@ export default async (req) => {
 
     let students;
 
-    // FIXED: Using parameterized queries for ALL filters (no string interpolation)
     if (gradeLevel && className) {
       students = await sql`
         SELECT id, student_id, full_name, grade_level, class_name, 
