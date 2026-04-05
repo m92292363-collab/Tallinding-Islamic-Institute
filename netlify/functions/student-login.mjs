@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -31,7 +31,6 @@ export default async (req) => {
       });
     }
 
-    // FIXED: Added class_name to the SELECT
     const [student] = await sql`
       SELECT 
         id, 
@@ -62,7 +61,7 @@ export default async (req) => {
         studentId: student.student_id,
         fullName: student.full_name,
         gradeLevel: student.grade_level,
-        className: student.class_name,  // FIXED: Added class_name
+        className: student.class_name,
         dateOfBirth: student.date_of_birth,
         guardianName: student.guardian_name,
         guardianPhone: student.guardian_phone,
