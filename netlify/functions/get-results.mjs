@@ -1,38 +1,56 @@
 import { neon } from '@netlify/neon';
 
-const sql = neon();
+const sql = neon(process.env.DATABASE_URL);
 
 export default async (req) => {
-  const url = new URL(req.url);
-  const studentId = url.searchParams.get('studentId');
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  };
 
-  if (!studentId) {
-    return new Response(JSON.stringify({ error: 'Student ID is required' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers });
+  }
+
+  if (req.method !== 'GET') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers
     });
   }
 
   try {
+    const url = new URL(req.url);
+    const studentId = url.searchParams.get('studentId');
+
+    if (!studentId) {
+      return new Response(JSON.stringify({ error: 'Student ID is required' }), {
+        status: 400,
+        headers
+      });
+    }
+
     const results = await sql`
       SELECT r.subject, r.score, r.grade, r.academic_year, r.term,
-             s.full_name, s.grade_level
+             s.full_name, s.grade_level, s.class_name
       FROM results r
       JOIN students s ON r.student_id = s.student_id
       WHERE r.student_id = ${studentId}
-      ORDER BY r.term, r.subject
+      ORDER BY r.academic_year DESC, r.term, r.subject
     `;
 
     return new Response(JSON.stringify({ success: true, results }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' }
+      headers
     });
 
   } catch (error) {
     console.error('Get results error:', error);
     return new Response(JSON.stringify({ error: 'Server error. Please try again.' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers
     });
   }
 };
