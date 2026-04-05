@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -31,7 +31,6 @@ export default async (req) => {
       });
     }
 
-    // Check if student exists
     const [student] = await sql`
       SELECT student_id FROM students WHERE student_id = ${studentId}
     `;
@@ -43,7 +42,6 @@ export default async (req) => {
       });
     }
 
-    // Delete specific result or all results for a student
     if (subject && academicYear && term) {
       await sql`
         DELETE FROM results
