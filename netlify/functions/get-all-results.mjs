@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -28,7 +28,6 @@ export default async (req) => {
     const academicYear = url.searchParams.get('academicYear');
     const term = url.searchParams.get('term');
 
-    // FIXED: Build query dynamically with proper parameterized conditions
     let query = `
       SELECT r.subject, r.score, r.grade, r.academic_year, r.term,
              s.student_id, s.full_name, s.grade_level, s.class_name
@@ -66,7 +65,6 @@ export default async (req) => {
 
     query += ` ORDER BY s.grade_level, s.class_name, s.student_id, r.subject`;
 
-    // Execute with parameterized query
     const results = await sql(query, params);
 
     return new Response(JSON.stringify({ success: true, results }), {
