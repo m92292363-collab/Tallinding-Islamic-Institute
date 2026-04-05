@@ -1,10 +1,8 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
-// Get DATABASE_URL from environment variables
 const sql = neon(process.env.DATABASE_URL);
 
 export default async (req) => {
-  // Enable CORS for admin panel
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -12,7 +10,6 @@ export default async (req) => {
     'Access-Control-Allow-Headers': 'Content-Type'
   };
 
-  // Handle preflight
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers });
   }
@@ -34,7 +31,6 @@ export default async (req) => {
       });
     }
 
-    // FIXED: Using 'admin' table (singular) to match your schema
     const [admin] = await sql`
       SELECT id, username FROM admin
       WHERE username = ${username} AND password = ${password}
