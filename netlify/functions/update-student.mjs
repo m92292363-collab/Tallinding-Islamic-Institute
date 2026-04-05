@@ -1,4 +1,4 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
@@ -41,7 +41,6 @@ export default async (req) => {
       });
     }
 
-    // Check if student exists
     const [student] = await sql`
       SELECT student_id FROM students WHERE student_id = ${studentId}
     `;
@@ -53,7 +52,6 @@ export default async (req) => {
       });
     }
 
-    // Build dynamic update query - only update fields that are provided
     const updates = [];
     const params = [];
     let paramIndex = 1;
